@@ -11,6 +11,7 @@
         buildInputs = with pkgs; [
           gitleaks
           nodejs
+          ruby
           pre-commit
         ];
         shellHook = ''
