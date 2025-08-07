@@ -11,7 +11,7 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 
 ## Project layout
 
-```
+```conf
     mkdocs.yml    # The configuration file.
     docs/
         index.md  # The documentation homepage.
