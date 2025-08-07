@@ -15,6 +15,7 @@
           ];
 
           LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath [
+            pkgs.cairo
           ]}:$LD_LIBRARY_PATH";
 
 
