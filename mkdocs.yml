@@ -1,22 +1,47 @@
 ---
-site_name: JGALabs
-site_url: https://jakob1379.github.io
+site_name: Jakob Stender Guldberg
+site_url: https://jakob1379.github.io/
+repo_url: https://github.com/jakob1379/jakob1379.github.io # Please update if this is not the correct repo
+repo_name: jakob1379.github.io
+edit_uri: edit/main/docs/
 theme:
+  name: material
   # logo: assets/logo.png
   # favicon: images/favicon.png
-  name: material
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: teal
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: teal
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
     - navigation.instant
     - navigation.instant.progress
     - navigation.tracking
     - navigation.tabs
-    # - navigation.tabs.sticky  # always visible tabs
+    # - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
     - navigation.top
     - search.suggest
     - search.highlight
-    - navigation.footer
+    - content.code.annotate
+    - content.tabs.link
+    - header.autohide
+
+nav:
+  - Home: index.md
+  - Blog: blog/
+
 extra_css: [stylesheets/extra.css]
 extra:
   social:
@@ -36,11 +61,27 @@ extra:
       as to measure the effectiveness of our documentation and whether users
       find what they're searching for. With your consent, you're helping us to
       make our documentation better.
-plugins: [social, search, blog]
+plugins:
+  - social
+  - search
+  - blog:
+      authors_file: .authors
+
 copyright: Copyright &copy; 2025 Jakob Stender Guldberg
 markdown_extensions:
   - admonition
+  - attr_list
+  - md_in_html
   - tables
   - toc:
       permalink: true
-      # toc_depth: 3
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.icons
+  - pymdownx.tasklist:
+      custom_checkbox: true

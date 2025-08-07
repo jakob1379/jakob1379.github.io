@@ -1,0 +1,79 @@
+/* Make content full-width on homepage */
+[data-md-path="."] .md-grid {
+    max-width: 100%;
+}
+
+[data-md-path="."] .md-content__inner {
+    padding: 0;
+}
+
+/* Hero section styles */
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+    background-color: var(--md-primary-fg-color);
+    color: var(--md-primary-bg-color);
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.hero .md-button {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+/* General section styling */
+.section {
+    padding: 3rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+/* Skills grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-card {
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 0.2rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px var(--md-shadow-color);
+}
+
+.skill-card h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--md-primary-fg-color);
+}
+
+.skill-card .icon {
+    font-size: 4rem;
+    color: var(--md-accent-fg-color);
+}
