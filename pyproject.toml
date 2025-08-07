@@ -11,15 +11,14 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-  "mkdocs-material>=9.6.16",
+  "mkdocs-material[imaging]>=9.6.16",
   "mkdocs>=1.6.1"
 ]
 
 [tool.poe.tasks]
 _setup_pre-commit = "pre-commit install"
-setup = {sequence = ["_setup_pre-commit"], help="Setup dev environment"}
-
+setup = {sequence = ["_setup_pre-commit"], help = "Setup dev environment"}
 _update_pre-commit = "pre-commit autoupdate -j0"
-_update_python_packages = {shell="uv sync --upgrade && uvx uv-bump"}
+_update_python_packages = {shell = "uv sync --upgrade && uvx uv-bump"}
 _update_flake = "nix flake update"
-update = {sequence=["_update_flake", "_update_pre-commit", "_update_python_packages"], help="Update dependencies"}
+update = {sequence = ["_update_flake", "_update_pre-commit", "_update_python_packages"], help = "Update dependencies"}
