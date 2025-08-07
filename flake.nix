@@ -5,19 +5,25 @@
   outputs = { self, nixpkgs, utils }: utils.lib.eachDefaultSystem (system:
     let
       pkgs = nixpkgs.legacyPackages.${system};
+      # pythonEnv = pkgs.python312.withPackages ( ps: with ps; [] );
     in
-    {
-      devShell = pkgs.mkShell {
-        buildInputs = with pkgs; [
-          gitleaks
-          nodejs
-          ruby
-          pre-commit
-        ];
-        shellHook = ''
-          pre-commit install
-        '';
-      };
-    }
+      {
+        devShell = pkgs.mkShell {
+          buildInputs = with pkgs; [
+            uv
+            ruby
+          ];
+
+          LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath [
+          ]}:$LD_LIBRARY_PATH";
+
+
+          shellHook = ''
+            export UV_PYTHON_PREFERENCE="managed"
+            export SSL_CERT_FILE=$(nix eval --raw nixpkgs.cacert)/etc/ssl/certs/ca-bundle.crt
+            '';
+        };
+      }
   );
+
 }
