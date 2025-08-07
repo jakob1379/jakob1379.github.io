@@ -20,7 +20,6 @@
 
           shellHook = ''
             export UV_PYTHON_PREFERENCE="managed"
-            export SSL_CERT_FILE=$(nix eval --raw nixpkgs.cacert)/etc/ssl/certs/ca-bundle.crt
             '';
         };
       }
