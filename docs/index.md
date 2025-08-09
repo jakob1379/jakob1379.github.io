@@ -4,17 +4,13 @@ hide:
   - toc
 ---
 
-<div class="hero">
+<div class="hero" markdown>
   <img src="https://github.com/jakob1379.png" alt="Jakob Stender Guldberg" style="width: 150px; height: 150px; border-radius: 50%;">
   <h1>Jakob Stender Guldberg</h1>
   <p>Software Developer</p>
+  [Download CV](assets/Jakob_Stender_Gulderg_CV.pdf){ .md-button .md-button--primary }
+  [Contact Me :fontawesome-solid-paper-plane:](mailto:jakob1379+jgalabs@gmail.com){ .md-button}
 </div>
-
-
-[Download CV](assets/Jakob_Stender_Gulderg_CV.pdf){ .md-button .md-button--primary } <!--
-posisble emoji: -->
-[Contact Me
-:fontawesome-solid-paper-plane:](mailto:jakob1379+jgalabs@gmail.com){ .md-button}
 
 ## About Me
 

@@ -15,6 +15,15 @@
     color: var(--md-primary-bg-color);
 }
 
+.hero img { /* This targets ALL images directly inside a .hero div */
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* Add margin-bottom if you want space between the image and the h1 */
+  margin-bottom: 1rem;
+}
+
 .hero h1 {
     font-size: 3rem;
     font-weight: 700;

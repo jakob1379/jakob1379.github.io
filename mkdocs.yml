@@ -3,7 +3,7 @@ site_name: Jakob Stender Guldberg
 site_url: https://jakob1379.github.io/
 repo_url: https://github.com/jakob1379/jakob1379.github.io
 repo_name: jakob1379.github.io
-edit_uri: edit/main/docs/
+site_description: Contact details and blog posts by Jakob Stender Guldberg
 theme:
   name: material
   # logo: assets/logo.png
@@ -43,9 +43,7 @@ theme:
     - search.share
     - search.suggest
     - toc.follow
-nav:
-  - Home: index.md
-  - Blog: blog/
+
 extra_css: [stylesheets/extra.css]
 extra:
   social:
