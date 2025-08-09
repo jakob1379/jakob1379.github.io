@@ -91,14 +91,27 @@ Description of your cloud computing skills. E.g., experience with AWS, Azure, or
 <div id="contact" class="section" markdown>
 <h2 class="section-title">Get in Touch</h2>
 
-<div style="text-align: center;">
-<p>
-  Feel free to reach out if you want to collaborate on a project, or just want to say hi.
-</p>
-<p>
-  :fontawesome-solid-envelope: [your-email@example.com](mailto:your-email@example.com) &nbsp;&nbsp;&nbsp;
-  :fontawesome-brands-linkedin: [LinkedIn](https://www.linkedin.com/in/jakobaaes/) &nbsp;&nbsp;&nbsp;
-  :fontawesome-brands-github: [GitHub](https://github.com/jakob1379)
-</p>
-</div>
+<!-- <div style="text-align: center;"> -->
+<!-- <p> -->
+<!--   Feel free to reach out if you want to collaborate on a project, or just want to say hi. -->
+<!-- </p> -->
+<!-- <p> -->
+<!--   :fontawesome-solid-envelope: [your-email@example.com](mailto:your-email@example.com) &nbsp;&nbsp;&nbsp; -->
+<!--   :fontawesome-brands-linkedin: [LinkedIn](https://www.linkedin.com/in/jakobaaes/) &nbsp;&nbsp;&nbsp; -->
+<!--   :fontawesome-brands-github: [GitHub](https://github.com/jakob1379) -->
+<!-- </p> -->
+<!-- </div> -->
+<!-- </div> -->
+
+
+<div class="grid" markdown>
+
+Feel free to reach out if you want to collaborate on a project, or just want to say drink a cup of coffee.
+{ .card }
+
+:fontawesome-solid-envelope: [your-email@example.com](mailto:your-email@example.com) &nbsp;&nbsp;&nbsp;
+:fontawesome-brands-linkedin: [LinkedIn](https://www.linkedin.com/in/jakobaaes/) &nbsp;&nbsp;&nbsp;
+:fontawesome-brands-github: [GitHub](https://github.com/jakob1379)
+{ .card }
+
 </div>

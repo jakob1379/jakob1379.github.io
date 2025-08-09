@@ -12,6 +12,7 @@
           buildInputs = with pkgs; [
             uv
             ruby
+            cacert
           ];
 
           LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath [
@@ -20,6 +21,7 @@
 
 
           shellHook = ''
+            export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
             export UV_PYTHON_PREFERENCE="managed"
             '';
         };
