@@ -1,0 +1,23 @@
+name: mkdocs build and deploy
+on:
+  push:
+    branches:
+      - main
+permissions:
+  contents: write
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+      - name: Build and Deploy with Poe
+        uses: hynek/setup-cached-uv@v2
+
+      - name: run build/deploy
+        run:  uv run -p 3.13 poe deploy
