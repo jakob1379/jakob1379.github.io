@@ -1,59 +1,82 @@
-sections:
-  experience:
-    - date: 2022-2025
-      company: Kemp & Kjær
-      title: Data Platform Engineer
-      description: Led the development and maintenance of a robust data management system, transitioning from scattered storage to a unified data warehouse.
-    - date: 2021-2022
-      company: Evaxion Biotech A/S
-      title: Student Developer
-      description: Developed internal tools using Django and Python; managed PostgreSQL databases and Django Rest Framework and FastAPI integrations.
-    - date: 2020
-      company: Datalogisk Institut Copenhagen University
-      title: Student Developer
-      description: Developed an automated assignment correction and evaluation framework in Canvas LMS, enhancing the efficiency of academic staff.
-    - date: 2020-2021
-      company: Copenhagen University
-      title: TA in Applied Programming
-      description: Educated students in C++ programming for data-intensive applications.
-    - date: 2018-2020
-      company: Obital
-      title: Software Developer
-      location: Copenhagen
-      description: Worked with pioneering eye-tracking for mobile applications. This included coding efficient backend algorithms and frontend for mobile applications, enabling disabled individuals to control their homes using only their eyes.
-    - company: Copenhagen University
-      title: Private Tutor in “Modelling and Analysis of Data”
-      description: Taught mathematical/statistical concepts and Python implementation, emphasizing problem-solving and coding skills.
-  education:
-    - date: 2018–2022
-      institution: Copenhagen University
-      degree: MSc. Bioinformatics (unfinished)
-      description: "Specializing in computer science with a focus on machine learning and medical image analysis, I completed my thesis in medical image analysis in collaboration with Rigshospitalet, achieving the highest grade (12). This experience made me realize my passion lies in the broader aspects of computer science, specifically machine learning and automation, leading me to pursue a career path that aligns more closely with these interests."
-    - date: 2014-2018
-      institution: Copenhagen University
-      degree: B.Sc. Naturvidenskab og IT
-      description: Interdisciplinary education with a strong foundation in mathematical modeling, computer science, and a further specialization in physics.
-    - date: 2001-2013
-      institution: STX
-      degree: High school with a focus on physics, math, and chemistry
-  volunteering:
-    - date: 2014
-      organization: Housing Community Chairman
-      location: Copenhagen
-      description: Managed budgets and led large-scale renovation projects, demonstrating leadership and organizational skills.
-    - organization: Volunteering at Roskilde Festival
-      location: Roskilde
-      description: Co-managed IT post-festival operations, leading a team of 30 volunteers in logistics and equipment handling.
-    - organization: Volunteering Tutor
-      institution: Copenhagen University
-      description: Provided private tutoring in mathematics and physics, specializing in vector analysis and differential equations.
-    - organization: Volunteering for “Mellemfolkeligt Samvirke”
-      location: El Salvador
-      description: Engaged in community education and development projects, highlighting adaptability and cross-cultural communication skills.
-  extra_curricular_activities:
-    - name: TalkPython
-      description: Courses on Sphinx Documentation, Cookiecutter, Ansible, Pytest, FastAPI, Django, and Twilio
-    - name: RefactorGuru
-      description: Online books and material on design patterns and refactoring strategies
-    - name: NixOS & Flakes Book
-      description: Book that gives an introduction and solid foundation to work with the bigly reproducible and immutable NixOS, Nix, and Nix-Flakes
+---
+cv:
+  name: Jakob Stender Gulderg
+  sections:
+    experience:
+      - date: 2022-2025
+        company: RES (Formerly Anemo Analytics)
+        position: Data Platform Engineer
+        summary: Led the development and maintenance of a robust data management system,
+          transitioning from scattered storage to a unified data warehouse.
+      - date: 2021-2022
+        company: Evaxion Biotech A/S
+        position: Student Developer
+        summary: Developed internal tools using Django and Python; managed PostgreSQL
+          databases and Django Rest Framework and FastAPI integrations.
+      - date: 2020
+        company: Datalogisk Institut Copenhagen University
+        position: Student Developer
+        summary: Developed an automated assignment correction and evaluation framework
+          in Canvas LMS, enhancing the efficiency of academic staff.
+      - date: 2020-2021
+        company: Copenhagen University
+        position: TA in Applied Programming
+        summary: Educated students in C++ programming for data-intensive applications.
+      - date: 2018-2020
+        company: Obital
+        position: Software Developer
+        location: Copenhagen
+        summary: Worked with pioneering eye-tracking for mobile applications. This
+          included coding efficient backend algorithms and frontend for mobile applications,
+          enabling disabled individuals to control their homes using only their eyes.
+      - company: Copenhagen University
+        position: Private Tutor in “Modelling and Analysis of Data”
+        summary: Taught mathematical/statistical concepts and Python implementation,
+          emphasizing problem-solving and coding skills.
+    education:
+      - date: 2018–2022
+        institution: Copenhagen University
+        degree: MSc. (unfinished)
+        area: Bioinformatics
+        summary: Specializing in computer science with a focus on machine learning
+          and medical image analysis, I completed my thesis in medical image analysis
+          in collaboration with Rigshospitalet, achieving the highest grade (12).
+          This experience made me realize my passion lies in the broader aspects of
+          computer science, specifically machine learning and automation, leading
+          me to pursue a career path that aligns more closely with these interests.
+      - date: 2014-2018
+        institution: Copenhagen University
+        degree: B.Sc.
+        area: Naturvidenskab og IT
+        summary: Interdisciplinary education with a strong foundation in mathematical
+          modeling, computer science, and a further specialization in physics.
+      - date: 2001-2013
+        institution: STX
+        degree: High school
+        area: Physics, Math, and Chemistry
+    volunteering:
+      - date: 2014
+        name: Housing Community Chairman
+        location: Copenhagen
+        summary: Managed budgets and led large-scale renovation projects, demonstrating
+          leadership and organizational skills.
+      - name: Volunteering at Roskilde Festival
+        location: Roskilde
+        summary: Co-managed IT post-festival operations, leading a team of 30 volunteers
+          in logistics and equipment handling.
+      - name: Volunteering Tutor at Copenhagen University
+        summary: Provided private tutoring in mathematics and physics, specializing
+          in vector analysis and differential equations.
+      - name: Volunteering for “Mellemfolkeligt Samvirke”
+        location: El Salvador
+        summary: Engaged in community education and development projects, highlighting
+          adaptability and cross-cultural communication skills.
+    extra_curricular_activities:
+      - name: TalkPython
+        summary: Courses on Sphinx Documentation, Cookiecutter, Ansible, Pytest, FastAPI,
+          Django, and Twilio
+      - name: RefactorGuru
+        summary: Online books and material on design patterns and refactoring strategies
+      - name: NixOS & Flakes Book
+        summary: Book that gives an introduction and solid foundation to work with
+          the bigly reproducible and immutable NixOS, Nix, and Nix-Flakes
