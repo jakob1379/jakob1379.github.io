@@ -11,9 +11,9 @@ hide:
 
 # Jakob Stender Guldberg #
 
-  <p>Software Developer</p>
+  <p class="hero-subtitle">Software Developer</p>
 
-  [Download CV](assets/Jakob_Stender_Gulderg_CV.pdf){ .md-button .md-button--primary }
+  [Download CV ](assets/Jakob_Stender_Gulderg_CV.pdf){ .md-button }
   [Contact Me :fontawesome-solid-paper-plane:](mailto:jakob1379+jgalabs@gmail.com){ .md-button}
 </div>
 
