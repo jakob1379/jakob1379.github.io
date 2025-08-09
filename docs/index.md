@@ -8,14 +8,17 @@ hide:
 
 <div class="hero" markdown>
   <img src="https://github.com/jakob1379.png" alt="Jakob Stender Guldberg" style="width: 150px; height: 150px; border-radius: 50%;">
-  <h1>Jakob Stender Guldberg</h1>
+
+# Jakob Stender Guldberg #
+
   <p>Software Developer</p>
+
   [Download CV](assets/Jakob_Stender_Gulderg_CV.pdf){ .md-button .md-button--primary }
   [Contact Me :fontawesome-solid-paper-plane:](mailto:jakob1379+jgalabs@gmail.com){ .md-button}
 </div>
 
 <div class="section" markdown>
-<h2 class="section-title">About Me</h2>
+## About Me
 
 A passionate and experienced software developer with a knack for creating elegant solutions in the least amount of time. I specialize in [Your Specialization, e.g., backend development, cloud infrastructure] and I'm always eager to learn new technologies.
 
@@ -23,7 +26,7 @@ This is a placeholder text. You should write a short summary about yourself, you
 </div>
 
 <div class="section" markdown>
-<h2 class="section-title">My Tech Stack</h2>
+## My Tech Stack
 
 <div class="grid cards" markdown>
 -   :fontawesome-brands-python:{ .md-icon }

@@ -10,7 +10,7 @@
 /* Hero section styles */
 .hero {
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 0.2rem 0.2rem;
     /* background-color: var(--md-primary-fg-color); */
     /* color: var(--md-primary-bg-color); */
 }
@@ -34,27 +34,13 @@
 .hero p {
     font-size: 1.5rem;
     margin-top: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .hero .md-button {
     font-size: medium;
     margin-right: 0.5rem;
     margin-left: 0.5rem;
-}
-
-/* General section styling */
-.section {
-    padding: 3rem 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 3rem;
 }
 
 /* Skills grid (re-purposing MkDocs Material grid cards) */
@@ -73,11 +59,6 @@
     list-style: none; /* Remove default list bullet */
 }
 
-.grid.cards > ul > li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px var(--md-shadow-color);
-}
-
 .grid.cards h3 {
     margin-top: 1rem;
     margin-bottom: 0.5rem;
@@ -93,4 +74,22 @@
 .grid.cards .md-icon {
     font-size: 4rem; /* Adjust as needed */
     color: var(--md-accent-fg-color); /* Adjust as needed */
+}
+
+/* General section styling */
+.section {
+    padding: 0.5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+.section h2 { /* Apply general styling to all H2s in a section */
+    text-align: center;
 }
