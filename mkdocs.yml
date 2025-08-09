@@ -58,6 +58,8 @@ extra:
     - icon: fontawesome/brands/python
       link: https://pypi.org/user/jakob1379/
       name: PyPi
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:jakob1379+jgalabs@gmail.com
   # consent:
   #   title: Cookie consent
   #   description: >-
@@ -72,6 +74,7 @@ plugins:
       authors_file: .authors
 copyright: Copyright &copy; 2025 Jakob Stender Guldberg
 markdown_extensions:
+  - pymdownx.arithmatex
   - admonition
   - attr_list
   - md_in_html

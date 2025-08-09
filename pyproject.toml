@@ -22,13 +22,13 @@ dependencies = [
 _setup_pre-commit = "pre-commit install"
 setup = {sequence = ["_setup_pre-commit"], help = "Setup dev environment"}
 # update
-_update_flake = "nix flake update"
 _update_pre-commit = "pre-commit autoupdate -j0"
 _update_python_packages = {shell = "uv sync --upgrade && uvx uv-bump"}
+_update_flake = "nix flake update"
 update = {sequence = ["_update_flake", "_update_pre-commit", "_update_python_packages"], help = "Update dependencies"}
 # build
+_build_rendercv = {shell = 'rendercv render -o $(mktemp -d) --pdf-path docs/assets/Jakob_Stender_Gulderg_CV.pdf ./cv/Jakob_Stender_Gulderg_CV.yml'}
 _build_mkdocs = 'mkdocs build'
-_build_rendercv = {shell = 'rendercv render -o $(mktemp -d) --pdf-path site/assets/Jakob_Stender_Gulderg_CV.pdf ./cv/Jakob_Stender_Gulderg_CV.yml'}
-build = {sequence = ["_build_mkdocs", "_build_rendercv"]}
+build = {sequence = ["_build_rendercv", "_build_mkdocs"], help = "Build the CV and the MkDocs site."}
 # deploy
-deploy = 'mkdocs gh-deploy'
+deploy = {sequence = ["build", {cmd="mkdocs gh-deploy"}], help = "Build the site and deploy to GitHub Pages."}
