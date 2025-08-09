@@ -10,18 +10,18 @@
 /* Hero section styles */
 .hero {
     text-align: center;
-    padding: 4rem 1rem;
-    background-color: var(--md-primary-fg-color);
-    color: var(--md-primary-bg-color);
+    padding: 2rem 1rem;
+    /* background-color: var(--md-primary-fg-color); */
+    /* color: var(--md-primary-bg-color); */
 }
 
-.hero img { /* This targets ALL images directly inside a .hero div */
+.hero img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
   /* Add margin-bottom if you want space between the image and the h1 */
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 .hero h1 {
@@ -38,6 +38,7 @@
 }
 
 .hero .md-button {
+    font-size: medium;
     margin-right: 0.5rem;
     margin-left: 0.5rem;
 }
@@ -56,33 +57,40 @@
     margin-bottom: 3rem;
 }
 
-/* Skills grid */
-.skills-grid {
+/* Skills grid (re-purposing MkDocs Material grid cards) */
+.grid.cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
 }
 
-.skill-card {
+.grid.cards > ul > li {
     border: 1px solid var(--md-default-fg-color--lightest);
     border-radius: 0.2rem;
     padding: 1.5rem;
     text-align: center;
     transition: all 0.3s ease-in-out;
+    list-style: none; /* Remove default list bullet */
 }
 
-.skill-card:hover {
+.grid.cards > ul > li:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px var(--md-shadow-color);
 }
 
-.skill-card h3 {
+.grid.cards h3 {
     margin-top: 1rem;
     margin-bottom: 0.5rem;
     color: var(--md-primary-fg-color);
 }
 
-.skill-card .icon {
+.grid.cards .icon { /* Using a generic icon class if you want to apply specific styles to icons within the cards */
     font-size: 4rem;
     color: var(--md-accent-fg-color);
+}
+
+/* Specific styling for the MkDocs Material card icons if they are not already handled by .icon */
+.grid.cards .md-icon {
+    font-size: 4rem; /* Adjust as needed */
+    color: var(--md-accent-fg-color); /* Adjust as needed */
 }
