@@ -1,8 +1,8 @@
 ---
 site_name: Jakob Stender Guldberg
 site_url: https://jakob1379.github.io/
-repo_url: https://github.com/jakob1379/jakob1379.github.io
-repo_name: jakob1379.github.io
+# repo_url: https://github.com/jakob1379/jakob1379.github.io
+# repo_name: jakob1379.github.io
 site_description: Contact details and blog posts by Jakob Stender Guldberg
 theme:
   name: material
@@ -39,12 +39,13 @@ theme:
     - navigation.tabs
     - navigation.top
     - navigation.tracking
-    - search.highlight
-    - search.share
-    - search.suggest
+    # - search.highlight
+    # - search.share
+    # - search.suggest
     - toc.follow
 
 extra_css: [stylesheets/extra.css]
+extra_javascript: [javascripts/extra.js]
 extra:
   social:
     - icon: fontawesome/brands/github
@@ -56,8 +57,6 @@ extra:
     - icon: fontawesome/brands/python
       link: https://pypi.org/user/jakob1379/
       name: PyPi
-    - icon: fontawesome/solid/paper-plane
-      link: mailto:jakob1379+jgalabs@gmail.com
   # consent:
   #   title: Cookie consent
   #   description: >-
@@ -67,7 +66,7 @@ extra:
   #     make our documentation better.
 plugins:
   - social
-  - search
+  # - search
   - blog:
       authors_file: .authors
 copyright: Copyright &copy; 2025 Jakob Stender Guldberg

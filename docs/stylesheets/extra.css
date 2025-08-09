@@ -67,21 +67,16 @@
     font-size: medium;
     margin-right: 0.5rem;
     margin-left: 0.5rem;
-    background-color: white;
 }
 
 .hero .hero-subtitle { /* NEW: Specific style for the "Software Developer" text */
     text-shadow:
-        -1px -1px 0 #000, /* top-left */
-         1px -1px 0 #000, /* top-right */
-        -1px  1px 0 #000, /* bottom-left */
-         1px  1px 0 #000; /* bottom-right */
-    /* You can also fine-tune its color here if needed for specific contrast */
-    /* For instance, if the shadow isn't enough for the light theme: */
-    /* color: #333; */
+        -1px -1px 0 var(--md-primary-fg-color), /* top-left */
+         1px -1px 0 var(--md-primary-fg-color), /* top-right */
+        -1px  1px 0 var(--md-primary-fg-color), /* bottom-left */
+        1px  1px 0 var(--md-primary-fg-color); /* bottom-right */
 }
 
-/* Skills grid (re-purposing MkDocs Material grid cards) */
 .grid.cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -103,15 +98,14 @@
     color: var(--md-primary-fg-color);
 }
 
-.grid.cards .icon { /* Using a generic icon class if you want to apply specific styles to icons within the cards */
+.grid.cards .icon {
     font-size: 4rem;
     color: var(--md-accent-fg-color);
 }
 
-/* Specific styling for the MkDocs Material card icons if they are not already handled by .icon */
 .grid.cards .md-icon {
-    font-size: 4rem; /* Adjust as needed */
-    color: var(--md-accent-fg-color); /* Adjust as needed */
+    font-size: 4rem;
+    color: var(--md-accent-fg-color);
 }
 
 /* General section styling */

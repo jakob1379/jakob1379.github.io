@@ -1,23 +1,38 @@
 ---
-
 hide:
-  - navigation
-  - toc
 
+- navigation
+- toc
+- footer
 ---
 
 <div class="hero" markdown>
-  <img src="https://github.com/jakob1379.png" alt="Jakob Stender Guldberg" style="width: 150px; height: 150px; border-radius: 50%;">
+<img src="https://github.com/jakob1379.png" alt="Jakob Stender Guldberg" style="width: 150px; height: 150px; border-radius: 50%;">
 
 # Jakob Stender Guldberg #
 
   <p class="hero-subtitle">Software Developer</p>
 
-  [Download CV ](assets/Jakob_Stender_Gulderg_CV.pdf){ .md-button }
-  [Contact Me :fontawesome-solid-paper-plane:](mailto:jakob1379+jgalabs@gmail.com){ .md-button}
+  [Download CV](assets/Jakob_Stender_Gulderg_CV.pdf){ .md-button .md-button--primary}
+  <!-- [Contact Me :fontawesome-solid-paper-plane:](mailto:jakob1379+jgalabs@gmail.com){ .md-button} -->
+
+</div>
+<div class="section" markdown>
+
+<div id="contact" class="section" markdown>
+## Get in Touch
+
+<div class="section" style="text-align: center;" markdown>
+<p>
+  Feel free to reach out if you want to collaborate on a project, or just want to say hi.
+</p>
+   [:fontawesome-solid-envelope: Email](mailto:jakob1379+ghpages@gmail.com){.md-button} &nbsp;&nbsp;&nbsp;
+   [:fontawesome-brands-linkedin: LinkedIn](https://www.linkedin.com/in/jakobaaes/){.md-button} &nbsp;&nbsp;&nbsp;
+</div>
 </div>
 
-<div class="section" markdown>
+<!-- Removed: <div id="initial-fade-overlay" class="fade-overlay"></div> -->
+<div class="section" markdown> <!-- Removed: hidden class -->
 ## About Me
 
 A passionate and experienced software developer with a knack for creating elegant solutions in the least amount of time. I specialize in [Your Specialization, e.g., backend development, cloud infrastructure] and I'm always eager to learn new technologies.
@@ -25,14 +40,14 @@ A passionate and experienced software developer with a knack for creating elegan
 This is a placeholder text. You should write a short summary about yourself, your professional interests, and what you're passionate about.
 </div>
 
-<div class="section" markdown>
+<div class="section" markdown> <!-- Removed: hidden class -->
 ## My Tech Stack
 
 <div class="grid cards" markdown>
 -   :fontawesome-brands-python:{ .md-icon }
 
     ### Python
-    Description of your Python skills. E.g., web development with Django/Flask, data science with Pandas/NumPy, etc.
+    Description of your Python skillgs. E.g., web development with Django/Flask, data science with Pandas/NumPy, etc.
 
 - :fontawesome-brands-docker:{ .md-icon }
 
@@ -44,7 +59,7 @@ This is a placeholder text. You should write a short summary about yourself, you
 
     ### JavaScript
 
-    Description of your JavaScript skills. E.g., frontend frameworks like React/Vue, Node.js for backend.
+    Description of your JavaScript skills. Eg., frontend frameworks like React/Vue, Node.js for backend.
 
 - :fontawesome-solid-database:{ .md-icon }
 
@@ -67,7 +82,7 @@ This is a placeholder text. You should write a short summary about yourself, you
 </div>
 </div>
 
-<div class="section" markdown>
+<div class="section" markdown> <!-- Removed: hidden class -->
 <h2 class="section-title">Experience</h2>
 
 !!! tip "Placeholder: Senior Software Developer at Tech Company (2022-Present)"
@@ -80,7 +95,7 @@ This is a placeholder text. You should write a short summary about yourself, you
 
 </div>
 
-<div class="section" markdown>
+<div class="section" markdown> <!-- Added this closing div and new div to encapsulate education section -->
 <h2 class="section-title">Education</h2>
 
 !!! info "Placeholder: M.Sc. in Computer Science, University Name (2018-2020)"
@@ -88,20 +103,4 @@ This is a placeholder text. You should write a short summary about yourself, you
 
 !!! info "Placeholder: B.Sc. in Software Engineering, University Name (2015-2018)"
     - Relevant projects or activities.
-
-</div>
-
-<div id="contact" class="section" markdown>
-<h2 class="section-title">Get in Touch</h2>
-
-<div style="text-align: center;">
-<p>
-  Feel free to reach out if you want to collaborate on a project, or just want to say hi.
-</p>
-<p>
-  :fontawesome-solid-envelope: [your-email@example.com](mailto:your-email@example.com) &nbsp;&nbsp;&nbsp;
-  :fontawesome-brands-linkedin: [LinkedIn](https://www.linkedin.com/in/jakobaaes/) &nbsp;&nbsp;&nbsp;
-  :fontawesome-brands-github: [GitHub](https://github.com/jakob1379)
-</p>
-</div>
 </div>
