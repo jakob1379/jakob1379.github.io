@@ -30,7 +30,7 @@ hide:
 </div>
 </div>
 <div class="scroll-indicator-wrapper" markdown>
-[:fontawesome-solid-chevron-down:](#content-pane){: title="Scroll to content"}
+[:fontawesome-solid-chevron-down: Scroll to view more](#content-pane){: title="Scroll to content"}
 </div>
 </section>
 
