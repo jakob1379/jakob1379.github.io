@@ -29,7 +29,7 @@ update = {sequence = ["_update_flake", "_update_pre-commit", "_update_python_pac
 # build
 _build_rendercv = {shell = 'rendercv render -o $(mktemp -d) --pdf-path site/assets/Jakob_Stender_Gulderg_CV.pdf ./cv/Jakob_Stender_Gulderg_CV.yml'}
 _build_mkdocs = 'mkdocs build'
-build = {sequence = ["_build_rendercv", "_build_mkdocs"], help = "Build the CV and the MkDocs site."}
+build = {sequence = ["_build_mkdocs", "_build_rendercv"], help = "Build the CV and the MkDocs site."}
 # deploy
 _mkdocs_deploy = {cmd = "mkdocs gh-deploy"}
 deploy = {sequence = ["build", "_mkdocs_deploy"], help = "Build the site and deploy to GitHub Pages."}

@@ -5,6 +5,7 @@ on:
     branches: [main]
 permissions:
   contents: write
+  id-token: write
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -17,7 +18,5 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
-      - name: Build and Deploy with Poe
-        uses: hynek/setup-cached-uv@v2
-      - name: run build/deploy
-        run: uv run -p 3.13 poe deploy
+      - name: Build and Deploy
+        run: nix develop -c -- uv run poe deploy
