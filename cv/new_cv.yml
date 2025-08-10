@@ -19,25 +19,25 @@ cv:
   website: https://jakob1379.github.io
   sections:
     summary:
-      - >-
-        I am passionate about automating the mundane, both professionally and
-        as a hobby. My goal is to streamline processes and automate what can
-        be, freeing time and resources so people can focus on what truly
-        matters.
+      - bullet: >-
+          I am passionate about automating the mundane, both professionally and
+          as a hobby. My goal is to streamline processes and automate what can
+          be, freeing time and resources so people can focus on what truly
+          matters.
     skills:
-      - name: Languages & Frameworks
-        keywords: [Python, Django, FastAPI, SQL, AI/Machine Learning]
-      - name: Infrastructure & DevOps
-        keywords: [Docker, Ansible, CI/CD, Cloud, Linux]
-      - name: Data & Monitoring
-        keywords: [Data pipelines, Data analysis, PostgreSQL, Prometheus]
-      - name: Web & UI
-        keywords: [Streamlit, Dash]
+      - label: Languages & Frameworks
+        details: Python, Django, FastAPI, SQL, AI/Machine Learning
+      - label: Infrastructure & DevOps
+        details: Docker, Ansible, CI/CD, Cloud, Linux
+      - label: Data & Monitoring
+        details: Data pipelines, Data analysis, PostgreSQL, Prometheus
+      - label: Web & UI
+        details: Streamlit, Dash
     languages:
-      - name: Danish
-        level: Native
-      - name: English
-        level: Fluent
+      - label: Danish
+        details: Native
+      - label: English
+        details: Fluent
     experience:
       - company: Evaxion Biotech A/S
         position: IT Developer — Django/Python full-stack
@@ -98,7 +98,7 @@ cv:
             Tutored mathematical/statistical concepts and Python
             implementations, focusing on problem solving and coding skills.
     education:
-      - name: University of Copenhagen
+      - institution: University of Copenhagen
         area: Bioinformatics
         degree: MSc (unfinished)
         start_date: '2018'
@@ -108,7 +108,7 @@ cv:
             Specialised in computer science with focus on machine learning and
             medical image analysis. Thesis (with Rigshospitalet) received top
             grade (12).
-      - name: University of Copenhagen
+      - institution: University of Copenhagen
         area: Natural Sciences & IT
         degree: BSc
         start_date: '2014'
@@ -117,7 +117,8 @@ cv:
           - >-
             Interdisciplinary foundation in mathematical modelling, computer
             science, and physics.
-      - name: STX (High School)
+      - institution: STX (High School)
+        area: ""
         degree: STX
         start_date: '2001'
         end_date: '2013'
@@ -148,11 +149,11 @@ cv:
         location: El Salvador
         highlights: [Engaged in community education and development projects.]
     extracurricular:
-      - 'TalkPython: Sphinx, Cookiecutter, Ansible, Pytest, FastAPI, Django, Twilio'
-      - 'RefactorGuru: Design patterns and refactoring strategies'
-      - 'NixOS & Flakes Book: Intro to NixOS, Nix and Nix‑Flakes'
+      - bullet: 'TalkPython: Sphinx, Cookiecutter, Ansible, Pytest, FastAPI, Django, Twilio'
+      - bullet: 'RefactorGuru: Design patterns and refactoring strategies'
+      - bullet: 'NixOS & Flakes Book: Intro to NixOS, Nix and Nix‑Flakes'
     soft_skills:
-      - Knowledge-driven
-      - Seeking innovation
-      - Considerate and thoughtful
+      - bullet: Knowledge-driven
+      - bullet: Seeking innovation
+      - bullet: Considerate and thoughtful
   references: []
