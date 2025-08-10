@@ -63,12 +63,33 @@ document.addEventListener("DOMContentLoaded", function() {
   // --- Add smooth scroll for scroll-down button ---
   const scrollLink = document.querySelector('.scroll-indicator-wrapper a');
   if (scrollLink && contentPane) {
+    // Custom easing function for acceleration and deceleration
+    const easeInOutCubic = t => t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+
+    // Custom smooth scroll implementation
+    const customSmoothScroll = (targetY, duration = 1000) => {
+      const startY = window.pageYOffset;
+      const distance = targetY - startY;
+      let startTime = null;
+
+      const animationStep = (currentTime) => {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const easedProgress = easeInOutCubic(progress);
+
+        window.scrollTo(0, startY + (distance * easedProgress));
+
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animationStep);
+        }
+      };
+      requestAnimationFrame(animationStep);
+    };
+
     scrollLink.addEventListener('click', function(e) {
       e.preventDefault();
-      window.scrollTo({
-        top: contentPane.offsetTop,
-        behavior: 'smooth'
-      });
+      customSmoothScroll(contentPane.offsetTop);
     });
   }
 
