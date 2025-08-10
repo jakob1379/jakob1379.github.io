@@ -24,26 +24,37 @@ document.addEventListener("DOMContentLoaded", function() {
   const heroContainer = document.querySelector('.parallax');
   if (!heroContainer) return;
 
+  const contentPane = document.getElementById('content-pane');
   const heroElements = Array.from(heroContainer.children);
 
   window.addEventListener('scroll', function() {
     const scrollPosition = window.pageYOffset;
     const fadeDistance = 400; // The scroll distance over which to fade/blur
 
-    let newOpacity = 1;
-    let newBlur = 0;
+    let heroOpacity = 1;
+    let heroBlur = 0;
 
     if (scrollPosition <= fadeDistance) {
-      newOpacity = 1 - scrollPosition / fadeDistance;
-      newBlur = (scrollPosition / fadeDistance) * 5; // blur up to 5px
+      heroOpacity = 1 - scrollPosition / fadeDistance;
+      heroBlur = (scrollPosition / fadeDistance) * 5; // blur up to 5px
     } else {
-      newOpacity = 0;
-      newBlur = 5;
+      heroOpacity = 0;
+      heroBlur = 5;
     }
 
     heroElements.forEach(el => {
-      el.style.opacity = newOpacity;
-      el.style.filter = `blur(${newBlur}px)`;
+      el.style.opacity = heroOpacity;
+      el.style.filter = `blur(${heroBlur}px)`;
     });
+
+    if (contentPane) {
+      let contentOpacity = 0;
+      if (scrollPosition <= fadeDistance) {
+        contentOpacity = scrollPosition / fadeDistance;
+      } else {
+        contentOpacity = 1;
+      }
+      contentPane.style.opacity = contentOpacity;
+    }
   }, { passive: true }); // Improve scroll performance
 });
