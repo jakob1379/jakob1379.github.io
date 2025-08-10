@@ -60,6 +60,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
   window.addEventListener('scroll', handleScroll, { passive: true });
 
+  // --- Add smooth scroll for scroll-down button ---
+  const scrollLink = document.querySelector('.scroll-indicator-wrapper a');
+  if (scrollLink && contentPane) {
+    scrollLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: contentPane.offsetTop,
+        behavior: 'smooth'
+      });
+    });
+  }
+
   // Set the initial state on page load
   handleScroll();
 });
