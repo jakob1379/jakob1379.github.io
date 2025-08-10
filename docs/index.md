@@ -6,6 +6,8 @@ hide:
 - footer
 ---
 
+<div class="page-wrapper">
+<section class="pane" id="hero-pane">
 <div class="hero" markdown>
 <img src="https://github.com/jakob1379.png" alt="Jakob Stender Guldberg" style="width: 150px; height: 150px; border-radius: 50%;">
 
@@ -30,7 +32,13 @@ hide:
    [:fontawesome-brands-linkedin: LinkedIn](https://www.linkedin.com/in/jakobaaes/){.md-button} &nbsp;&nbsp;&nbsp;
 </div>
 </div>
+</div>
+<div class="scroll-indicator-wrapper" markdown>
+[:fontawesome-solid-chevron-down:](#content-pane){: title="Scroll to content"}
+</div>
+</section>
 
+<section class="pane" id="content-pane">
 <!-- Removed: <div id="initial-fade-overlay" class="fade-overlay"></div> -->
 <div class="section" markdown> <!-- Removed: hidden class -->
 ## About Me
@@ -103,4 +111,6 @@ This is a placeholder text. You should write a short summary about yourself, you
 
 !!! info "Placeholder: B.Sc. in Software Engineering, University Name (2015-2018)"
     - Relevant projects or activities.
+</div>
+</section>
 </div>
