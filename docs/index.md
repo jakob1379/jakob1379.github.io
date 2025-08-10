@@ -114,3 +114,28 @@ This is a placeholder text. You should write a short summary about yourself, you
 </div>
 </section>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const contentPane = document.getElementById('content-pane');
+    if (!contentPane) return;
+
+    const sections = contentPane.querySelectorAll('.section');
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          sections.forEach(section => {
+            section.classList.add('visible');
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: document.querySelector('.page-wrapper'),
+      threshold: 0.5
+    });
+
+    observer.observe(contentPane);
+  });
+</script>
