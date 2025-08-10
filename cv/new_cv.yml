@@ -1,9 +1,7 @@
 ---
 cv:
   name: Jakob G. Aaes
-  title: Software Developer
   location: København NV, Denmark
-  birthdate: '1993-07-24'
   phone: tel:+45-93-97-83-73
   email: jakob1379@gmail.com
   # social_networks:
@@ -18,7 +16,7 @@ cv:
       username: jakobguldberg
     - network: GitHub
       username: jakob1379
-  website: jakob1379.github.io
+  website: https://jakob1379.github.io
   sections:
     summary:
       - >-
@@ -100,7 +98,7 @@ cv:
             Tutored mathematical/statistical concepts and Python
             implementations, focusing on problem solving and coding skills.
     education:
-      - institution: University of Copenhagen
+      - name: University of Copenhagen
         area: Bioinformatics
         degree: MSc (unfinished)
         start_date: '2018'
@@ -110,7 +108,7 @@ cv:
             Specialised in computer science with focus on machine learning and
             medical image analysis. Thesis (with Rigshospitalet) received top
             grade (12).
-      - institution: University of Copenhagen
+      - name: University of Copenhagen
         area: Natural Sciences & IT
         degree: BSc
         start_date: '2014'
@@ -119,33 +117,33 @@ cv:
           - >-
             Interdisciplinary foundation in mathematical modelling, computer
             science, and physics.
-      - institution: STX (High School)
+      - name: STX (High School)
         degree: STX
         start_date: '2001'
         end_date: '2013'
         highlights: ['Focus on physics, mathematics and chemistry.']
     volunteering:
-      - role: Housing Community Chairman
+      - name: Housing Community Chairman
         location: Copenhagen, Denmark
         start_date: '2014'
         highlights:
           - >-
             Managed budgets and led large-scale renovation projects; demonstrated
             leadership and organisational skills.
-      - role: IT Post‑Festival Operations Lead
+      - name: IT Post‑Festival Operations Lead
         organization: Roskilde Festival
         location: Roskilde, Denmark
         highlights:
           - >-
             Co-managed IT post-festival operations; led a team of 30 volunteers
             in logistics and equipment handling.
-      - role: Volunteer Tutor
+      - name: Volunteer Tutor
         organization: University of Copenhagen
         highlights:
           - >-
             Provided private tutoring in mathematics and physics (vector
             analysis and differential equations).
-      - role: Volunteer
+      - name: Volunteer
         organization: Mellemfolkeligt Samvirke
         location: El Salvador
         highlights: [Engaged in community education and development projects.]
