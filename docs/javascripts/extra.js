@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const easeInOutCubic = t => t < .5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
 
     // Custom smooth scroll implementation
-    const customSmoothScroll = (targetY, duration = 1000) => {
+    const customSmoothScroll = (targetY, duration = 500) => {
       const startY = window.pageYOffset;
       const distance = targetY - startY;
       let startTime = null;
