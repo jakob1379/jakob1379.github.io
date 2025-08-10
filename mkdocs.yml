@@ -28,7 +28,7 @@ theme:
     - content.code.annotate
     - content.code.copy
     - content.tabs.link
-    # - header.autohide # This feature is incompatible with the parallax effect
+    # - header.autohide  # This feature is incompatible with the parallax effect
     - navigation.expand
     - navigation.footer
     - navigation.indexes
