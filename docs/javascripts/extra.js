@@ -1,24 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
   // --- Logic for revealing content sections ---
   const sections = document.querySelectorAll('#content-pane .section');
-  if (sections.length > 0) {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      root: null, // use the viewport as the root
-      threshold: 0.1, // Start animation when 10% of the element is visible
-      rootMargin: '0px 0px -50px 0px' // Trigger a bit before it's fully in view
-    });
-
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-  }
 
   // --- Logic for fading hero content on scroll ---
   const heroContainer = document.querySelector('.parallax');
@@ -55,6 +37,19 @@ document.addEventListener("DOMContentLoaded", function() {
         contentOpacity = 1;
       }
       contentPane.style.opacity = contentOpacity;
+    }
+
+    // Manually trigger reveal for sections that are in view
+    if (sections.length > 0) {
+      sections.forEach(section => {
+        if (!section.classList.contains('visible')) {
+          const rect = section.getBoundingClientRect();
+          // Check if the top of the element is entering the viewport
+          if (rect.top < window.innerHeight - 50) {
+            section.classList.add('visible');
+          }
+        }
+      });
     }
   };
 
