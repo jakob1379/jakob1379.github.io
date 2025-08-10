@@ -18,18 +18,19 @@ hide:
   <!-- [Contact Me :fontawesome-solid-paper-plane:](mailto:jakob1379+jgalabs@gmail.com){ .md-button} -->
 
 </div>
-<div id="contact" markdown>
+<div class="section" id="contact" markdown style="text-align: center;" >
 ## Get in Touch
 
 <p>
-  Feel free to reach out if you want to collaborate on a project, or just want to say hi.
+  Feel free to reach out if you want to collaborate on a project.
 </p>
 <div style="text-align: center;" markdown>
    [:fontawesome-solid-envelope: Email](mailto:jakob1379+ghpages@gmail.com){.md-button} &nbsp;&nbsp;&nbsp;
    [:fontawesome-brands-linkedin: LinkedIn](https://www.linkedin.com/in/jakobaaes/){.md-button} &nbsp;&nbsp;&nbsp;
 </div>
 </div>
-<div class="scroll-indicator-wrapper" markdown>
+
+<div class="scroll-indicator-wrapper" style="text-align: center;"  markdown >
 [:fontawesome-solid-chevron-down: Scroll to view more](#content-pane){: title="Scroll to content"}
 </div>
 </section>
