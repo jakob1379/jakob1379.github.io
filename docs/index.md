@@ -30,7 +30,7 @@ hide:
 </div>
 </div>
 
-<div class="scroll-indicator-wrapper" style="text-align: center;"  markdown >
+<div class="scroll-indicator-wrapper" style="text-align: center;"  markdown>
 :fontawesome-solid-chevron-down: Scroll to view more
 </div>
 </section>
