@@ -18,18 +18,15 @@ hide:
   <!-- [Contact Me :fontawesome-solid-paper-plane:](mailto:jakob1379+jgalabs@gmail.com){ .md-button} -->
 
 </div>
-<div class="section" markdown>
-
-<div id="contact" class="section" markdown>
+<div id="contact" markdown>
 ## Get in Touch
 
-<div class="section" style="text-align: center;" markdown>
 <p>
   Feel free to reach out if you want to collaborate on a project, or just want to say hi.
 </p>
+<div style="text-align: center;" markdown>
    [:fontawesome-solid-envelope: Email](mailto:jakob1379+ghpages@gmail.com){.md-button} &nbsp;&nbsp;&nbsp;
    [:fontawesome-brands-linkedin: LinkedIn](https://www.linkedin.com/in/jakobaaes/){.md-button} &nbsp;&nbsp;&nbsp;
-</div>
 </div>
 </div>
 <div class="scroll-indicator-wrapper" markdown>

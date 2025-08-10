@@ -36,6 +36,22 @@ html {
   background-image: url('../assets/background_dark.png');
 }
 
+#contact {
+  position: absolute;
+  bottom: 6rem; /* Position above scroll indicator */
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 100%;
+  max-width: var(--md-main-max-width);
+  padding: 0 1.2rem;
+  box-sizing: border-box;
+}
+
+#contact h2 {
+    display: none; /* The context is clear, title is not needed */
+}
+
 #content-pane {
   justify-content: flex-start;
   padding-top: calc(var(--md-toolbar-height) + 1rem);
