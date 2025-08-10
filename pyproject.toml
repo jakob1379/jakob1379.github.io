@@ -1,7 +1,7 @@
 [dependency-groups]
 dev = [
   "poethepoet>=0.36.0",
-  "pre-commit>=4.2.0"
+  "pre-commit>=4.3.0"
 ]
 
 [project]
@@ -31,7 +31,9 @@ _build_rendercv = {shell = 'rendercv render -o $(mktemp -d) --pdf-path site/asse
 _build_mkdocs = 'mkdocs build'
 build = {sequence = ["_build_rendercv", "_build_mkdocs"], help = "Build the CV and the MkDocs site."}
 # deploy
-deploy = {sequence = ["build", {cmd="mkdocs gh-deploy"}], help = "Build the site and deploy to GitHub Pages."}
+_mkdocs_deploy = {cmd = "mkdocs gh-deploy"}
+deploy = {sequence = ["build", "_mkdocs_deploy"], help = "Build the site and deploy to GitHub Pages."}
 # serve
 _build_rendercv_tmp = {shell = 'rendercv render -o $(mktemp -d) --pdf-path docs/assets/Jakob_Stender_Gulderg_CV.pdf ./cv/Jakob_Stender_Gulderg_CV.yml'}
-serve = {sequence = ["_build_rendercv_tmp", {cmd="mkdocs serve"}], help = "Serve the mkdocs pages locally."}
+_mkdocs_serve = {cmd = "mkdocs serve"}
+serve = {sequence = ["_build_rendercv_tmp", "_mkdocs_serve"], help = "Serve the mkdocs pages locally."}

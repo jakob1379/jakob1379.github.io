@@ -43,7 +43,6 @@ theme:
     # - search.share
     # - search.suggest
     - toc.follow
-
 extra_css: [stylesheets/extra.css]
 extra_javascript: [javascripts/extra.js]
 extra:

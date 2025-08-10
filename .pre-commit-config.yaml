@@ -21,7 +21,7 @@ repos:
 
   # Basic file checks from pre-commit-hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0  # Use the latest stable version
+    rev: v6.0.0  # Use the latest stable version
     hooks:
       - id: check-added-large-files  # Prevent giant files from being committed
       - id: check-case-conflict  # Check for files that would conflict on case-insensitive filesystems
@@ -61,6 +61,7 @@ repos:
     rev: 1.17.0
     hooks:
       - id: yamlfix
+        files: \.(yml|yaml)$
 
   # TOML sorting
   - repo: https://github.com/pappasam/toml-sort
