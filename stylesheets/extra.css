@@ -19,19 +19,20 @@ html {
   position: relative;
 }
 
-#hero-pane {
+.parallax {
   justify-content: center;
-  background-size: cover;
-  background-position: center;
   background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Set background images for light and dark themes */
-[data-md-color-scheme="default"] #hero-pane {
+[data-md-color-scheme="default"] .parallax {
   background-image: url('../assets/background_light.png');
 }
 
-[data-md-color-scheme="slate"] #hero-pane {
+[data-md-color-scheme="slate"] .parallax {
   background-image: url('../assets/background_dark.png');
 }
 

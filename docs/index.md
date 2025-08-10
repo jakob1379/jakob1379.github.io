@@ -6,7 +6,7 @@ hide:
 - footer
 ---
 
-<section class="pane" id="hero-pane" markdown>
+<section class="pane parallax" markdown>
 <div class="hero" markdown>
 <img src="https://github.com/jakob1379.png" alt="Jakob Stender Guldberg" style="width: 150px; height: 150px; border-radius: 50%;">
 
