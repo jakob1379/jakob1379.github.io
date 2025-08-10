@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const easedProgress = easeInOutQuart(progress);
 
         window.scrollTo(0, startY + (distance * easedProgress));
+        handleScroll(); // Ensure scroll-linked animations run during smooth scroll
 
         if (timeElapsed < duration) {
           requestAnimationFrame(animationStep);
