@@ -6,7 +6,6 @@ hide:
 - footer
 ---
 
-<div class="page-wrapper" markdown>
 <section class="pane" id="hero-pane" markdown>
 <div class="hero" markdown>
 <img src="https://github.com/jakob1379.png" alt="Jakob Stender Guldberg" style="width: 150px; height: 150px; border-radius: 50%;">
@@ -113,4 +112,3 @@ This is a placeholder text. You should write a short summary about yourself, you
     - Relevant projects or activities.
 </div>
 </section>
-</div>

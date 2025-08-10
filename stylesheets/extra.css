@@ -11,16 +11,8 @@ html {
   display: contents;
 }
 
-.page-wrapper {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-}
-
 .pane {
   min-height: 100vh;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,12 +21,25 @@ html {
 
 #hero-pane {
   justify-content: center;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Set background images for light and dark themes */
+[data-md-color-scheme="default"] #hero-pane {
+  background-image: url('../assets/background_light.png');
+}
+
+[data-md-color-scheme="slate"] #hero-pane {
+  background-image: url('../assets/background_dark.png');
 }
 
 #content-pane {
   justify-content: flex-start;
   padding-top: calc(var(--md-toolbar-height) + 1rem);
   padding-bottom: 2rem;
+  background-color: var(--md-default-bg-color);
 }
 
 /* Center content within the content pane, as sections are now flex items */
