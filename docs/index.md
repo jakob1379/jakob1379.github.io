@@ -6,8 +6,8 @@ hide:
 - footer
 ---
 
-<div class="page-wrapper">
-<section class="pane" id="hero-pane">
+<div class="page-wrapper" markdown>
+<section class="pane" id="hero-pane" markdown>
 <div class="hero" markdown>
 <img src="https://github.com/jakob1379.png" alt="Jakob Stender Guldberg" style="width: 150px; height: 150px; border-radius: 50%;">
 
@@ -38,7 +38,7 @@ hide:
 </div>
 </section>
 
-<section class="pane" id="content-pane">
+<section class="pane" id="content-pane" markdown>
 <!-- Removed: <div id="initial-fade-overlay" class="fade-overlay"></div> -->
 <div class="section" markdown> <!-- Removed: hidden class -->
 ## About Me
