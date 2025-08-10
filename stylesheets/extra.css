@@ -104,3 +104,10 @@ html {
     transform: translateY(0);
     filter: blur(0);
 }
+
+/* Add transition for hero content fade/blur effect */
+.parallax > .hero,
+.parallax > #contact,
+.parallax > .scroll-indicator-wrapper {
+  transition: opacity 0.1s linear, filter 0.1s linear;
+}
