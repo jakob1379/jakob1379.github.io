@@ -55,40 +55,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   window.addEventListener('scroll', handleScroll, { passive: true });
 
-  // --- Add smooth scroll for scroll-down button ---
-  const scrollLink = document.querySelector('.scroll-indicator-wrapper a');
-  if (scrollLink && contentPane) {
-    // Custom easing function for a more pronounced acceleration and deceleration
-    const easeInOutQuart = t => t < 0.5 ? 8 * t * t * t * t : 1 - 8 * (--t) * t * t * t;
-
-    // Custom smooth scroll implementation
-    const customSmoothScroll = (targetY, duration = 1200) => {
-      const startY = window.pageYOffset;
-      const distance = targetY - startY;
-      let startTime = null;
-
-      const animationStep = (currentTime) => {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const progress = Math.min(timeElapsed / duration, 1);
-        const easedProgress = easeInOutQuart(progress);
-
-        window.scrollTo(0, startY + (distance * easedProgress));
-        handleScroll(); // Ensure scroll-linked animations run during smooth scroll
-
-        if (timeElapsed < duration) {
-          requestAnimationFrame(animationStep);
-        }
-      };
-      requestAnimationFrame(animationStep);
-    };
-
-    scrollLink.addEventListener('click', function(e) {
-      e.preventDefault();
-      customSmoothScroll(contentPane.offsetTop);
-    });
-  }
-
   // Set the initial state on page load
   handleScroll();
 });
