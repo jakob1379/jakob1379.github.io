@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const contentPane = document.getElementById('content-pane');
   const heroElements = Array.from(heroContainer.children);
 
-  window.addEventListener('scroll', function() {
+  const handleScroll = () => {
     const scrollPosition = window.pageYOffset;
     const fadeDistance = 400; // The scroll distance over which to fade/blur
 
@@ -56,5 +56,10 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       contentPane.style.opacity = contentOpacity;
     }
-  }, { passive: true }); // Improve scroll performance
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+
+  // Set the initial state on page load
+  handleScroll();
 });
