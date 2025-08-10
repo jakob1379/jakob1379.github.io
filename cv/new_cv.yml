@@ -1,0 +1,160 @@
+---
+cv:
+  name: Jakob G. Aaes
+  title: Software Developer
+  location: København NV, Denmark
+  birthdate: '1993-07-24'
+  phone: tel:+45-93-97-83-73
+  email: jakob1379@gmail.com
+  # social_networks:
+  #   - network: "LinkedIn"
+  #     username: "jakobaaes"
+  #     url: "https://linkedin.com/in/jakobaaes"
+  #   - network: "GitHub"
+  #     username: "jakob1379"
+  #     url: "https://github.com/jakob1379"
+  social_networks:
+    - network: LinkedIn
+      username: jakobguldberg
+    - network: GitHub
+      username: jakob1379
+  website: jakob1379.github.io
+  sections:
+    summary:
+      - >-
+        I am passionate about automating the mundane, both professionally and
+        as a hobby. My goal is to streamline processes and automate what can
+        be, freeing time and resources so people can focus on what truly
+        matters.
+    skills:
+      - name: Languages & Frameworks
+        keywords: [Python, Django, FastAPI, SQL, AI/Machine Learning]
+      - name: Infrastructure & DevOps
+        keywords: [Docker, Ansible, CI/CD, Cloud, Linux]
+      - name: Data & Monitoring
+        keywords: [Data pipelines, Data analysis, PostgreSQL, Prometheus]
+      - name: Web & UI
+        keywords: [Streamlit, Dash]
+    languages:
+      - name: Danish
+        level: Native
+      - name: English
+        level: Fluent
+    experience:
+      - company: Evaxion Biotech A/S
+        position: IT Developer — Django/Python full-stack
+        start_date: 2022-04
+        end_date: 2024-04
+        location: Copenhagen, Denmark
+        highlights:
+          - >-
+            Implemented Docker Swarm to reduce deployment cycles from months to
+            days.
+          - >-
+            Launched and managed an HPC cluster with systematic job queuing for
+            efficient compute utilization.
+          - Managed infrastructure using Ansible.
+          - >-
+            Initiated the company's first centralized data management system
+            (data warehouse), consolidating scattered storage.
+      - company: Evaxion Biotech A/S
+        position: Student Developer
+        start_date: '2021'
+        end_date: '2022'
+        location: Copenhagen, Denmark
+        highlights:
+          - Developed internal tools using Django and Python.
+          - Managed PostgreSQL; integrated Django REST Framework and FastAPI.
+      - company: Datalogisk Institut, University of Copenhagen
+        position: Student Developer
+        start_date: '2020'
+        end_date: '2020'
+        location: Copenhagen, Denmark
+        highlights:
+          - >-
+            Built an automated assignment correction and evaluation framework
+            for the Canvas LMS, improving staff efficiency.
+      - company: University of Copenhagen
+        position: Teaching Assistant — Applied Programming (C++)
+        start_date: '2020'
+        end_date: '2021'
+        location: Copenhagen, Denmark
+        highlights: [Taught C++ programming for data-intensive applications.]
+      - company: Obital
+        position: Software Developer
+        start_date: '2018'
+        end_date: '2020'
+        location: Copenhagen, Denmark
+        highlights:
+          - >-
+            Developed backend algorithms and mobile frontends for eye-tracking
+            applications that enabled users with disabilities to control home
+            devices via eye movements.
+      - company: University of Copenhagen
+        position: Private Tutor — Modelling and Analysis of Data
+        start_date: '2018'
+        end_date: '2020'
+        location: Copenhagen, Denmark
+        highlights:
+          - >-
+            Tutored mathematical/statistical concepts and Python
+            implementations, focusing on problem solving and coding skills.
+    education:
+      - institution: University of Copenhagen
+        area: Bioinformatics
+        degree: MSc (unfinished)
+        start_date: '2018'
+        end_date: '2022'
+        highlights:
+          - >-
+            Specialised in computer science with focus on machine learning and
+            medical image analysis. Thesis (with Rigshospitalet) received top
+            grade (12).
+      - institution: University of Copenhagen
+        area: Natural Sciences & IT
+        degree: BSc
+        start_date: '2014'
+        end_date: '2018'
+        highlights:
+          - >-
+            Interdisciplinary foundation in mathematical modelling, computer
+            science, and physics.
+      - institution: STX (High School)
+        degree: STX
+        start_date: '2001'
+        end_date: '2013'
+        highlights: ['Focus on physics, mathematics and chemistry.']
+    volunteering:
+      - role: Housing Community Chairman
+        location: Copenhagen, Denmark
+        start_date: '2014'
+        highlights:
+          - >-
+            Managed budgets and led large-scale renovation projects; demonstrated
+            leadership and organisational skills.
+      - role: IT Post‑Festival Operations Lead
+        organization: Roskilde Festival
+        location: Roskilde, Denmark
+        highlights:
+          - >-
+            Co-managed IT post-festival operations; led a team of 30 volunteers
+            in logistics and equipment handling.
+      - role: Volunteer Tutor
+        organization: University of Copenhagen
+        highlights:
+          - >-
+            Provided private tutoring in mathematics and physics (vector
+            analysis and differential equations).
+      - role: Volunteer
+        organization: Mellemfolkeligt Samvirke
+        location: El Salvador
+        highlights: [Engaged in community education and development projects.]
+    extracurricular:
+      - 'TalkPython: Sphinx, Cookiecutter, Ansible, Pytest, FastAPI, Django, Twilio'
+      - 'RefactorGuru: Design patterns and refactoring strategies'
+      - 'NixOS & Flakes Book: Intro to NixOS, Nix and Nix‑Flakes'
+    soft_skills:
+      - Knowledge-driven
+      - Seeking innovation
+      - Considerate and thoughtful
+  references: []
