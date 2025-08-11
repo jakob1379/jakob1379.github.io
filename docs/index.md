@@ -8,29 +8,28 @@ hide:
 
 <section class="pane parallax" markdown>
 <div class="hero" markdown>
-<img src="https://github.com/jakob1379.png" alt="Jakob Stender Guldberg" style="width: 150px; height: 150px; border-radius: 50%;">
+<img src="https://github.com/jakob1379.png" alt="Jakob Stender Guldberg">
 
 # Jakob Stender Guldberg #
 
-  <p class="hero-subtitle">Software Developer</p>
+Software Developer
+{.hero-subtitle}
 
-  [Download CV](../assets/Jakob_Stender_Gulderg_CV.pdf){ .md-button .md-button--primary target="_blank" rel="noopener" }
-  <!-- [Contact Me :fontawesome-solid-paper-plane:](mailto:jakob1379+jgalabs@gmail.com){ .md-button} -->
+[Download CV](../assets/Jakob_Stender_Gulderg_CV.pdf){ .md-button .md-button--primary target="_blank" rel="noopener" }
+<!-- [Contact Me :fontawesome-solid-paper-plane:](mailto:jakob1379+jgalabs@gmail.com){ .md-button} -->
 
 </div>
-<div class="section" id="contact" markdown style="text-align: center;" >
+<div class="section" id="contact" markdown>
 ## Get in Touch
 
-<p>
-  Feel free to reach out if you want to collaborate on a project.
-</p>
-<div style="text-align: center;" markdown>
-   [:fontawesome-solid-envelope: Email](mailto:jakob1379+ghpages@gmail.com){.md-button} &nbsp;&nbsp;&nbsp;
-   [:fontawesome-brands-linkedin: LinkedIn](https://www.linkedin.com/in/jakobaaes/){.md-button} &nbsp;&nbsp;&nbsp;
-</div>
+Feel free to reach out if you want to collaborate on a project.
+
+[:fontawesome-solid-envelope: Email](mailto:jakob1379+ghpages@gmail.com){.md-button}
+[:fontawesome-brands-linkedin: LinkedIn](https://www.linkedin.com/in/jakobaaes/){.md-button}
+
 </div>
 
-<div class="scroll-indicator-wrapper" style="text-align: center;"  markdown>
+<div class="scroll-indicator-wrapper" markdown>
 :fontawesome-solid-chevron-down: Scroll to view more
 </div>
 </section>
@@ -88,7 +87,8 @@ This is a placeholder text. You should write a short summary about yourself, you
 </div>
 
 <div class="section" markdown> <!-- Removed: hidden class -->
-<h2 class="section-title">Experience</h2>
+## Experience ##
+{.section-title}
 
 !!! tip "Placeholder: Senior Software Developer at Tech Company (2022-Present)"
     - Describe your responsibilities and achievements.
@@ -101,7 +101,8 @@ This is a placeholder text. You should write a short summary about yourself, you
 </div>
 
 <div class="section" markdown> <!-- Added this closing div and new div to encapsulate education section -->
-<h2 class="section-title">Education</h2>
+## Education ##
+{.section-title}
 
 !!! info "Placeholder: M.Sc. in Computer Science, University Name (2018-2020)"
     - Thesis title or focus area.

@@ -115,13 +115,13 @@
     margin: 0 auto;
 }
 
+#contact, .scroll-indicator-wrapper {
+    text-align: center;
+}
+
 .section-title { /* Keep this if you're using {.section-title} in Markdown */
     text-align: center;
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 3rem;
-}
-
-.section h2 { /* Apply general styling to all H2s in a section */
-    text-align: center;
 }
