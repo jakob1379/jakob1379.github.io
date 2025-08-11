@@ -31,7 +31,7 @@ _build_rendercv = {shell = 'rendercv render -o $(mktemp -d) --pdf-path site/asse
 _build_mkdocs = 'mkdocs build'
 build = {sequence = ["_build_mkdocs", "_build_rendercv"], help = "Build the CV and the MkDocs site."}
 # deploy
-_mkdocs_deploy = {cmd = "mkdocs gh-deploy --force"}
+_mkdocs_deploy = {cmd = "mkdocs gh-deploy --force --dirty"}
 deploy = {sequence = ["build", "_mkdocs_deploy"], help = "Build the site and deploy to GitHub Pages."}
 # serve
 _build_rendercv_tmp = {shell = 'rendercv render -o $(mktemp -d) --pdf-path docs/assets/Jakob_Stender_Gulderg_CV.pdf ./cv/Jakob_Stender_Gulderg_CV.yml'}
