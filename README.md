@@ -1,6 +1,6 @@
-# jakob1379.github.io The Page
-
 <div align="center">
+
+# jakob1379.github.io The Page
 
   [![Deploy to gh-pages](https://github.com/jakob1379/jakob1379.github.io/actions/workflows/gh-deploy.yml/badge.svg)](https://github.com/jakob1379/jakob1379.github.io/actions/workflows/gh-deploy.yml)
   [![Website](https://img.shields.io/badge/Website-jakob1379.github.io-blue.svg)](https://jakob1379.github.io/)
