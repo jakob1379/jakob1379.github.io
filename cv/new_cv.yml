@@ -118,7 +118,7 @@ cv:
             Interdisciplinary foundation in mathematical modelling, computer
             science, and physics.
       - institution: STX (High School)
-        area: ""
+        area: ''
         degree: STX
         start_date: '2001'
         end_date: '2013'
@@ -149,7 +149,8 @@ cv:
         location: El Salvador
         highlights: [Engaged in community education and development projects.]
     extracurricular:
-      - bullet: 'TalkPython: Sphinx, Cookiecutter, Ansible, Pytest, FastAPI, Django, Twilio'
+      - bullet: 'TalkPython: Sphinx, Cookiecutter, Ansible, Pytest, FastAPI, Django,
+          Twilio'
       - bullet: 'RefactorGuru: Design patterns and refactoring strategies'
       - bullet: 'NixOS & Flakes Book: Intro to NixOS, Nix and Nix‑Flakes'
     soft_skills:
