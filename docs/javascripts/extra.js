@@ -1,56 +1,39 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // --- Logic for revealing content sections ---
-  const sections = document.querySelectorAll('#content-pane .section');
-
-  // --- Logic for fading hero content on scroll ---
   const heroContainer = document.querySelector('.parallax');
-  if (!heroContainer) return;
-
   const contentPane = document.getElementById('content-pane');
+  const scrollIndicator = document.querySelector('.scroll-indicator-wrapper');
+
+  if (!heroContainer || !contentPane || !scrollIndicator) {
+    return;
+  }
+
   const heroElements = Array.from(heroContainer.children);
+  const fadeDistance = 400; // The scroll distance over which to fade/blur
+
+  // Calculate the scroll position where the animation should start.
+  // This is when the bottom of the scroll indicator is about to leave the viewport.
+  // We subtract the viewport height to find the scrollY value and ensure it's not negative.
+  const startScroll = Math.max(0, scrollIndicator.offsetTop + scrollIndicator.offsetHeight - window.innerHeight);
 
   const handleScroll = () => {
     const scrollPosition = window.pageYOffset;
-    const fadeDistance = 400; // The scroll distance over which to fade/blur
 
-    let heroOpacity = 1;
-    let heroBlur = 0;
-
-    if (scrollPosition <= fadeDistance) {
-      heroOpacity = 1 - scrollPosition / fadeDistance;
-      heroBlur = (scrollPosition / fadeDistance) * 5; // blur up to 5px
-    } else {
-      heroOpacity = 0;
-      heroBlur = 5;
+    // Calculate the animation's progress (0 to 1)
+    let progress = 0;
+    if (scrollPosition > startScroll) {
+      progress = (scrollPosition - startScroll) / fadeDistance;
     }
+    progress = Math.min(progress, 1); // Clamp to a max of 1
+
+    const heroOpacity = 1 - progress;
+    const heroBlur = progress * 5; // blur up to 5px
 
     heroElements.forEach(el => {
       el.style.opacity = heroOpacity;
       el.style.filter = `blur(${heroBlur}px)`;
     });
 
-    if (contentPane) {
-      let contentOpacity = 0;
-      if (scrollPosition <= fadeDistance) {
-        contentOpacity = scrollPosition / fadeDistance;
-      } else {
-        contentOpacity = 1;
-      }
-      contentPane.style.opacity = contentOpacity;
-    }
-
-    // Manually trigger reveal for sections that are in view
-    if (sections.length > 0) {
-      sections.forEach(section => {
-        if (!section.classList.contains('visible')) {
-          const rect = section.getBoundingClientRect();
-          // Check if the top of the element is entering the viewport
-          if (rect.top < window.innerHeight - 50) {
-            section.classList.add('visible');
-          }
-        }
-      });
-    }
+    contentPane.style.opacity = progress;
   };
 
   window.addEventListener('scroll', handleScroll, { passive: true });

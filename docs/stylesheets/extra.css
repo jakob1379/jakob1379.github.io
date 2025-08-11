@@ -125,3 +125,15 @@
     font-weight: 700;
     margin-bottom: 3rem;
 }
+
+/* --- Animation styles --- */
+
+/* Optimize hero elements for animation */
+.parallax > * {
+    will-change: opacity, filter;
+}
+
+#content-pane {
+    will-change: opacity;
+    opacity: 0; /* Content starts transparent and is faded in by JS */
+}
