@@ -14,7 +14,7 @@ hide:
 
   <p class="hero-subtitle">Software Developer</p>
 
-  [Download CV](assets/Jakob_Stender_Gulderg_CV.pdf){ .md-button .md-button--primary target="_blank" rel="noopener" }
+  [Download CV](../assets/Jakob_Stender_Gulderg_CV.pdf){ .md-button .md-button--primary target="_blank" rel="noopener" }
   <!-- [Contact Me :fontawesome-solid-paper-plane:](mailto:jakob1379+jgalabs@gmail.com){ .md-button} -->
 
 </div>
