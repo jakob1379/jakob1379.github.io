@@ -59,9 +59,9 @@ This is a placeholder text. You should write a short summary about yourself, you
 
     Description of your Docker skills. E.g., containerizing applications, docker-compose, orchestration with Kubernetes.
 
-- :fontawesome-brands-js-square:{ .md-icon }
+- :material-chart-arc:{ .md-icon }
 
-    ### JavaScript
+    ### Data Analysis
 
     Description of your JavaScript skills. Eg., frontend frameworks like React/Vue, Node.js for backend.
 
