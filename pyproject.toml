@@ -27,12 +27,13 @@ _update_python_packages = {shell = "uv sync --upgrade && uvx uv-bump"}
 _update_flake = "nix flake update"
 update = {sequence = ["_update_flake", "_update_pre-commit", "_update_python_packages"], help = "Update dependencies"}
 # build
-build_rendercv = {shell = 'rendercv render -o $(mktemp -d) --pdf-path site/assets/Jakob_Stender_Gulderg_CV.pdf ./cv/Jakob_Stender_Gulderg_CV.yml'}
+build_rendercv = {shell = 'mkdir -p site/assets && rendercv render -o $(mktemp -d) --pdf-path site/assets/Jakob_Stender_Gulderg_CV.pdf ./cv/Jakob_Stender_Gulderg_CV.yml'}
 _build_mkdocs = 'mkdocs build'
 build = {sequence = ["_build_mkdocs", "build_rendercv"], help = "Build the CV and the MkDocs site."}
 # deploy
 _mkdocs_deploy = {cmd = "mkdocs gh-deploy --force --dirty"}
 deploy = {sequence = ["build", "_mkdocs_deploy"], help = "Build the site and deploy to GitHub Pages."}
+deploy_ci = {sequence = ["_build_mkdocs", "_mkdocs_deploy"], help = "Build the site without the CV and deploy to GitHub Pages."}
 # serve
 _build_rendercv_tmp = {shell = 'rendercv render -o $(mktemp -d) --pdf-path docs/assets/Jakob_Stender_Gulderg_CV.pdf ./cv/Jakob_Stender_Gulderg_CV.yml'}
 _mkdocs_serve = {cmd = "mkdocs serve"}
