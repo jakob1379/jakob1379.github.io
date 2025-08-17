@@ -31,14 +31,14 @@ Feel free to reach out if you want to collaborate on a project.
 </div>
 
 <div class="scroll-indicator-wrapper" markdown>
-:fontawesome-solid-chevron-down: Scroll to view more
+:fontawesome-solid-chevron-down: Scroll to see more
 </div>
 </section>
 
 <section class="pane" id="content-pane" markdown>
 <!-- Removed: <div id="initial-fade-overlay" class="fade-overlay"></div> -->
 <div class="section" markdown> <!-- Removed: hidden class -->
-## About Me ##
+## About Me ## {.section-title}
 
 A passionate and experienced software developer with a knack for creating elegant solutions in the least amount of time. I specialize in [Your Specialization, e.g., backend development, cloud infrastructure] and I'm always eager to learn new technologies.
 
@@ -46,7 +46,7 @@ This is a placeholder text. You should write a short summary about yourself, you
 </div>
 
 <div class="section" markdown> <!-- Removed: hidden class -->
-## My Tech Stack ##
+## My Tech Stack ## {.section-title}
 
 <!-- markdownlint-disable MD001 MD023 -->
 <div class="grid cards" markdown>
@@ -91,9 +91,7 @@ This is a placeholder text. You should write a short summary about yourself, you
 
 <div class="section" markdown> <!-- Removed: hidden class -->
 
-### Experience ###
-
-{.section-title}
+### Experience ### {.section-title}
 
 !!! tip "Placeholder: Senior Software Developer at Tech Company (2022-Present)"
     - Describe your responsibilities and achievements.
@@ -107,9 +105,7 @@ This is a placeholder text. You should write a short summary about yourself, you
 
 <div class="section" markdown> <!-- Added this closing div and new div to encapsulate education section -->
 
-### Education ###
-
-{.section-title}
+### Education ### {.section-title}
 
 !!! info "Placeholder: M.Sc. in Computer Science, University Name (2018-2020)"
     - Thesis title or focus area.
