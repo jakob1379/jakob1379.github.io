@@ -88,3 +88,11 @@ repos:
       - id: markdownlint-cli2
         files: \.(md|mdown|markdown)$
         args: [--fix, --config, .markdownlint.yml]
+  - repo: local
+    hooks:
+      - id: mkdocs_build_check
+        name: Check mkdocs builds
+        language: system
+        entry: uv run mkdocs build
+        args: [--strict]
+        pass_filenames: false
