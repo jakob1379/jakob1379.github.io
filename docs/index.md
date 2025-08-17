@@ -1,4 +1,3 @@
-<!-- markdownlint-disable MD041 -->
 ---
 hide:
 
@@ -7,6 +6,7 @@ hide:
 - footer
 
 ---
+<!-- markdownlint-disable MD041 -->
 
 <section class="pane parallax" markdown>
 <div class="hero" markdown>
