@@ -6,7 +6,6 @@ hide:
 - footer
 
 ---
-<!-- markdownlint-disable MD041 -->
 
 <section class="pane parallax" markdown>
 <div class="hero" markdown>
@@ -22,7 +21,7 @@ Software Developer
 
 </div>
 <div class="section" id="contact" markdown>
-## Get in Touch
+## Get in Touch ##
 
 Feel free to reach out if you want to collaborate on a project.
 
@@ -39,7 +38,7 @@ Feel free to reach out if you want to collaborate on a project.
 <section class="pane" id="content-pane" markdown>
 <!-- Removed: <div id="initial-fade-overlay" class="fade-overlay"></div> -->
 <div class="section" markdown> <!-- Removed: hidden class -->
-## About Me
+## About Me ##
 
 A passionate and experienced software developer with a knack for creating elegant solutions in the least amount of time. I specialize in [Your Specialization, e.g., backend development, cloud infrastructure] and I'm always eager to learn new technologies.
 
@@ -47,46 +46,53 @@ This is a placeholder text. You should write a short summary about yourself, you
 </div>
 
 <div class="section" markdown> <!-- Removed: hidden class -->
-## My Tech Stack
+## My Tech Stack ##
 
-<!-- markdownlint-disable MD001 -->
+<!-- markdownlint-disable MD001 MD023 -->
 <div class="grid cards" markdown>
 -   :fontawesome-brands-python:{ .md-icon }
 
-    ### Python
+    ### Python ###
     Description of your Python skillgs. E.g., web development with Django/Flask, data science with Pandas/NumPy, etc.
 
 - :fontawesome-brands-docker:{ .md-icon }
 
-    ### Docker
+    ### Docker ###
+
     Description of your Docker skills. E.g., containerizing applications, docker-compose, orchestration with Kubernetes.
 
 - :material-chart-arc:{ .md-icon }
 
-    ### Data Analysis
+    ### Data Analysis ###
+
     Description of your JavaScript skills. Eg., frontend frameworks like React/Vue, Node.js for backend.
 
 - :fontawesome-solid-database:{ .md-icon }
 
-    ### Databases
+    ### Databases ###
+
     Description of your database skills. E.g., SQL (PostgreSQL, MySQL) and NoSQL (MongoDB, Redis).
 
 - :fontawesome-brands-git-alt:{ .md-icon }
 
-    ### Git & CI/CD
+    ### Git & CI/CD ###
+
     Description of your skills with version control and continuous integration/deployment pipelines (e.g., GitHub Actions).
 
 - :fontawesome-brands-aws:{ .md-icon }
 
-    ### Cloud
+    ### Cloud ###
+
     Description of your cloud computing skills. E.g., experience with AWS, Azure, or Google Cloud.
 
 </div>
-<!-- markdownlint-restore MD001 -->
+<!-- markdownlint-restore MD001 MD023 -->
 </div>
 
 <div class="section" markdown> <!-- Removed: hidden class -->
-## Experience ##
+
+### Experience ###
+
 {.section-title}
 
 !!! tip "Placeholder: Senior Software Developer at Tech Company (2022-Present)"
@@ -100,7 +106,9 @@ This is a placeholder text. You should write a short summary about yourself, you
 </div>
 
 <div class="section" markdown> <!-- Added this closing div and new div to encapsulate education section -->
-## Education ##
+
+### Education ###
+
 {.section-title}
 
 !!! info "Placeholder: M.Sc. in Computer Science, University Name (2018-2020)"

@@ -87,4 +87,4 @@ repos:
     hooks:
       - id: markdownlint-cli2
         files: \.(md|mdown|markdown)$
-        args: [--fix]
+        args: [--fix, --config, .markdownlint.yml]
