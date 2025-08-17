@@ -1,10 +1,11 @@
-<!-- markdownlint-disable-file MD041 -->
+<!-- markdownlint-disable MD041 -->
 ---
 hide:
 
 - navigation
 - toc
 - footer
+
 ---
 
 <section class="pane parallax" markdown>
@@ -56,31 +57,31 @@ This is a placeholder text. You should write a short summary about yourself, you
 
 - :fontawesome-brands-docker:{ .md-icon }
 
-    ### Docker
+  ### Docker
 
     Description of your Docker skills. E.g., containerizing applications, docker-compose, orchestration with Kubernetes.
 
 - :material-chart-arc:{ .md-icon }
 
-    ### Data Analysis
+  ### Data Analysis
 
     Description of your JavaScript skills. Eg., frontend frameworks like React/Vue, Node.js for backend.
 
 - :fontawesome-solid-database:{ .md-icon }
 
-    ### Databases
+  ### Databases
 
     Description of your database skills. E.g., SQL (PostgreSQL, MySQL) and NoSQL (MongoDB, Redis).
 
 - :fontawesome-brands-git-alt:{ .md-icon }
 
-    ### Git & CI/CD
+  ### Git & CI/CD
 
     Description of your skills with version control and continuous integration/deployment pipelines (e.g., GitHub Actions).
 
 - :fontawesome-brands-aws:{ .md-icon }
 
-    ### Cloud
+  ### Cloud
 
     Description of your cloud computing skills. E.g., experience with AWS, Azure, or Google Cloud.
 
