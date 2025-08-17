@@ -49,6 +49,7 @@ This is a placeholder text. You should write a short summary about yourself, you
 <div class="section" markdown> <!-- Removed: hidden class -->
 ## My Tech Stack
 
+<!-- markdownlint-disable MD001 -->
 <div class="grid cards" markdown>
 -   :fontawesome-brands-python:{ .md-icon }
 
@@ -81,6 +82,7 @@ This is a placeholder text. You should write a short summary about yourself, you
     Description of your cloud computing skills. E.g., experience with AWS, Azure, or Google Cloud.
 
 </div>
+<!-- markdownlint-restore MD001 -->
 </div>
 
 <div class="section" markdown> <!-- Removed: hidden class -->
