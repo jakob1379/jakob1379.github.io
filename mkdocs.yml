@@ -1,12 +1,15 @@
 ---
 site_name: Jakob Stender Guldberg
 site_url: https://jakob1379.github.io/
-# repo_url: https://github.com/jakob1379/jakob1379.github.io
-# repo_name: jakob1379.github.io
+repo_url: https://github.com/jakob1379
+repo_name: My Github
 site_description: Contact details and blog posts by Jakob Stender Guldberg
 copyright: Copyright &copy; 2025 Jakob Stender Guldberg
 theme:
   name: material
+  icon:
+    repo: fontawesome/brands/github
+
   # logo: assets/logo.png
   # favicon: images/favicon.png
   palette:

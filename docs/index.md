@@ -91,26 +91,4 @@ This is a placeholder text. You should write a short summary about yourself, you
 
 <div class="section" markdown> <!-- Removed: hidden class -->
 
-### Experience {.section-title} ###
-
-!!! tip "Placeholder: Senior Software Developer at Tech Company (2022-Present)"
-    - Describe your responsibilities and achievements.
-    - Used technologies: Python, Django, AWS, etc.
-
-!!! tip "Placeholder: Software Developer at Another Company (2020-2022)"
-    - Describe your responsibilities and achievements.
-    - Used technologies: C#, .NET, Azure, etc.
-
-</div>
-
-<div class="section" markdown> <!-- Added this closing div and new div to encapsulate education section -->
-
-### Education {.section-title} ###
-
-!!! info "Placeholder: M.Sc. in Computer Science, University Name (2018-2020)"
-    - Thesis title or focus area.
-
-!!! info "Placeholder: B.Sc. in Software Engineering, University Name (2015-2018)"
-    - Relevant projects or activities.
-</div>
 </section>
