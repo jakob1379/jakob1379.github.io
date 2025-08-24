@@ -3,7 +3,7 @@ design:
   theme: moderncv
 cv:
   # My information
-  name: Jakob Stender Gulderg
+  name: Jakob Stender Guldberg
   location: København, Denmark
   phone: tel:+45-93-97-83-73
   email: jakob1379@gmail.com
@@ -41,7 +41,7 @@ cv:
       - date: 2021-2022
         company: Evaxion Biotech A/S
         position: Student Developer
-        summary: |
+        summary: >-
           Developed internal tools using Python and Django; managed PostgreSQL
           databases and Django Rest Framework with FastAPI integrations.
       - date: 2020
