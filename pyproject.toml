@@ -33,7 +33,7 @@ _build_mkdocs = 'mkdocs build'
 build = {sequence = ["_build_rendercv", "_build_mkdocs"], help = "Build the CV and the MkDocs site."}
 # deploy
 _mkdocs_deploy = {cmd = "mkdocs gh-deploy --force"}
-deploy = {sequence = ["_build_rendercv", "_mkdocs_deploy"], help = "Build the site and deploy to GitHub Pages."}
+deploy = {sequence = ["build", "_mkdocs_deploy"], help = "Build the site and deploy to GitHub Pages."}
 # serve
 _mkdocs_serve = {cmd = "mkdocs serve"}
 serve = {sequence = ["_build_rendercv", "_mkdocs_serve"], help = "Serve the mkdocs pages locally."}
