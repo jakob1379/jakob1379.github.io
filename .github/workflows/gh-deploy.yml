@@ -18,7 +18,24 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
-      - name: Build and Deploy Site
-        run: nix develop -c -- uv run poe build
+      # check for cv pdf cache or build
+      - id: cache_rendercv
+        uses: actions/cache@v4
+        with:
+          path: docs/assets/Jakob_Stender_Guldberg_CV.pdf
+          key: ${{ runner.os }}-${{ hashFiles('cv/Jakob_Stender_Guldberg_CV.yml')
+            }}
+      - name: Render cv
+        if: steps.cache_rendercv.outputs.cache-hit != 'true'
+        run: nix develop -c -- uv run poe build_rendercv
+      # Check for mkdocs cache or build
+      - id: cache_mkdocs
+        uses: actions/cache@v4
+        with:
+          path: site
+          key: ${{ runner.os }}-${{ hashFiles('docs/**/*') }}
+      - name: Build mkdocs
+        if: steps.cache_mkdocs.outputs.cache-hit != 'true'
+        run: nix develop -c -- uv run poe build_mkdocs
       - name: Build and Deploy Site
         run: nix develop -c -- uv run poe deploy
