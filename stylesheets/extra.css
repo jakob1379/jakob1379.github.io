@@ -1,0 +1,139 @@
+/* Make content full-width on homepage */
+[data-md-path="."] .md-grid {
+    max-width: 100%;
+}
+
+[data-md-path="."] .md-content__inner {
+    padding: 0;
+}
+
+/* Hero section styles */
+.hero {
+    text-align: center;
+    padding: 2.0rem 0.2rem;
+
+    /* Background image properties */
+    background-size: cover; /* Ensures the background covers the entire element */
+    background-position: center; /* Centers the background image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-color: var(--md-primary-bg-color); /* Fallback or base color */
+
+    /* Default text color for the hero, assuming a light image needs dark text */
+    color: var(--md-primary-bg-color)
+}
+
+/* Define custom properties for backgrounds based on theme */
+:root {
+  --hero-background-image: url('../assets/background_light.png'); /* Default for light theme */
+}
+
+/* Apply background image based on custom property */
+.hero {
+  background-image: var(--hero-background-image);
+}
+
+/* For dark theme (slate is the default dark scheme name) */
+[data-md-color-scheme="slate"] {
+  --hero-background-image: url('../assets/background_dark.png');
+  /* Ensure text is white in dark mode hero for dark backgrounds */
+  color: white;
+}
+
+.hero img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* Add margin-bottom if you want space between the image and the h1 */
+  /* margin-bottom: 1rem; */
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: inherit; /* Ensure H1 inherits the hero's text color */
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: inherit; /* Ensure paragraph inherits the hero's text color */
+}
+
+.hero .md-button {
+    font-size: medium;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.hero .hero-subtitle { /* NEW: Specific style for the "Software Developer" text */
+    text-shadow:
+        -1px -1px 0 var(--md-primary-fg-color), /* top-left */
+         1px -1px 0 var(--md-primary-fg-color), /* top-right */
+        -1px  1px 0 var(--md-primary-fg-color), /* bottom-left */
+        1px  1px 0 var(--md-primary-fg-color); /* bottom-right */
+}
+
+.grid.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.grid.cards > ul > li {
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 0.2rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    list-style: none; /* Remove default list bullet */
+}
+
+.grid.cards h3 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--md-primary-fg-color);
+}
+
+.grid.cards .icon {
+    font-size: 4rem;
+    color: var(--md-accent-fg-color);
+}
+
+.grid.cards .md-icon {
+    font-size: 4rem;
+    color: var(--md-accent-fg-color);
+}
+
+/* General section styling */
+.section {
+    padding: 0.5rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#contact, .scroll-indicator-wrapper {
+    text-align: center;
+}
+
+.section-title { /* Keep this if you're using {.section-title} in Markdown */
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+/* --- Animation styles --- */
+
+/* Optimize hero elements for animation */
+.parallax > * {
+    will-change: opacity, filter;
+}
+
+#content-pane {
+    will-change: opacity;
+    opacity: 0; /* Content starts transparent and is faded in by JS */
+}
