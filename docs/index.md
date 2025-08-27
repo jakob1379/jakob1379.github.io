@@ -40,9 +40,11 @@ Feel free to reach out if you want to collaborate on a project.
 <div class="section" markdown> <!-- Removed: hidden class -->
 ## About Me {.section-title} ##
 
-A passionate and experienced software developer with a knack for creating elegant solutions in the least amount of time. I specialize in [Your Specialization, e.g., backend development, cloud infrastructure] and I'm always eager to learn new technologies.
+A passionate and experienced software developer with a knack for creating simple and usable
+solutions.
 
-This is a placeholder text. You should write a short summary about yourself, your professional interests, and what you're passionate about.
+I specialize in data pipelines, and process automation, always seeking the newest
+technologies to make better solutions, faster.
 </div>
 
 <div class="section" markdown> <!-- Removed: hidden class -->
@@ -53,37 +55,38 @@ This is a placeholder text. You should write a short summary about yourself, you
 -   :fontawesome-brands-python:{ .md-icon }
 
     ### Python ###
-    Description of your Python skillgs. E.g., web development with Django/Flask, data science with Pandas/NumPy, etc.
+
+    End-to-end Python developer: from data analysis and ML to live data pipelines and web/apps, plus visualization and docs.
 
 - :fontawesome-brands-docker:{ .md-icon }
 
     ### Docker ###
 
-    Description of your Docker skills. E.g., containerizing applications, docker-compose, orchestration with Kubernetes.
+    Packing the work for anyone to use it without any prior knowledge.
 
 - :material-chart-arc:{ .md-icon }
 
     ### Data Analysis ###
 
-    Description of your JavaScript skills. Eg., frontend frameworks like React/Vue, Node.js for backend.
+    Insights into data allows stakeholders to argue with confidence
 
 - :fontawesome-solid-database:{ .md-icon }
 
     ### Databases ###
 
-    Description of your database skills. E.g., SQL (PostgreSQL, MySQL) and NoSQL (MongoDB, Redis).
+    Working with data in a structured way is important for reproducible and efficient data analysis.
 
 - :fontawesome-brands-git-alt:{ .md-icon }
 
     ### Git & CI/CD ###
 
-    Description of your skills with version control and continuous integration/deployment pipelines (e.g., GitHub Actions).
+    Deep, structured experience with Git, GitLab, and their CI/CD. Enabling efficient collaboration and seamless updates to deliver seamless updates with confidence.
 
-- :fontawesome-brands-aws:{ .md-icon }
+<!-- - :fontawesome-brands-aws:{ .md-icon } -->
 
-    ### Cloud ###
+<!--     ### Cloud ### -->
 
-    Description of your cloud computing skills. E.g., experience with AWS, Azure, or Google Cloud.
+<!--     Description of your cloud computing skills. E.g., experience with AWS, Azure, or Google Cloud. -->
 
 </div>
 <!-- markdownlint-restore MD001 MD023 -->
