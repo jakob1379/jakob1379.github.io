@@ -37,3 +37,8 @@ deploy = {sequence = ["mkdocs_deploy"], help = "Build the site and deploy to Git
 # serve
 _mkdocs_serve = {cmd = "mkdocs serve"}
 serve = {sequence = ["build_rendercv", "_mkdocs_serve"], help = "Serve the mkdocs pages locally."}
+# clean
+_clean_mkdocs = {shell = 'rm -rf site .cache/mkdocs .cache/mkdocs-material .cache'}
+_clean_rendercv = {shell = 'rm -rf .rendercv .rendercv-cache .cache/rendercv docs/assets/Jakob_Stender_Guldberg_CV.pdf'}
+_clean_py = {shell = 'find . -type d -name "__pycache__" -prune -exec rm -rf {} +; find . -type f -name "*.py[co]" -delete'}
+clean = {sequence = ["_clean_mkdocs", "_clean_rendercv", "_clean_py"], help = "Remove MkDocs build/cache, RenderCV artifacts, and Python bytecode caches."}
