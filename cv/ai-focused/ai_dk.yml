@@ -1,0 +1,162 @@
+---
+design:
+  theme: moderncv
+cv:
+  name: Jakob Stender Guldberg
+  location: København, Danmark
+  email: jakob1379@gmail.com
+  website: https://jakob1379.github.io
+  social_networks:
+    - network: LinkedIn
+      username: jakobguldberg
+    - network: GitHub
+      username: jakob1379
+  sections:
+    kort_motivation:
+      - >-
+        Mit største ønske er at hjælpe en større organisation ved at udnytte data
+        og moderne
+        teknologier til at automatisere komplekse og tidskrævende opgaver, så folks
+        tid kan bruges
+        netop der, hvor den skaber mest værdi.
+    erfaring:
+      - start_date: 2024-11
+        company: DIKU (Københavns Universitet)
+        position: Specialkonsulent
+        summary: >-
+          Jeg arbejder some specialkonsulent på tværs af DIKU’s Billedsektion og spin-off'et
+          Darerl,
+          hvor jeg omsætter prototypekode til produktionsklare pipelines og gør vejen
+          fra rå data
+          til færdige, AI-genererede digitale tvillinger hurtig og pålidelig. På DIKU
+          refaktorerede
+          jeg RootPainter (interaktiv træning af ML-modeller til segmentering) efter
+          Python-konventioner, omstrukturerede den spredte dokumentation og gjorde
+          den søgbar for
+          øget brugervenlighed.
+      - start_date: 2024-04
+        end_date: 2024-09
+        company: RES
+        position: Data Platform-ingeniør
+        summary: >-
+          Moderniserede dataplatformen og viste, at analyser kunne udføres on-site.
+          Med Redpanda
+          (Kafka-API) til håndtering af streaming-data og DuckDB til local tidsserie-aggregering
+          kunne vi erstatte forsendelse af harddiske på tværs af kloden med live indsigt
+          i vind- og
+          solcelleparker.
+      - start_date: 2022-04
+        end_date: 2024-04
+        company: Evaxion Biotech A/S
+        position: IT-udvikler
+        location: København
+        summary: >-
+          Med et 3-mands IT-team til 70 medarbejdere i en biotekvirksomhed indførte
+          jeg pragmatiske
+          teknologier for bedst at udnytte begrænsede ressourcer. bl.a. Docker Swarm
+          til skalerbare
+          udrulninger og Streamlit til hurtige interne værktøjer, hvilket reducerede
+          tiden fra idé
+          til drift fra måneder til dage. Det muliggjorde en LLM-drevet litteraturpipeline,
+          der skalerede fra 800 artikler/uge (5 personer) til 20.000 på 3 timer.
+      - start_date: 2021-01
+        end_date: 2022-12
+        company: Evaxion Biotech A/S
+        position: Studenteruvikler
+        summary: >-
+          Udviklede interne værktøjer i Python og Django, administrerede PostgreSQL
+          og byggede REST-integrationer med Django REST Framework og FastAPI.
+      - start_date: 2020-06
+        end_date: 2021-06
+        company: Københavns Universitet
+        position: Undervisningsassistent — Anvendt programmering
+        summary: >-
+          Underviste i grundlæggende C++ til dataintensive applikationer.
+      - start_date: 2020-01
+        end_date: 2020-12
+        company: DIKU (Københavns Universitet)
+        position: Studentermedhjælper
+        location: København
+        summary: >-
+          Reducerede TA-arbejdsbelastning med 50% på tværs af flere kurser ved at
+          udvikle og
+          udrulle en platform til automatisk rettelse og feedback med integration
+          til Canvas LMS.
+      - start_date: 2018-01
+        end_date: 2020-12
+        company: Obital (opkøbt af GN)
+        position: Softwareudvikler
+        location: København
+        summary: >-
+          Udviklede iOS-baseret øjenstyring (eye-tracking), så personer med motoriske
+          funktionsnedsættelser kan styre smarthome-løsninger udelukkende med øjnene
+          og derved
+          blive mere selvstændige.
+      - start_date: 2018-01
+        end_date: 2018-12
+        company: Københavns Universitet
+        position: Privatunderviser — Modellering og Analyse af Data
+        summary: >-
+          Privatundervisning i matematik, fysik og tilhørende Python-implementeringer
+          med fokus på
+          problemløsning og kodningsfærdigheder.
+    education:
+      - start_date: 2018-09
+        end_date: 2022-06
+        institution: Københavns Universitet
+        degree: Kandidat (ikke afsluttet)
+        area: Bioinformatik
+        summary: >-
+          Fokus på maskinlæring og medicinsk billedanalyse. Afsluttede speciale i
+          samarbejde med Rigshospitalet med topkarakter (12). Skiftede retning mod
+          bredere datalogiske interesser i ML og automatisering.
+      - start_date: 2014-09
+        end_date: 2018-06
+        institution: Københavns Universitet
+        degree: Bachelor
+        area: Naturvidenskab og IT (Scientific Computing)
+        summary: >-
+          Tværfaglig uddannelse med grundlag i matematisk modellering, datalogi og
+          en specialisering i fysik.
+      - start_date: 2010-08
+        end_date: 2013-06
+        institution: Faaborg Gymnasium
+        degree: STX
+        area: Fysik, Matematik og Kemi
+    volunteering:
+      - start_date: 2012-06
+        end_date: 2024-06
+        name: Roskilde Festival
+        position: Frivillig — IT efter-festival-drift
+        location: Roskilde
+        summary: >-
+          Medansvarlig for IT-driften efter festivalen. Her ledte jeg et team på 30
+          frivillige inden for logistik, nedtagning og hjemtagning af IT-udstyr.
+      - start_date: 2019-05
+        end_date: 2022-05
+        name: Formand for boligfællesskab
+        location: København
+        summary: >-
+          Administrerede budgetter og stod some byggeleder på et større renoveringsprojekter.
+      - date: 2018
+        name: Frivillig underviser
+        location: Københavns Universitet
+        summary: >-
+          Privatundervisning i matematik og fysik (vektoranalyse og
+          differentialligninger).
+      - start_date: 2014-02
+        end_date: 2014-06
+        name: Mellemfolkeligt Samvirke (ActionAid Denmark)
+        location: El Salvador
+        summary: >-
+          Deltog i projekter for uddannelse og local udvikling.
+    extra_curricular_activities:
+      - date: 2024
+        name: NixOS & Flakes-bog (uofficiel) — for begyndere
+        summary: >-
+          Solidt fundament i reproducerbare og uforanderlige systemer med NixOS,
+          Nix og Flakes.
+      - date: 2023
+        name: Talk Python-kurser
+        summary: >-
+          Sphinx, Cookiecutter, Ansible, Pytest, FastAPI, Django og Twilio

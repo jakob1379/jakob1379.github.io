@@ -1,9 +1,9 @@
 ---
 cv:
-  name: Jakob G. Aaes
-  location: København NV, Denmark
-  phone: tel:+45-93-97-83-73
-  email: jakob1379@gmail.com
+  # name: Jakob G. Aaes
+  # location: København NV, Denmark
+  # phone: tel:+45-93-97-83-73
+  # email: jakob1379@gmail.com
   # social_networks:
   #   - network: "LinkedIn"
   #     username: "jakobaaes"
@@ -11,12 +11,12 @@ cv:
   #   - network: "GitHub"
   #     username: "jakob1379"
   #     url: "https://github.com/jakob1379"
-  social_networks:
-    - network: LinkedIn
-      username: jakobguldberg
-    - network: GitHub
-      username: jakob1379
-  website: https://jakob1379.github.io
+  # social_networks:
+  #   - network: LinkedIn
+  #     username: jakobguldberg
+  #   - network: GitHub
+  #     username: jakob1379
+  # website: https://jakob1379.github.io
   sections:
     summary:
       - bullet: >-
