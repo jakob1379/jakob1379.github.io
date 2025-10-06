@@ -65,7 +65,7 @@ repos:
 
   # TOML sorting
   - repo: https://github.com/pappasam/toml-sort
-    rev: v0.24.2  # Use a recent version of toml-sort
+    rev: v0.24.3  # Use a recent version of toml-sort
     hooks:
       - id: toml-sort-fix
         files: \.toml$
