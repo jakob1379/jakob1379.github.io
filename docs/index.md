@@ -13,7 +13,7 @@ hide:
 
 # Jakob Stender Guldberg #
 
-Software Developer
+Software Developer & Data Platform Engineer
 {.hero-subtitle}
 
 [Download CV](assets/Jakob_Stender_Guldberg_CV.pdf){ .md-button .md-button--primary target="_blank" rel="noopener" }
@@ -43,12 +43,12 @@ Feel free to reach out if you want to collaborate on a project.
 A passionate and experienced software developer with a knack for creating simple and usable
 solutions.
 
-I specialize in data pipelines, and process automation, always seeking the newest
-technologies to make better solutions, faster.
+I specialize in data pipelines, process automation, and infrastructure modernization, always seeking the newest
+technologies to deliver better solutions, faster.
 </div>
 
 <div class="section" markdown> <!-- Removed: hidden class -->
-## My Tech Stack {.section-title} ##
+## Core Competencies {.section-title} ##
 
 <!-- markdownlint-disable MD001 MD023 -->
 <div class="grid cards" markdown>
@@ -56,37 +56,37 @@ technologies to make better solutions, faster.
 
     ### Python ###
 
-    End-to-end Python developer: from data analysis and ML to live data pipelines and web/apps, plus visualization and docs.
+    End-to-end development across the full stack: backend (Django, FastAPI), data analysis (Polars, Spark), workflow automation, CLI tools, and ML integration.
 
-- :fontawesome-brands-docker:{ .md-icon }
+- :material-pipe:{ .md-icon }
 
-    ### Docker ###
+    ### Workflow Orchestration ###
 
-    Packing the work for anyone to use it without any prior knowledge.
+    Production experience with Prefect and Snakemake for building scalable data pipelines. Designing workflows that handle complex dependencies and large-scale data processing.
 
-- :material-chart-arc:{ .md-icon }
+- :fontawesome-solid-server:{ .md-icon }
 
-    ### Data Analysis ###
+    ### HPC & Infrastructure ###
 
-    Insights into data allows stakeholders to argue with confidence
+    Provisioning and managing HPC clusters with Slurm via Ansible. Monitoring with Prometheus, Grafana, and Loki. Experience with distributed computing and resource optimization.
 
-- :fontawesome-solid-database:{ .md-icon }
+- :material-chart-line:{ .md-icon }
 
-    ### Databases ###
+    ### Data Visualization & Dashboards ###
 
-    Working with data in a structured way is important for reproducible and efficient data analysis.
+    Building intuitive dashboards and internal tools with Streamlit, Dash, and Reflex. Making complex analyses accessible to non-technical stakeholders.
 
-- :fontawesome-brands-git-alt:{ .md-icon }
+- :material-docker:{ .md-icon }
 
-    ### Git & CI/CD ###
+    ### Reproducibility & DevOps ###
 
-    Deep, structured experience with Git, GitLab, and their CI/CD. Enabling efficient collaboration and seamless updates to deliver seamless updates with confidence.
+    Docker, Docker Swarm, Nix, and uv for reproducible environments across platforms. CI/CD pipelines with GitHub Actions, GitLab CI, and Jenkins.
 
-<!-- - :fontawesome-brands-aws:{ .md-icon } -->
+- :material-lock:{ .md-icon }
 
-<!--     ### Cloud ### -->
+    ### Security & Compliance ###
 
-<!--     Description of your cloud computing skills. E.g., experience with AWS, Azure, or Google Cloud. -->
+    Implementing least-privilege access, VPN segmentation, ACL management, and working with sensitive data. Experience with GDPR, NIS2, and follow best practices for healthcare data.
 
 </div>
 <!-- markdownlint-restore MD001 MD023 -->

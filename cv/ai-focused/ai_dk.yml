@@ -14,37 +14,43 @@ cv:
   sections:
     kort_motivation:
       - >-
-        Mit største ønske er at hjælpe en større organisation ved at udnytte data
-        og moderne
-        teknologier til at automatisere komplekse og tidskrævende opgaver, så folks
-        tid kan bruges
-        netop der, hvor den skaber mest værdi.
+        Vi lever i en enormt spændende tid, hvor vi langt om længe kan bruge de nyeste
+        teknologier
+        til at skabe højere værdi, hvis de bruges rigtigt. Derfor set jeg et stort
+        potentiale i at
+        udnytte teknologier og anvende data til at automatisere komplekse og tidskrævende
+        opgaver,
+        some ikke har været mulige før nu.
     erfaring:
       - start_date: 2024-11
+        stop_date: 2024-10
         company: DIKU (Københavns Universitet)
         position: Specialkonsulent
         summary: >-
-          Jeg arbejder some specialkonsulent på tværs af DIKU’s Billedsektion og spin-off'et
-          Darerl,
-          hvor jeg omsætter prototypekode til produktionsklare pipelines og gør vejen
-          fra rå data
-          til færdige, AI-genererede digitale tvillinger hurtig og pålidelig. På DIKU
-          refaktorerede
-          jeg RootPainter (interaktiv træning af ML-modeller til segmentering) efter
-          Python-konventioner, omstrukturerede den spredte dokumentation og gjorde
-          den søgbar for
-          øget brugervenlighed.
+          Jeg arbejder some specialkonsulent på tværs af DIKU’s Billedsektion og spin-off’et
+          Darerl. Jeg har været med til at udvikle proof-of-concept-pipelines til
+          AI-genererede
+          digitale tvillinger, for derefter at klargøre dem til production og skalering
+          vha. Prefect
+          (et alternative til Airflow). For DIKU har jeg bl.a. moderniseret RootPainter
+          (interaktiv
+          træning af ML-modeller til segmentering) for at øge brugervenligheden og
+          udbredelsen af
+          værktøjet gennem PEP-compliance og moderne frameworks (uv og MkDocs).
       - start_date: 2024-04
         end_date: 2024-09
         company: RES
         position: Data Platform-ingeniør
         summary: >-
-          Moderniserede dataplatformen og viste, at analyser kunne udføres on-site.
-          Med Redpanda
-          (Kafka-API) til håndtering af streaming-data og DuckDB til local tidsserie-aggregering
-          kunne vi erstatte forsendelse af harddiske på tværs af kloden med live indsigt
-          i vind- og
-          solcelleparker.
+          Jeg moderniserede dataplatformen og demonstrerede, at liveanalyser kunne
+          udføres on-site
+          på IoT-enheder, self med store datamængder. Ved at bruge Redpanda (Kafka-API)
+          til
+          håndtering af streamingdata og DuckDB til local tidsserieaggregering kunne
+          vi erstatte
+          forsendelse af harddiske på tværs af kloden med live indsigt i vind- og
+          solcelleparkers
+          drift og performance.
       - start_date: 2022-04
         end_date: 2024-04
         company: Evaxion Biotech A/S
@@ -52,12 +58,12 @@ cv:
         location: København
         summary: >-
           Med et 3-mands IT-team til 70 medarbejdere i en biotekvirksomhed indførte
-          jeg pragmatiske
-          teknologier for bedst at udnytte begrænsede ressourcer. bl.a. Docker Swarm
+          jeg moderne
+          teknologier for bedst at udnytte begrænsede ressourcer. Bl.a. Docker Swarm
           til skalerbare
-          udrulninger og Streamlit til hurtige interne værktøjer, hvilket reducerede
-          tiden fra idé
-          til drift fra måneder til dage. Det muliggjorde en LLM-drevet litteraturpipeline,
+          services, Streamlit til hurtigt at udvikle interne værktøjer, og derved
+          reducer tiden
+          fra idé til drift fra måneder til dage. Det muliggjorde en LLM-drevet litteraturpipeline,
           der skalerede fra 800 artikler/uge (5 personer) til 20.000 på 3 timer.
       - start_date: 2021-01
         end_date: 2022-12
@@ -97,9 +103,9 @@ cv:
         company: Københavns Universitet
         position: Privatunderviser — Modellering og Analyse af Data
         summary: >-
-          Privatundervisning i matematik, fysik og tilhørende Python-implementeringer
-          med fokus på
-          problemløsning og kodningsfærdigheder.
+          Privatundervisning i matematik og fysik samt tilhørende Python-implementeringer
+          med fokus
+          på problemløsning og programmeringsfærdigheder.
     education:
       - start_date: 2018-09
         end_date: 2022-06
@@ -108,9 +114,11 @@ cv:
         area: Bioinformatik
         summary: >-
           Fokus på maskinlæring og medicinsk billedanalyse. Afsluttede speciale i
-          samarbejde med Rigshospitalet med topkarakter (12). Skiftede retning mod
-          bredere datalogiske interesser i ML og automatisering.
-      - start_date: 2014-09
+          samarbejde med
+          Rigshospitalet med topkarakter (12). Jeg skiftede retning, da min interesse
+          for ML og
+          automatisering vejede tungere end de biologiske aspekter af uddannelsen.
+      - Start_date: 2014-09
         end_date: 2018-06
         institution: Københavns Universitet
         degree: Bachelor
