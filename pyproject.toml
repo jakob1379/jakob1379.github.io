@@ -11,7 +11,7 @@ dependencies = [
   "mkdocs-material[git,imaging,recommended]>=9.6.22",
   "mkdocs>=1.6.1",
   "pymdown-extensions>=10.16.1",
-  "rendercv[full]>=2.2"
+  "rendercv[full]>=2.3"
 ]
 
 [tool.poe.tasks]

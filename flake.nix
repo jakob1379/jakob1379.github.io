@@ -14,7 +14,9 @@
             act
             ruby
             cacert
+            gnupg
             git-crypt
+            pinentry-gtk2
           ];
 
           LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath [
