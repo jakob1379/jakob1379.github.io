@@ -50,4 +50,3 @@ clean = {sequence = [
   "_clean_rendercv",
   "_clean_py"
 ], help = "Remove MkDocs build/cache, RenderCV artifacts, and Python bytecode caches."}
-clean_parallel = {shell = 'set -e; poe _clean_mkdocs & poe _clean_rendercv & poe _clean_py & wait', help = "Remove MkDocs build/cache, RenderCV artifacts, and Python bytecode caches in parallel."}
