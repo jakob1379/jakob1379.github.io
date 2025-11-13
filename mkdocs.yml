@@ -65,6 +65,8 @@ plugins:
   # - search
   - blog:
       authors_file: .authors
+      post_readtime: true
+
 markdown_extensions:
   - pymdownx.arithmatex
   - admonition
