@@ -43,8 +43,8 @@ Feel free to reach out if you want to collaborate on a project.
 A passionate and experienced software developer with a knack for creating simple and usable
 solutions.
 
-I specialize in data pipelines, process automation, and infrastructure modernization, always seeking the newest
-technologies to deliver better solutions, faster.
+I specialize in data pipelines, process automation, and infrastructure modernization, always seeking
+the newest technologies to deliver better solutions, faster.
 </div>
 
 <div class="section" markdown> <!-- Removed: hidden class -->
@@ -62,31 +62,36 @@ technologies to deliver better solutions, faster.
 
     ### Workflow Orchestration ###
 
-    Production experience with Prefect and Snakemake for building scalable data pipelines. Designing workflows that handle complex dependencies and large-scale data processing.
+    Production experience with Prefect, Airflow, and Snakemake for building scalable data
+    pipelines. Designing workflows that handle complex dependencies and large-scale data processing.
 
 - :fontawesome-solid-server:{ .md-icon }
 
     ### HPC & Infrastructure ###
 
-    Provisioning and managing HPC clusters with Slurm via Ansible. Monitoring with Prometheus, Grafana, and Loki. Experience with distributed computing and resource optimization.
+    Provisioning and managing HPC clusters with Slurm via Ansible. Monitoring with Prometheus,
+    Grafana, and Loki. Experience with distributed computing and resource optimization.
 
 - :material-chart-line:{ .md-icon }
 
     ### Data Visualization & Dashboards ###
 
-    Building intuitive dashboards and internal tools with Streamlit, Dash, and Reflex. Making complex analyses accessible to non-technical stakeholders.
+    Building intuitive dashboards and internal tools with Streamlit, Dash, and Reflex. Making
+    complex analyses accessible to non-technical stakeholders.
 
 - :material-docker:{ .md-icon }
 
     ### Reproducibility & DevOps ###
 
-    Docker, Docker Swarm, Nix, and uv for reproducible environments across platforms. CI/CD pipelines with GitHub Actions, GitLab CI, and Jenkins.
+    Docker, Docker Swarm, Nix, and uv for reproducible environments across platforms. CI/CD
+    pipelines with GitHub Actions, GitLab CI, and Jenkins.
 
 - :material-lock:{ .md-icon }
 
     ### Security & Compliance ###
 
-    Implementing least-privilege access, VPN segmentation, ACL management, and working with sensitive data. Experience with GDPR, NIS2, and follow best practices for healthcare data.
+    Implementing least-privilege access, VPN segmentation, ACL management, and working with
+    sensitive data. Experience with GDPR, NIS2, and follow best practices for healthcare data.
 
 </div>
 <!-- markdownlint-restore MD001 MD023 -->
