@@ -32,9 +32,10 @@ build = {sequence = [
 ], help = "Build the CV and the MkDocs site."}
 # deploy
 mkdocs_deploy = {cmd = "mkdocs gh-deploy --force"}
-deploy = {sequence = [
+deploy = {deps = [
+  "build",
   "mkdocs_deploy"
-], help = "Build the site and deploy to GitHub Pages."}
+], help = "Build the site and deploy to GitHub Pages.", cmd = "echo Successfully deployed pages!"}
 # serve
 _mkdocs_serve = {cmd = "mkdocs serve"}
 serve = {sequence = [
