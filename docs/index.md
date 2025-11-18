@@ -26,7 +26,7 @@ Software Developer & Data Platform Engineer
 Feel free to reach out if you want to collaborate on a project.
 
 [:fontawesome-solid-envelope: Email](mailto:jakob1379+ghpages@gmail.com){.md-button}
-[:fontawesome-brands-linkedin: LinkedIn](https://www.linkedin.com/in/jakobaaes/){.md-button}
+[:fontawesome-brands-linkedin: LinkedIn](https://www.linkedin.com/in/jakobguldberg/){.md-button}
 
 </div>
 
