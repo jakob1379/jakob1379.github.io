@@ -70,6 +70,7 @@ extra:
       name: PyPi
 plugins:
   - social
+  - minify_html
   # - search
   - blog:
       blog_toc: false
