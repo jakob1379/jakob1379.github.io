@@ -1,5 +1,5 @@
 [dependency-groups]
-dev = ["poethepoet>=0.37.0", "pre-commit>=4.3.0"]
+dev = ["poethepoet>=0.38.0", "pre-commit>=4.5.0"]
 
 [project]
 name = "jga-blog-page"
@@ -8,11 +8,11 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-  "mkdocs-material[git,imaging,recommended]>=9.6.22",
+  "mkdocs-material[git,imaging,recommended]>=9.7.0",
   "mkdocs-minify-html-plugin>=0.3.9",
   "mkdocs>=1.6.1",
-  "pymdown-extensions>=10.16.1",
-  "rendercv[full]>=2.3",
+  "pymdown-extensions>=10.18",
+  "rendercv[full]>=2.4",
 ]
 
 [tool.poe.tasks]
