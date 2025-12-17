@@ -334,7 +334,7 @@ requires-dist = [
     { name = "mkdocs-minify-html-plugin", specifier = ">=0.3.9" },
     { name = "prek", specifier = ">=0.2.22" },
     { name = "pymdown-extensions", specifier = ">=10.18" },
-    { name = "rendercv", extras = ["full"], specifier = ">=2.4" },
+    { name = "rendercv", extras = ["full"], specifier = "<2.4" },
 ]
 
 [package.metadata.requires-dev]
@@ -899,6 +899,15 @@ wheels = [
 ]
 
 [[package]]
+name = "pycountry"
+version = "24.6.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/76/57/c389fa68c50590881a75b7883eeb3dc15e9e73a0fdc001cdd45c13290c92/pycountry-24.6.1.tar.gz", hash = "sha256:b61b3faccea67f87d10c1f2b0fc0be714409e8fcdcc1315613174f6466c10221", size = 6043910, upload-time = "2024-06-01T04:12:15.05Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b1/ec/1fb891d8a2660716aadb2143235481d15ed1cbfe3ad669194690b0604492/pycountry-24.6.1-py3-none-any.whl", hash = "sha256:f1a4fb391cd7214f8eefd39556d740adcc233c778a27f8942c8dca351d6ce06f", size = 6335189, upload-time = "2024-06-01T04:11:49.711Z" },
+]
+
+[[package]]
 name = "pycparser"
 version = "2.23"
 source = { registry = "https://pypi.org/simple" }
@@ -920,11 +929,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/69/44/36f1a6e523abc58ae5f928898e4aca2e0ea509b5aa6f6f392a5d882be928/pydantic-2.12.5.tar.gz", hash = "sha256:4d351024c75c0f085a9febbb665ce8c0c6ec5d30e903bdb6394b7ede26aebb49", size = 821591, upload-time = "2025-11-26T15:11:46.471Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/5a/87/b70ad306ebb6f9b585f114d0ac2137d792b48be34d732d60e597c2f8465a/pydantic-2.12.5-py3-none-any.whl", hash = "sha256:e561593fccf61e8a20fc46dfc2dfe075b8be7d0188df33f221ad1f0139180f9d", size = 463580, upload-time = "2025-11-26T15:11:44.605Z" },
-]
-
-[package.optional-dependencies]
-email = [
-    { name = "email-validator" },
 ]
 
 [[package]]
@@ -1077,24 +1081,26 @@ wheels = [
 
 [[package]]
 name = "rendercv"
-version = "2.5"
+version = "2.3"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
+    { name = "email-validator" },
     { name = "jinja2" },
-    { name = "packaging" },
     { name = "phonenumbers" },
-    { name = "pydantic", extra = ["email"] },
+    { name = "pycountry" },
+    { name = "pydantic" },
     { name = "pydantic-extra-types" },
     { name = "ruamel-yaml" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/0d/9b/fb3dd38f4b6de1a61b408a6205681e9b9c2a6cda2a795a45cae3b3d67487/rendercv-2.5.tar.gz", hash = "sha256:7e5b51c7ed4340fa2e78084a3d74aa4784aa3e42e53d585c3c8433082982434b", size = 77147, upload-time = "2025-12-13T09:29:21.088Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/c1/0c/18148adeb4bb265b069de7cb6859abec3defb748ff1d305ad8079c335ad3/rendercv-2.3.tar.gz", hash = "sha256:3fb0df97f5c75fdebf2d982c9b46914abea1ced8edd61719232847ee09ce5b80", size = 86042, upload-time = "2025-10-28T15:45:10.76Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/1a/c7/86ebd022cac31e22dadacf10feea14dd09dca110b14cc8e0cab247d02b12/rendercv-2.5-py3-none-any.whl", hash = "sha256:1e236438711347526ee04966edab5c4a3cf60ae9a06141d8d3e1984b343b61a5", size = 120362, upload-time = "2025-12-13T09:29:19.51Z" },
+    { url = "https://files.pythonhosted.org/packages/66/11/00a0d4eb26a5fad711a2f2ba085a50e5e419d13c5769f2de9bc17b553645/rendercv-2.3-py3-none-any.whl", hash = "sha256:f162785e246e7f41a87a398510cc106cfa316b8846b51ef94503d0f2a19335c9", size = 125739, upload-time = "2025-10-28T15:45:09.14Z" },
 ]
 
 [package.optional-dependencies]
 full = [
     { name = "markdown" },
+    { name = "packaging" },
     { name = "rendercv-fonts" },
     { name = "typer" },
     { name = "typst" },
