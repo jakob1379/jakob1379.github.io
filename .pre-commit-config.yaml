@@ -58,7 +58,7 @@ repos:
 
   # YAML linting (more strict than basic check)
   - repo: https://github.com/lyz-code/yamlfix
-    rev: 1.19.0
+    rev: 1.19.1
     hooks:
       - id: yamlfix
         files: \.(yml|yaml)$
@@ -72,7 +72,7 @@ repos:
 
   # Secret scanning
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.29.0  # Use a recent version of gitleaks
+    rev: v8.30.0  # Use a recent version of gitleaks
     hooks:
       - id: gitleaks
 
@@ -83,7 +83,7 @@ repos:
       - id: validate-pyproject
         additional_dependencies: ['validate-pyproject-schema-store[all]']
   - repo: https://github.com/DavidAnson/markdownlint-cli2
-    rev: v0.19.0  # Note: This uses Ruby, requires Ruby environment
+    rev: v0.20.0  # Note: This uses Ruby, requires Ruby environment
     hooks:
       - id: markdownlint-cli2
         files: \.(md|mdown|markdown)$
