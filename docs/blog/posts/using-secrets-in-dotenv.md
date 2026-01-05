@@ -17,6 +17,7 @@ secrets. But this common practice has some serious drawbacks as anyone with acce
 can read these plaintext passwords.
 
 The problem gets worse when:
+
 - You accidentally commit a `.env` file to version control
 - You need to share configuration across team members
 - You must rotate compromised keys across multiple projects
@@ -54,7 +55,6 @@ I am working on or using e.g. *my-service* or *name-of-online-service*, and then
 descriptive name for what the secret is used for, e.g. *db-admin-pass* or *api_key*. First we add
 the secret to the keyring:
 
-
 ```bash
 ❯ keyring set my-service db-admin-password
 Password for 'db-admin-password' in 'my-service': *******
@@ -69,6 +69,7 @@ DB_PASSWORD=$(keyring get my-service db-admin-password)
 ```
 
 This approach gives you a few things:
+
 - Centralized secret management
 - Easy key rotation (update once, apply everywhere)
 - Shareable configuration without exposing secrets
