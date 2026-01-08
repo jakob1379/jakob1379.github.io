@@ -53,7 +53,7 @@ repos:
     hooks:
       - id: codespell
         args: [--write-changes]
-        exclude: ^/cv/vault/
+        exclude: ^cv/vault/
         additional_dependencies:
           - tomli  # Needed for pyproject.toml configuration
 
