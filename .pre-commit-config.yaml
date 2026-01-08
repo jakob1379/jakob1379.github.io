@@ -53,12 +53,13 @@ repos:
     hooks:
       - id: codespell
         args: [--write-changes]
+        exclude: ^/cv/vault/
         additional_dependencies:
           - tomli  # Needed for pyproject.toml configuration
 
   # YAML linting (more strict than basic check)
   - repo: https://github.com/lyz-code/yamlfix
-    rev: 1.19.0
+    rev: 1.19.1
     hooks:
       - id: yamlfix
         files: \.(yml|yaml)$
