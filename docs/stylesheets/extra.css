@@ -23,6 +23,11 @@
 
     /* Default text color for the hero, assuming a light image needs dark text */
     color: white;
+    
+    /* Edge treatments for better visual appeal */
+    border-radius: 0 0 24px 24px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
 /* Add overlay for better text contrast */
@@ -35,6 +40,19 @@
     bottom: 0;
     background: rgba(0, 0, 0, 0.4);
     z-index: 1;
+}
+
+/* Add bottom gradient for smoother edge transition */
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* Ensure hero content is above overlay */
@@ -63,6 +81,11 @@
 /* Adjust overlay for dark theme if needed */
 [data-md-color-scheme="slate"] .hero::before {
   background: rgba(0, 0, 0, 0.5);
+}
+
+/* Adjust bottom gradient for dark theme */
+[data-md-color-scheme="slate"] .hero::after {
+  background: radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
 }
 
 .hero img {
@@ -129,6 +152,12 @@
 @media screen and (max-width: 768px) {
     .hero {
         padding: 2rem 1rem;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+    }
+    
+    .hero::after {
+        height: 50px;
     }
 
     .hero img {
@@ -157,6 +186,12 @@
 @media screen and (max-width: 480px) {
     .hero {
         padding: 1.8rem 0.8rem;
+        border-radius: 0 0 16px 16px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+    
+    .hero::after {
+        height: 40px;
     }
 
     .hero img {
