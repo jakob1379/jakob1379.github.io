@@ -11,7 +11,7 @@ no_comments: true
 <div class="hero" markdown>
 <img src="https://github.com/jakob1379.png" alt="Jakob Stender Guldberg">
 
-# Jakob Stender Guldberg #
+# Home #
 
 Software Developer & Data Platform Engineer
 {.hero-subtitle}

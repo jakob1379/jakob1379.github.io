@@ -28,7 +28,7 @@
 
     /* Default text color for the hero, assuming a light image needs dark text */
     color: white;
-    
+
     /* Edge treatments for better visual appeal */
     border-radius: 0 0 24px 24px;
     overflow: hidden;
@@ -160,7 +160,7 @@
         border-radius: 0 0 20px 20px;
         box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
     }
-    
+
     .hero::after {
         height: 50px;
     }
@@ -194,7 +194,7 @@
         border-radius: 0 0 16px 16px;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
     }
-    
+
     .hero::after {
         height: 40px;
     }
