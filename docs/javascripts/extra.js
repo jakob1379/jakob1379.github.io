@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     return;
   }
 
-  const heroElements = Array.from(heroContainer.children);
+  const heroElements = Array.from(heroContainer.children).filter(el => el.id !== 'contact');
   const fadeDistance = 400; // The scroll distance over which to fade/blur
 
   // Calculate the scroll position where the animation should start.

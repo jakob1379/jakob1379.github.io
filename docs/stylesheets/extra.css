@@ -10,17 +10,17 @@
 /* Hero section styles */
 .hero {
     text-align: center;
-    padding: 4.0rem 1rem;
+    padding: 2.5rem 1rem;
 
     /* Background image properties */
     background-size: cover; /* Ensures the background covers the entire element */
     background-position: center; /* Centers the background image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
     background-color: var(--md-primary-bg-color); /* Fallback or base color */
-    
+
     /* Add a subtle dark overlay for better text readability */
     position: relative;
-    
+
     /* Default text color for the hero, assuming a light image needs dark text */
     color: white;
 }
@@ -66,30 +66,30 @@
 }
 
 .hero img {
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
   border-radius: 20px;
   object-fit: cover;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   border: 4px solid rgba(255, 255, 255, 0.3);
   /* Add margin-bottom if you want space between the image and the h1 */
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
     font-weight: 800;
     margin-top: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     color: inherit; /* Ensure H1 inherits the hero's text color */
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     line-height: 1.2;
 }
 
 .hero p {
-    font-size: 1.75rem;
+    font-size: 1.6rem;
     margin-top: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     color: inherit; /* Ensure paragraph inherits the hero's text color */
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     font-weight: 400;
@@ -128,24 +128,25 @@
 /* Responsive adjustments for hero section */
 @media screen and (max-width: 768px) {
     .hero {
-        padding: 3rem 1rem;
+        padding: 2rem 1rem;
     }
-    
+
     .hero img {
-        width: 140px;
-        height: 140px;
-        margin-bottom: 1.2rem;
+        width: 130px;
+        height: 130px;
+        margin-bottom: 0.6rem;
     }
-    
+
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.3rem;
+        margin-bottom: 0.2rem;
     }
-    
+
     .hero p {
-        font-size: 1.4rem;
-        margin-bottom: 1.5rem;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
     }
-    
+
     .hero .md-button {
         font-size: 1rem;
         padding: 0.6rem 1.2rem;
@@ -155,29 +156,32 @@
 
 @media screen and (max-width: 480px) {
     .hero {
-        padding: 2.5rem 0.8rem;
+        padding: 1.8rem 0.8rem;
     }
-    
+
     .hero img {
-        width: 120px;
-        height: 120px;
+        width: 110px;
+        height: 110px;
         border-radius: 16px;
         border-width: 3px;
+        margin-bottom: 0.5rem;
     }
-    
+
     .hero h1 {
-        font-size: 2rem;
+        font-size: 1.9rem;
+        margin-bottom: 0.2rem;
     }
-    
+
     .hero p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
     }
-    
+
     .hero .md-button {
         display: block;
         width: 80%;
         max-width: 250px;
-        margin: 0.8rem auto;
+        margin: 0.6rem auto;
     }
 }
 
@@ -232,6 +236,11 @@
 
 #contact, .scroll-indicator-wrapper {
     text-align: center;
+}
+
+#contact {
+    padding-top: 0.25rem;
+    margin-top: 0;
 }
 
 .section-title { /* Keep this if you're using {.section-title} in Markdown */
