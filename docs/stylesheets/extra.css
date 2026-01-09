@@ -285,7 +285,7 @@
 
 .parallax {
     position: relative;
-    padding-bottom: 5rem;
+    padding-bottom: 3rem;
 }
 
 .scroll-indicator-wrapper {
@@ -295,13 +295,7 @@
     right: 0;
     z-index: 3;
     pointer-events: none;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 0.5rem 1rem;
-    border-radius: 2rem;
-    backdrop-filter: blur(4px);
-    max-width: fit-content;
-    margin: 0 auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    text-align: center;
 }
 
 .scroll-indicator-wrapper p {
@@ -321,7 +315,6 @@
 @media screen and (max-width: 768px) {
     .scroll-indicator-wrapper {
         bottom: 1.2rem;
-        padding: 0.4rem 0.8rem;
     }
     .scroll-indicator-wrapper p {
         font-size: 1rem;
@@ -331,7 +324,6 @@
 @media screen and (max-width: 480px) {
     .scroll-indicator-wrapper {
         bottom: 0.8rem;
-        padding: 0.3rem 0.6rem;
     }
     .scroll-indicator-wrapper p {
         font-size: 0.9rem;
