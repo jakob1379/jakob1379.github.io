@@ -1,144 +1,189 @@
 ---
 design:
   theme: moderncv
+  entries:
+    allow_page_break_in_entries: false
 cv:
-  # My information
   name: Jakob Stender Guldberg
-  location: København, Denmark
-  phone: tel:+45-93-97-83-73
   email: jakob1379@gmail.com
-  website: https://jakob1379.github.io
+  website: https://jgalabs.dk
   social_networks:
     - network: LinkedIn
       username: jakobguldberg
     - network: GitHub
       username: jakob1379
   sections:
+    profile:
+      - >-
+        Software & Data Platform Engineer specializing in "industrializing" scientific
+        code. I
+        bridge the gap between complex physical domains and reliable software by transforming
+        experimental PoCs into robust production systems. I strive to develop "simple
+        solutions to
+        complex problems" through expertise in Developer Experience (DevEx), Modernization,
+        and
+        Operational Compliance (NIS2/ISO).
     experience:
-      - start_date: 2024
-        company: DIKU
-        position: Special Consultant
-        summary: >-
-          Enabling faculty to work more efficient with data pipelines setting by introducing
-          Prefect
-          enabling easy distributed computation and clear insights into errors making
-          debugging a
-          breeze.
-      - date: 2024
-        company: RES
-        position: Data Platform Engineer
-        summary: >-
-          Modernized a data platform and showed the feasibility of streaming data-processing
-          on IOT devices, allowing stakeholders to see data live.
-      - company: Evaxion Biotech A/S
-        position: IT Developer
-        start_date: 2022
-        end_date: 2024
+      - start_date: 2025-11
+        company: Stealth Mode Startup (Compliance/RegTech)
+        position: Software Consultant
         location: Copenhagen
+        summary: >-
+          Engineered a secure data platform for regulated markets, achieving readiness
+          for NIS2 and
+          ISO 27001 audits by architecting a strictly typed FastAPI/React system with
+          granular
+          Role-Based Access Control (RBAC).
+      - start_date: 2024-11
+        end_date: 2025-11
+        company: DIKU (University of Copenhagen) & Darerl
+        position: Special Consultant
+        location: Copenhagen
+        summary: >-
+          Increased research tool adoption by modernizing the "RootPainter" ML installer
+          using uv
+          and PEP standards, significantly lowering entry barriers for non-technical
+          users.
+          Accelerated Digital Twin workflows by refactoring experimental mesh-generation
+          code into
+          production-ready Prefect pipelines for reliable execution.
+      - start_date: 2024-04
+        end_date: 2024-09
+        company: RES (formerly Anemo Analytics)
+        position: Data Platform Engineer
+        location: Copenhagen
+        summary: >-
+          Validated real-time Edge Analytics feasibility to replace physical hard-drive
+          shipping,
+          achieving on-device Asset Health monitoring of wind turbines by architecting
+          a
+          high-performance Redpanda (Kafka) and DuckDB time-series pipeline on constrained
+          hardware.
+      - start_date: 2022-04
+        end_date: 2024-04
+        company: Evaxion Biotech A/S
+        position: IT Developer
+        location: Copenhagen
+        summary: >-
+          Delivered critical tooling for a 70-person biotech organization, focusing
+          on automation and data velocity.
         highlights:
-          - >-
-            Implemented Docker Swarm to reduce deployment cycles from months to
-            days.
-          - >-
-            Launched and managed an HPC cluster with systematic job queuing for
-            efficient compute utilization.
-          - Managed infrastructure using Ansible.
-          - >-
-            Initiated the company's first centralized data management system
-            (data warehouse), consolidating scattered storage and enabling leaner
-            processes.
-      - date: 2021-2022
+          - Accelerated literature review (20,000 articles in 3 hours vs 800/week
+            for a five-person team) by engineering an automated LLM pipeline using
+            LlamaIndex and Snakemake.
+          - Eliminated manual data entry bottlenecks, reducing process time from weeks
+            to minutes, by replacing fragile Excel workflows with a validated Streamlit
+            application.
+          - Optimized compute resources by setting up a 9-node on-prem HPC cluster
+            (Ansible/Slurm) and implementing NIS2-compliant security controls (Least
+            Privilege/Azure AD).
+          - Reduced IT request cycle time from weeks to days by implementing GitLab
+            Service Desk and converting inbound emails into assignable issues with
+            standardized triage.
+      - start_date: 2021-01
+        end_date: 2022-12
         company: Evaxion Biotech A/S
         position: Student Developer
-        summary: >-
-          Developed internal tools using Python and Django; managed PostgreSQL
-          databases and Django Rest Framework with FastAPI integrations.
-      - date: 2020
-        company: DIKU (Datalogisk Institut v. Københavns Universitet
         location: Copenhagen
+        summary: >-
+          Streamlined internal operations by developing robust RESTful integrations
+          and database
+          management tools using Django, FastAPI, and PostgreSQL.
+      - start_date: 2020-06
+        end_date: 2021-06
+        company: University of Copenhagen
+        position: Teaching Assistant — Applied Programming
+        summary: >-
+          Mentored students in the Master's course in performance-critical C++ programming,
+          focusing
+          on memory management and optimization for data-intensive applications.
+      - start_date: 2020-01
+        end_date: 2020-12
+        company: DIKU (University of Copenhagen)
         position: Student Developer
+        location: Copenhagen
         summary: >-
-          Developed an automated assignment correction and evaluation framework
-          in Canvas LMS, enhancing the efficiency of academic staff.
-      - date: 2020-2021
-        company: Copenhagen University
-        position: TA in Applied Programming
-        summary: >-
-          Educated students in C++ programming for data-intensive applications.
-      - date: 2018-2020
-        company: Obital
+          Reduced Teaching Assistant workload by 50% by engineering "Canvas Code Correction,"
+          an
+          automated grading platform integrating with the Canvas LMS API (Python/Bash).
+      - start_date: 2018-01
+        end_date: 2020-12
+        company: Obital (Acquired by GN)
         position: Software Developer
         location: Copenhagen
         summary: >-
-          Worked with pioneering eye-tracking for mobile applications. This
-          included coding efficient backend algorithms and frontend for mobile applications,
-          enabling disabled individuals to control their homes using only their eyes.
-      - company: Copenhagen University
-        position: Private Tutor in “Modelling and Analysis of Data”
-        summary: >-
-          Taught mathematical/statistical concepts and Python implementation,
-          emphasizing problem-solving and coding skills.
+          Enabled hands-free smart home control for users with motor disabilities
+          by developing a
+          deep-learning eye-tracking solution running on low-powered mobile devices.
     education:
-      - date: 2018–2022
-        institution: Copenhagen University
-        degree: MSc.
-        area: Bioinformatics (unfinished)
+      - start_date: 2018-09
+        end_date: 2022-06
+        institution: University of Copenhagen
+        degree: M.Sc. in Bioinformatics (Thesis Submitted)
+        area: Machine Learning & Medical Image Analysis
         summary: >-
-          Specializing in computer science with a focus on machine learning
-          and medical image analysis, I completed my thesis in medical image analysis
-          in collaboration with Rigshospitalet, achieving the highest grade (12).
-          This experience made me realize my passion lies in the broader aspects of
-          computer science, specifically machine learning and automation, leading
-          me to pursue a career path that aligns more closely with these interests.
-      - date: 2014-2018
-        institution: Copenhagen University
-        degree: B.Sc.
-        area: Naturvidenskab og IT (Scientific Computing)
+          Thesis (Grade 12/A): Developed an end-to-end pipeline to model tumor regression
+          from
+          longitudinal CT scans, enabling survival analysis (Kaplan-Meier) based on
+          estimated volume
+          changes over time. Implemented the high-performance workflow on a Slurm-managed
+          HPC
+          cluster. Transferred to industry to specialize in Data and Software Engineering.
+      - start_date: 2014-09
+        end_date: 2018-06
+        institution: University of Copenhagen
+        degree: B.Sc. in Science and IT
+        area: Scientific Computing (Physics Specialization)
         summary: >-
-          Interdisciplinary education with a strong foundation in mathematical
-          modeling, computer science, and a further specialization in physics.
-      - date: 2010-2013
-        institution: Faaborg Gymnasium
-        degree: STX
-        area: Physics, Math, and Chemistry
-    volunteering:
-      - name: Volunteering at Roskilde Festival
-        date: 2012-2024
-        location: Roskilde
-        summary: >-
-          Co-managed IT post-festival operations, leading a team of 30 volunteers
-          in logistics and equipment dismantling and retrieval.
-      - date: 2019-2022
-        name: Housing Community Chairman
-        location: Copenhagen
-        summary: >-
-          Managed budgets and led large-scale renovation projects, demonstrating
-          leadership and organizational skills.
-      - name: Volunteering Tutor
-        date: 2018
-        location: Copenhagen University
-        summary: >-
-          Provided private tutoring in mathematics and physics, specializing
-          in vector analysis and differential equations.
-      - name: Volunteering for “Mellemfolkeligt Samvirke”
-        date: 2014
-        location: El Salvador
-        summary: >-
-          Engaged in community education and development projects, highlighting
-          adaptability and cross-cultural communication skills.
+          Interdisciplinary foundation in Mathematical Modeling, Computer Science,
+          and Physics.
     extra_curricular_activities:
-      - name: 'NixOS & Flakes Book: An unofficial book for beginners'
-        date: 2024
+      - start_date: 2025-11
+        name: Canvas Code Correction v2
         summary: >-
-          Solid foundation to work with the reproducible and immutable NixOS, Nix,
-          and Nix-Flakes
-      - name: TalkPython
-        date: 2023
+          Re-architecting grading platform for cloud scalability using Prefect and
+          Pydantic to
+          implement modern observability and security practices.
+      - date: 2024
+        name: NixOS & Flakes Guide
         summary: >-
-          Courses on Sphinx Documentation, Cookiecutter, Ansible, Pytest, FastAPI,
-          Django, and
-          Twilio
-      - name: RefactorGuru
-        date: 2022
+          Mastered reproducible and immutable system configuration using NixOS and
+          Nix Flakes. Full
+          declarative configuration and implementation patterns are available in my
+          # link("https://github.com/jakob1379/nix-config")[nix-config] repository.
+      - date: 2023
+        name: Continuous Learning (Talk Python)
         summary: >-
-          Online book and material on design patterns and refactoring strategies
+          Advanced coursework in FastAPI, Ansible, and Pytest to maintain cutting-edge
+          Python proficiency.
+      - date: 2020–Present
+        name: Open-source contributions
+        summary: >-
+          Contribute via PRs to public repositories by reading issues and identifying
+          possible
+          pain-points I can help with through a review-first workflows by giving and
+          receiving
+          actionable feedback, and using AI-assisted development in PR scrutiny (tests,
+          edge cases,
+          refactor opportunities).
+    technologies:
+      - label: Languages & Core
+        details: >-
+          Python (11y): FastAPI, Django, Pydantic, Typer, AnyIO.
+          Data: Polars, DuckDB, SQLAlchemy, NumPy.
+          Other: Bash, SQL, C++
+      - label: Infrastructure
+        details: >-
+          DevOps: Docker, Ansible, Nix, Terraform.
+          CI/CD: GitHub Actions, GitLab CI.
+          Observability: Prometheus, Grafana, Loki.
+      - label: Data & Domain
+        details: >-
+          IoT/Edge: Redpanda (Kafka), MQTT, Edge Analytics.
+          Orchestration: Airflow, Prefect, Slurm (HPC).
+          Compliance: NIS2, GDPR, ISO 27001.
+    languages:
+      - label: Danish
+        details: Native
+      - label: English
+        details: Fluent
