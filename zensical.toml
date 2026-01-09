@@ -6,54 +6,6 @@ copyright = "Copyright © 2025 Jakob Stender Guldberg"
 extra_css = ["stylesheets/extra.css"]
 extra_javascript = ["javascripts/extra.js"]
 
-[project.theme]
-variant = "modern"
-custom_dir = "overrides"
-
-[project.theme.icon]
-repo = "fontawesome/brands/github"
-
-# Palette toggle for automatic mode
-[[project.theme.palette]]
-media = "(prefers-color-scheme)"
-toggle.icon = "material/brightness-auto"
-toggle.name = "Switch to light mode"
-
-# Palette toggle for light mode
-[[project.theme.palette]]
-media = "(prefers-color-scheme: light)"
-scheme = "default"
-primary = "teal"
-accent = "indigo"
-toggle.icon = "material/brightness-7"
-toggle.name = "Switch to dark mode"
-
-# Palette toggle for dark mode
-[[project.theme.palette]]
-media = "(prefers-color-scheme: dark)"
-scheme = "slate"
-primary = "teal"
-accent = "indigo"
-toggle.icon = "material/brightness-4"
-toggle.name = "Switch to system preference"
-
-features = [
-    "content.code.annotate",
-    "content.code.copy",
-    "content.tabs.link",
-    "navigation.expand",
-    "navigation.footer",
-    "navigation.indexes",
-    "navigation.instant",
-    "navigation.instant.prefetch",
-    "navigation.instant.progress",
-    "navigation.sections",
-    "navigation.tabs",
-    "navigation.top",
-    "navigation.tracking",
-    "toc.follow"
-]
-
 [[project.extra.social]]
 icon = "fontawesome/brands/github"
 link = "https://github.com/jakob1379"
@@ -81,11 +33,6 @@ name = "PyPi"
 [project.markdown_extensions.footnotes]
 
 [project.markdown_extensions.md_in_html]
-
-[project.markdown_extensions.tables]
-
-[project.markdown_extensions.toc]
-permalink = true
 
 [project.markdown_extensions.pymdownx.arithmatex]
 generic = true
@@ -120,6 +67,58 @@ alternate_style = true
 custom_checkbox = true
 
 [project.markdown_extensions.pymdownx.tilde]
+
+[project.markdown_extensions.tables]
+
+[project.markdown_extensions.toc]
+permalink = true
+
+[project.theme]
+variant = "classic"
+custom_dir = "overrides"
+features = [
+    "content.code.annotate",
+    "content.code.copy",
+    "content.tabs.link",
+    "navigation.expand",
+    "navigation.footer",
+    "navigation.indexes",
+    "navigation.instant",
+    "navigation.instant.prefetch",
+    "navigation.instant.progress",
+    "navigation.sections",
+    "navigation.tabs",
+    "navigation.top",
+    "navigation.tracking",
+    "toc.follow"
+]
+
+[project.theme.icon]
+repo = "fontawesome/brands/github"
+
+# Palette toggle for automatic mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+toggle.icon = "material/brightness-auto"
+toggle.name = "Switch to light mode"
+
+# Palette toggle for light mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+primary = "teal"
+accent = "indigo"
+toggle.icon = "material/brightness-7"
+toggle.name = "Switch to dark mode"
+
+# Palette toggle for dark mode
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+primary = "teal"
+accent = "indigo"
+toggle.icon = "material/brightness-4"
+toggle.name = "Switch to system preference"
 
 # Note: Zensical has built-in equivalents for social, minify_html, and blog plugins
 # The blog functionality is built-in and should work with the existing structure
