@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     return;
   }
 
-  const heroElements = Array.from(heroContainer.children).filter(el => el.id !== 'contact');
+  const heroElements = Array.from(heroContainer.children).filter(el => el.id !== 'contact' && el !== scrollIndicator);
   const fadeDistance = 400; // The scroll distance over which to fade/blur
 
   // Calculate the scroll position where the animation should start.
@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
       el.style.opacity = heroOpacity;
       el.style.filter = `blur(${heroBlur}px)`;
     });
+
+    scrollIndicator.style.opacity = heroOpacity;
 
     contentPane.style.opacity = progress;
   };
