@@ -31,7 +31,7 @@ Feel free to reach out if you want to collaborate on a project.
 </div>
 
 <div class="scroll-indicator-wrapper" markdown>
-:fontawesome-solid-chevron-down: Scroll to see more
+<span class="scroll-arrow"></span> Scroll to see more
 </div>
 </section>
 

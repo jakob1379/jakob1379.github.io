@@ -312,6 +312,11 @@
     vertical-align: middle;
 }
 
+.scroll-indicator-wrapper .scroll-arrow {
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
 @media screen and (max-width: 768px) {
     .scroll-indicator-wrapper {
         bottom: 1.2rem;
