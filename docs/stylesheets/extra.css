@@ -7,6 +7,11 @@
     padding: 0;
 }
 
+/* Hide headerlinks on homepage */
+[data-md-path="."] .headerlink {
+    display: none;
+}
+
 /* Hero section styles */
 .hero {
     text-align: center;
@@ -252,11 +257,11 @@
     color: var(--md-primary-fg-color);
 }
 
-.grid.cards .icon {
-    font-size: 4rem;
-    color: var(--md-accent-fg-color);
+.grid.cards .headerlink {
+    display: none;
 }
 
+.grid.cards .icon,
 .grid.cards .md-icon {
     font-size: 4rem;
     color: var(--md-accent-fg-color);
