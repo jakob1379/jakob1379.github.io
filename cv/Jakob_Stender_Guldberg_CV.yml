@@ -1,8 +1,6 @@
 ---
 design:
   theme: moderncv
-  entries:
-    allow_page_break_in_entries: false
 cv:
   name: Jakob Stender Guldberg
   email: jakob1379@gmail.com
