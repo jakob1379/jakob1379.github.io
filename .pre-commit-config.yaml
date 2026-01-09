@@ -103,8 +103,8 @@ repos:
     # Local machine hooks (no external repo)
     hooks:
       - id: mkdocs_build_check
-        name: Check mkdocs builds
+        name: Check zensical builds
         language: system
-        entry: uv run mkdocs build
-        args: [--strict]
+        entry: uv run zensical build
+        args: []
         pass_filenames: false

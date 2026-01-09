@@ -1,7 +1,8 @@
 [dependency-groups]
 dev = [
   "poethepoet>=0.40.0",
-  "prek>=0.2.27"
+  "prek>=0.2.27",
+  "ghp-import"
 ]
 
 [project]
@@ -11,13 +12,10 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-  "mkdocs-material[git,imaging,recommended]>=9.7.1",
-  "mkdocs-minify-html-plugin>=0.3.9",
-  "mkdocs>=1.6.1",
+  "zensical>=0.0.15",
   "prek>=0.2.27",
   "pymdown-extensions>=10.20",
-  "rendercv[full]<2.4",
-  "zensical>=0.0.15"
+  "rendercv[full]<2.4"
 ]
 
 [tool.poe.tasks]
@@ -31,29 +29,29 @@ update_flake = "nix flake update"
 update = {shell = 'set -e; poe update_flake & poe update_pre-commit & poe update_python_packages & wait', help = "Update dependencies in parallel"}
 # build
 build_rendercv = {shell = 'rendercv render -o $(mktemp -d) --pdf-path docs/assets/Jakob_Stender_Guldberg_CV.pdf ./cv/Jakob_Stender_Guldberg_CV.yml'}
-build_mkdocs = 'mkdocs build'
+build_zensical = 'zensical build'
 build = {sequence = [
   "build_rendercv",
-  "build_mkdocs"
-], help = "Build the CV and the MkDocs site."}
+  "build_zensical"
+], help = "Build the CV and the Zensical site."}
 # deploy
-mkdocs_deploy = {cmd = "mkdocs gh-deploy --force"}
+ghpages_deploy = {shell = "ghp-import -n -p -f site"}
 deploy = {deps = [
   "build",
-  "mkdocs_deploy"
+  "ghpages_deploy"
 ], help = "Build the site and deploy to GitHub Pages.", cmd = "echo Successfully deployed pages!"}
 # serve
-_mkdocs_serve = {cmd = "mkdocs serve"}
+_zensical_serve = {cmd = "zensical serve"}
 serve = {sequence = [
   "build_rendercv",
-  "_mkdocs_serve"
-], help = "Serve the mkdocs pages locally."}
+  "_zensical_serve"
+], help = "Serve the Zensical pages locally."}
 # clean
-_clean_mkdocs = {shell = 'rm -rf site .cache/mkdocs .cache/mkdocs-material .cache'}
+_clean_zensical = {shell = 'rm -rf site .cache/zensical .cache/mkdocs .cache/mkdocs-material .cache'}
 _clean_rendercv = {shell = 'rm -rf .rendercv .rendercv-cache .cache/rendercv docs/assets/Jakob_Stender_Guldberg_CV.pdf'}
 _clean_py = {shell = 'find . -type d -name "__pycache__" -prune -exec rm -rf {} +; find . -type f -name "*.py[co]" -delete'}
 clean = {sequence = [
-  "_clean_mkdocs",
+  "_clean_zensical",
   "_clean_rendercv",
   "_clean_py"
-], help = "Remove MkDocs build/cache, RenderCV artifacts, and Python bytecode caches."}
+], help = "Remove Zensical build/cache, RenderCV artifacts, and Python bytecode caches."}

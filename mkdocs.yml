@@ -7,6 +7,7 @@ site_description: Contact details and blog posts by Jakob Stender Guldberg
 copyright: Copyright &copy; 2025 Jakob Stender Guldberg
 theme:
   name: material
+  variant: classic
   icon:
     repo: fontawesome/brands/github
   custom_dir: overrides
