@@ -7,4 +7,4 @@
 
 </div>
 
-This repository hosts the source code for my personal website and blog. It's built using [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) and automatically deployed to GitHub Pages using Github Actions.
+This repository hosts the source code for my personal website and blog. It's built using [Zensical](https://zensical.org/) and automatically deployed to GitHub Pages using Github Actions.

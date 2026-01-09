@@ -4,7 +4,7 @@ hide:
 - navigation
 - toc
 - footer
-
+no_comments: true
 ---
 
 <section class="pane parallax" markdown>

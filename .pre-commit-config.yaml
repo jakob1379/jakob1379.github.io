@@ -102,7 +102,7 @@ repos:
   - repo: local
     # Local machine hooks (no external repo)
     hooks:
-      - id: mkdocs_build_check
+      - id: zensical_build_check
         name: Check zensical builds
         language: system
         entry: uv run zensical build
