@@ -87,6 +87,7 @@ repos:
     hooks:
       - id: toml-sort-fix
         files: \.toml$
+        exclude: ^zensical\.toml$
   - repo: https://github.com/pre-commit/pre-commit-hooks
     # Collection of generic git hooks
     rev: v6.0.0
