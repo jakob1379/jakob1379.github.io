@@ -315,9 +315,14 @@
 
 .scroll-indicator-wrapper p {
     margin: 0;
-    color: white;
+    color: var(--md-default-fg-color);
     font-size: 1.1rem;
     font-weight: 500;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+[data-md-color-scheme="slate"] .scroll-indicator-wrapper p {
+    color: white;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
@@ -330,10 +335,15 @@
 .scroll-indicator-wrapper .scroll-arrow {
     display: inline-block;
     font-size: 2.5rem;
-    color: white;
+    color: var(--md-default-fg-color);
     line-height: 1;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
     animation: subtle-bounce 2s infinite ease-in-out;
+}
+
+[data-md-color-scheme="slate"] .scroll-indicator-wrapper .scroll-arrow {
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 @media (prefers-reduced-motion: reduce) {
