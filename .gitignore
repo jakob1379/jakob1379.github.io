@@ -1,7 +1,6 @@
 *~
 .aider*
 .direnv
-.envrc
 /.cache/
 /cv/rendercv_output/
 rendercv_output/
