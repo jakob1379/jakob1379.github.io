@@ -218,10 +218,9 @@
     }
 
     .hero .md-button {
-        display: block;
-        width: 80%;
-        max-width: 250px;
-        margin: 0.6rem auto;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        margin: 0.3rem;
     }
 }
 
