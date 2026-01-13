@@ -10,7 +10,7 @@ off with. So here goes nothing!
 
 ---
 
-# Managing Secrets in Dotenv Files with the Kerying #
+# Managing Secrets in Dotenv Files with the Keyring #
 
 When developing software, we often fine ourselves relying on `.env` files to store configuration and
 secrets. But this common practice has some serious drawbacks as anyone with access to your computer

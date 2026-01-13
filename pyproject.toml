@@ -41,7 +41,7 @@ deploy = {deps = [
   "ghpages_deploy"
 ], help = "Build the site and deploy to GitHub Pages.", cmd = "echo Successfully deployed pages!"}
 # serve
-_zensical_serve = {cmd = "zensical serve"}
+_zensical_serve = {cmd = "zensical serve -a localhost:8888"}
 serve = {sequence = [
   "build_rendercv",
   "_zensical_serve"
