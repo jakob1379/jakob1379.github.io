@@ -315,6 +315,13 @@
 .scroll-indicator-wrapper .scroll-arrow {
     display: inline-block;
     margin-right: 0.5rem;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-indicator-wrapper .scroll-arrow {
+        animation: none;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -324,6 +331,9 @@
     .scroll-indicator-wrapper p {
         font-size: 1rem;
     }
+    .scroll-indicator-wrapper .scroll-arrow {
+        animation-duration: 2.2s;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -332,6 +342,9 @@
     }
     .scroll-indicator-wrapper p {
         font-size: 0.9rem;
+    }
+    .scroll-indicator-wrapper .scroll-arrow {
+        animation-duration: 2.4s;
     }
 }
 
@@ -343,6 +356,18 @@
 }
 
 /* --- Animation styles --- */
+
+/* Pulse animation for scroll indicator */
+@keyframes pulse {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateY(-2px);
+        opacity: 1;
+    }
+}
 
 /* Optimize hero elements for animation */
 .parallax > * {
