@@ -186,6 +186,10 @@
         padding: 0.6rem 1.2rem;
         margin: 0.4rem;
     }
+
+    #contact p .md-button {
+        margin: 0;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -218,10 +222,9 @@
     }
 
     .hero .md-button {
-        display: block;
-        width: 80%;
-        max-width: 250px;
-        margin: 0.6rem auto;
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        margin: 0;
     }
 }
 
@@ -279,8 +282,108 @@
 }
 
 #contact {
-    padding-top: 0.25rem;
+    padding-top: .25rem;
     margin-top: 0;
+}
+
+#contact p {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+#contact p .md-button {
+    margin: 0;
+}
+
+.parallax {
+    position: relative;
+    padding-bottom: 3rem;
+}
+
+.scroll-indicator-wrapper {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    pointer-events: none;
+    text-align: center;
+}
+
+.scroll-indicator-wrapper p {
+    margin: 0;
+    color: var(--md-default-fg-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+[data-md-color-scheme="slate"] .scroll-indicator-wrapper p {
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.scroll-indicator-wrapper .twemoji {
+    display: inline-block;
+    margin-right: 0.5rem;
+    vertical-align: middle;
+}
+
+.scroll-indicator-wrapper .scroll-arrow {
+    display: inline-block;
+    font-size: 2.5rem;
+    color: var(--md-default-fg-color);
+    opacity: 0.5;
+    line-height: 1;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+    animation: subtle-bounce 2s infinite ease-in-out;
+}
+
+[data-md-color-scheme="slate"] .scroll-indicator-wrapper .scroll-arrow {
+    color: white;
+    opacity: 0.5;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-indicator-wrapper .scroll-arrow {
+        animation: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .scroll-indicator-wrapper {
+        bottom: 1.2rem;
+    }
+    .scroll-indicator-wrapper p {
+        font-size: 1rem;
+    }
+    .scroll-indicator-wrapper .scroll-arrow {
+        animation-duration: 2.2s;
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .scroll-indicator-wrapper {
+        bottom: 0.8rem;
+    }
+    .scroll-indicator-wrapper p {
+        font-size: 0.9rem;
+    }
+    .scroll-indicator-wrapper .scroll-arrow {
+        animation-duration: 2.4s;
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #contact p {
+        gap: 1rem 0.3rem;
+    }
 }
 
 .section-title { /* Keep this if you're using {.section-title} in Markdown */
@@ -291,6 +394,22 @@
 }
 
 /* --- Animation styles --- */
+
+/* Subtle bounce animation for scroll indicator */
+@keyframes subtle-bounce {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.9;
+    }
+    30% {
+        transform: translateY(2px);
+        opacity: 1;
+    }
+    60% {
+        transform: translateY(-1px);
+        opacity: 0.95;
+    }
+}
 
 /* Optimize hero elements for animation */
 .parallax > * {
