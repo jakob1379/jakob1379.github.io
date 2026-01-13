@@ -37,7 +37,7 @@ Feel free to reach out if you want to collaborate on a project.
 
 <section class="pane" id="content-pane" markdown>
 <!-- Removed: <div id="initial-fade-overlay" class="fade-overlay"></div> -->
-<div class="section" markdown> <!-- Removed: hidden class -->
+<div id="about" class="section" markdown> <!-- Removed: hidden class -->
 ## About Me {.section-title} ##
 
 A passionate and experienced software developer with a knack for creating simple and usable
