@@ -31,7 +31,7 @@ Feel free to reach out if you want to collaborate on a project.
 </div>
 
 <div class="scroll-indicator-wrapper" markdown>
-<span class="scroll-arrow">↓</span>
+<span class="scroll-arrow">:fontawesome-solid-angles-down:</span>
 </div>
 </section>
 
