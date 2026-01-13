@@ -220,7 +220,7 @@
     .hero .md-button {
         display: inline-block;
         padding: 0.5rem 1rem;
-        margin: 0.8rem 0.3rem;
+        margin: 1rem 0.3rem;
     }
 }
 
@@ -280,6 +280,10 @@
 #contact {
     padding-top: 0.25rem;
     margin-top: 0;
+}
+
+#contact p {
+    margin: 0;
 }
 
 .parallax {
