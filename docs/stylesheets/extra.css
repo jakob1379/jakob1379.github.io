@@ -304,7 +304,7 @@
 }
 
 .scroll-indicator-wrapper {
-    position: absolute;
+    position: fixed;
     bottom: 1.5rem;
     left: 0;
     right: 0;
@@ -356,7 +356,7 @@
 
 @media screen and (max-width: 768px) {
     .scroll-indicator-wrapper {
-        bottom: 1.2rem;
+        bottom: 1.5rem;
     }
     .scroll-indicator-wrapper p {
         font-size: 1rem;
@@ -369,7 +369,7 @@
 
 @media screen and (max-width: 480px) {
     .scroll-indicator-wrapper {
-        bottom: 0.8rem;
+        bottom: 2rem;
     }
     .scroll-indicator-wrapper p {
         font-size: 0.9rem;
