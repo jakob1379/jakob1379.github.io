@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
       el.style.filter = `blur(${heroBlur}px)`;
     });
 
-    scrollIndicator.style.opacity = 0.5;
+    scrollIndicator.style.opacity = 0.5 * heroOpacity;
 
     contentPane.style.opacity = progress;
   };
