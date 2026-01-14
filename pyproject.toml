@@ -2,7 +2,8 @@
 dev = [
   "poethepoet>=0.40.0",
   "prek>=0.2.27",
-  "ghp-import"
+  "ghp-import",
+  "minify-html"
 ]
 
 [project]
@@ -30,16 +31,21 @@ update = {shell = 'set -e; poe update_flake & poe update_pre-commit & poe update
 # build
 build_rendercv = {shell = 'rendercv render --pdf-path docs/assets/Jakob_Stender_Guldberg_CV.pdf ./cv/Jakob_Stender_Guldberg_CV.yml'}
 build_zensical = 'zensical build'
+minify = {shell = 'python scripts/minify.py', help = "Minify HTML, CSS, and JS files in the built site."}
 build = {sequence = [
   "build_rendercv",
   "build_zensical"
 ], help = "Build the CV and the Zensical site."}
+build_prod = {sequence = [
+  "build",
+  "minify"
+], help = "Build and minify for production."}
 # deploy
 ghpages_deploy = {shell = "ghp-import -n -p -f site"}
-deploy = {deps = [
-  "build",
+deploy = {sequence = [
+  "build_prod",
   "ghpages_deploy"
-], help = "Build the site and deploy to GitHub Pages.", cmd = "echo Successfully deployed pages!"}
+], help = "Build the site (with minification) and deploy to GitHub Pages.", cmd = "echo Successfully deployed pages!"}
 # serve
 _zensical_serve = {cmd = "zensical serve -a localhost:8888"}
 serve = {sequence = [
