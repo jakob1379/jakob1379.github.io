@@ -18,6 +18,8 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
+      - name: Run pre-commit validation
+        run: nix develop -c uv run pre-commit run --all-files
       # check for cv pdf cache or build
       - id: cache_rendercv
         uses: actions/cache@v4

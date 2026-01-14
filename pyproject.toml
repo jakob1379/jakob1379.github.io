@@ -2,7 +2,8 @@
 dev = [
   "poethepoet>=0.40.0",
   "prek>=0.2.27",
-  "ghp-import"
+  "ghp-import",
+  "pre-commit"
 ]
 
 [project]
