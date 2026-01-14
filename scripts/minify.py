@@ -74,7 +74,7 @@ def main() -> None:
     """Main entry point."""
     global SITE_DIR
     SITE_DIR = Path.cwd() / "site"
-    
+
     if not SITE_DIR.exists():
         print(f"Error: Site directory not found at {SITE_DIR}")
         print("Run 'zensical build' first.")
