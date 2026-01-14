@@ -37,30 +37,9 @@
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
-/* Add overlay for better text contrast */
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-}
 
-/* Add bottom gradient for smoother edge transition */
-.hero::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    background: radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
-    z-index: 1;
-    pointer-events: none;
-}
+
+
 
 /* Ensure hero content is above overlay */
 .hero > * {
@@ -75,7 +54,10 @@
 
 /* Apply background image based on custom property */
 .hero {
-  background-image: var(--hero-background-image);
+  background-image: 
+    radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.3) 0%, transparent 70%),
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    var(--hero-background-image);
 }
 
 /* For dark theme (slate is the default dark scheme name) */
@@ -85,14 +67,12 @@
   color: white;
 }
 
-/* Adjust overlay for dark theme if needed */
-[data-md-color-scheme="slate"] .hero::before {
-  background: rgba(0, 0, 0, 0.5);
-}
-
-/* Adjust bottom gradient for dark theme */
-[data-md-color-scheme="slate"] .hero::after {
-  background: radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+/* Adjust overlay for dark theme */
+[data-md-color-scheme="slate"] .hero {
+  background-image: 
+    radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.4) 0%, transparent 70%),
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    var(--hero-background-image);
 }
 
 .hero img {
@@ -437,12 +417,99 @@
     }
 }
 
-/* Optimize hero elements for animation */
-.parallax > * {
-    will-change: opacity, filter;
+/* --- Scroll-driven animations (modern browsers) --- */
+@supports (animation-timeline: view()) {
+  /* Define view timeline on contact section */
+  #contact {
+    view-timeline-name: --contact-timeline;
+    view-timeline-axis: block;
+  }
+
+  /* Fade out hero elements as contact exits viewport */
+  @keyframes fade-out-hero {
+    from {
+      opacity: 1;
+      filter: blur(0);
+    }
+    to {
+      opacity: 0;
+      filter: blur(5px);
+    }
+  }
+
+  /* Fade out scroll indicator (opacity only) */
+  @keyframes fade-out-scroll-indicator {
+    from {
+      opacity: 0.5;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  /* Fade in content pane as contact exits viewport */
+  @keyframes fade-in-content {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* Apply animations to hero elements */
+  .parallax > *:not(#contact):not(.scroll-indicator-wrapper) {
+    animation: fade-out-hero linear both;
+    animation-timeline: view(--contact-timeline);
+    animation-range: exit 0% exit 400px;
+  }
+
+  /* Apply animation to content pane */
+  #content-pane {
+    animation: fade-in-content linear both;
+    animation-timeline: view(--contact-timeline);
+    animation-range: exit 0% exit 400px;
+    opacity: 1; /* Ensure content is visible when animation completes */
+  }
+
+  /* Scroll indicator fades with hero */
+  .scroll-indicator-wrapper {
+    animation: fade-out-scroll-indicator linear both;
+    animation-timeline: view(--contact-timeline);
+    animation-range: exit 0% exit 400px;
+  }
 }
 
-#content-pane {
-    will-change: opacity;
-    opacity: 0; /* Content starts transparent and is faded in by JS */
+/* Fallback for browsers without scroll-driven animations */
+@supports not (animation-timeline: view()) {
+  /* Initial state managed by JS */
+  .parallax > *:not(#contact):not(.scroll-indicator-wrapper) {
+    opacity: 1;
+    filter: blur(0);
+    transition: opacity 0.3s ease, filter 0.3s ease;
+  }
+
+  #content-pane {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .scroll-indicator-wrapper {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  /* When JS adds .hero-exiting class to body */
+  body.hero-exiting .parallax > *:not(#contact):not(.scroll-indicator-wrapper) {
+    opacity: 0;
+    filter: blur(5px);
+  }
+
+  body.hero-exiting .scroll-indicator-wrapper {
+    opacity: 0;
+  }
+
+  body.hero-exiting #content-pane {
+    opacity: 1;
+  }
 }
