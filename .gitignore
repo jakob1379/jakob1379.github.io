@@ -3,6 +3,7 @@
 .direnv
 /.cache/
 /cv/rendercv_output/
+cv/docs/
 rendercv_output/
 /site/
 /docs/assets/Jakob_Stender_Guldberg_CV.pdf
