@@ -14,7 +14,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
   "zensical>=0.0.15",
-  "prek>=0.2.27",
+  "prek>=0.2.28",
   "pymdown-extensions>=10.20",
   "rendercv[full]>=2.6"
 ]
@@ -29,18 +29,37 @@ update_python_packages = {shell = "uv sync --upgrade && uvx uv-bump"}
 update_flake = "nix flake update"
 update = {shell = 'set -e; poe update_flake & poe update_pre-commit & poe update_python_packages & wait', help = "Update dependencies in parallel"}
 # build
-build_rendercv = {shell = 'rendercv render --pdf-path docs/assets/Jakob_Stender_Guldberg_CV.pdf ./cv/Jakob_Stender_Guldberg_CV.yml'}
+build_rendercv = {shell = 'cd cv && rendercv render --pdf-path ../docs/assets/Jakob_Stender_Guldberg_CV.pdf Jakob_Stender_Guldberg_CV.yml'}
 build_zensical = 'zensical build'
+minify = {shell = '''
+cd site && \
+find . -name "*.html" -exec minhtml --minify-js --minify-css {} + && \
+find . -name "*.css" -exec minhtml {} + && \
+find . -name "*.js" -exec minhtml {} +
+''', help = "Minify HTML, CSS, and JS files in the built site."}
 build = {sequence = [
   "build_rendercv",
   "build_zensical"
 ], help = "Build the CV and the Zensical site."}
-# deploy
-ghpages_deploy = {shell = "ghp-import -n -p -f site"}
-deploy = {deps = [
+build_prod = {sequence = [
   "build",
+  "minify"
+], help = "Build and minify for production."}
+# deploy
+ghpages_deploy = {shell = '''
+# Create or update gh-pages branch with site content
+git checkout --orphan gh-pages 2>/dev/null || git checkout gh-pages
+git rm -rf . || true
+cp -r site/* .
+git add --all
+git commit -m "Deploy $(date +'%Y-%m-%d %H:%M:%S')" --allow-empty
+git push origin gh-pages --force
+git checkout -
+''', help = "Deploy site to GitHub Pages branch"}
+deploy = {sequence = [
+  "build_prod",
   "ghpages_deploy"
-], help = "Build the site and deploy to GitHub Pages.", cmd = "echo Successfully deployed pages!"}
+], help = "Build the site (with minification) and deploy to GitHub Pages."}
 # serve
 _zensical_serve = {cmd = "zensical serve -a localhost:8888"}
 serve = {sequence = [
