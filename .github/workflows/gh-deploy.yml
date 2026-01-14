@@ -33,7 +33,9 @@ jobs:
         uses: actions/cache@v4
         with:
           path: site
-          key: ${{ runner.os }}-${{ hashFiles('docs/**/*', 'zensical.toml', 'pyproject.toml', 'uv.lock', 'overrides/**/*', '.markdownlint.yml', 'flake.nix', 'flake.lock') }}
+          key: ${{ runner.os }}-${{ hashFiles('docs/**/*', 'zensical.toml', 'pyproject.toml',
+            'uv.lock', 'overrides/**/*', '.markdownlint.yml', 'flake.nix', 'flake.lock')
+            }}
       - name: Build zensical
         if: steps.cache_zensical.outputs.cache-hit != 'true'
         run: nix develop -c uv run poe build_zensical
