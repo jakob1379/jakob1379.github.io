@@ -65,7 +65,7 @@
 
 /* Apply background image based on custom property */
 .hero {
-  background-image: 
+  background-image:
     var(--hero-radial-gradient),
     var(--hero-linear-gradient),
     var(--hero-background-image);
