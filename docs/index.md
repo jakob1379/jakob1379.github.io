@@ -5,13 +5,14 @@ hide:
 - toc
 - footer
 no_comments: true
+title: Home
 ---
 
 <section class="pane parallax" markdown>
 <div class="hero" markdown>
 <img src="https://github.com/jakob1379.png" alt="Jakob Stender Guldberg">
 
-# Home #
+# Jakob Stender Guldberg #
 
 Software Developer & Data Platform Engineer
 {.hero-subtitle}

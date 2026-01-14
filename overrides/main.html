@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block htmltitle %}
+  {% set pg_title = page.meta.title if page.meta and page.meta.title else page.title %}
+  <title>
+    {% if page.url == '.' or page.url == '' or page.url == '/' %}
+      {{ config.site_name }}
+    {% else %}
+      {{ pg_title }} - {{ config.site_name }}
+    {% endif %}
+  </title>
+{% endblock %}
