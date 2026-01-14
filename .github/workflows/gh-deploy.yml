@@ -4,19 +4,25 @@ on:
   push:
     branches: [main]
 permissions:
-  contents: write
+  contents: read
+  pages: write
   id-token: write
 jobs:
   deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
       - name: Configure Git Credentials
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
       - uses: DeterminateSystems/nix-installer-action@main
-      - uses: DeterminateSystems/magic-nix-cache-action@main
+        with:
+          flakehub: false
       - uses: DeterminateSystems/flake-checker-action@main
       # check for cv pdf cache or build
       - id: cache_rendercv
@@ -39,5 +45,10 @@ jobs:
       - name: Build zensical
         if: steps.cache_zensical.outputs.cache-hit != 'true'
         run: nix develop -c uv run poe build_zensical
-      - name: Build and Deploy Site
-        run: nix develop -c uv run poe deploy
+      - name: Minify site
+        run: nix develop -c uv run poe minify
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - uses: actions/deploy-pages@v4
+        id: deployment
