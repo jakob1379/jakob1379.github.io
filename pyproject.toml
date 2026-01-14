@@ -29,7 +29,7 @@ update_python_packages = {shell = "uv sync --upgrade && uvx uv-bump"}
 update_flake = "nix flake update"
 update = {shell = 'set -e; poe update_flake & poe update_pre-commit & poe update_python_packages & wait', help = "Update dependencies in parallel"}
 # build
-build_rendercv = {shell = 'rendercv render --pdf-path docs/assets/Jakob_Stender_Guldberg_CV.pdf ./cv/Jakob_Stender_Guldberg_CV.yml'}
+build_rendercv = {shell = 'cd cv && rendercv render --pdf-path ../docs/assets/Jakob_Stender_Guldberg_CV.pdf Jakob_Stender_Guldberg_CV.yml'}
 build_zensical = 'zensical build'
 minify = {shell = 'python scripts/minify.py', help = "Minify HTML, CSS, and JS files in the built site."}
 build = {sequence = [
@@ -45,7 +45,7 @@ ghpages_deploy = {shell = "ghp-import -n -p -f site"}
 deploy = {sequence = [
   "build_prod",
   "ghpages_deploy"
-], help = "Build the site (with minification) and deploy to GitHub Pages.", cmd = "echo Successfully deployed pages!"}
+], help = "Build the site (with minification) and deploy to GitHub Pages."}
 # serve
 _zensical_serve = {cmd = "zensical serve -a localhost:8888"}
 serve = {sequence = [
