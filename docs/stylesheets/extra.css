@@ -240,9 +240,15 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
     justify-content: center;
+    justify-items: center;
     width: fit-content;
     margin: 0 auto;
     padding: 0 1rem;
+}
+
+.grid.cards > ul {
+    padding-left: 0;
+    margin: 0;
 }
 
 .grid.cards > ul > li {
@@ -392,6 +398,15 @@
         -webkit-hyphens: auto;
         hyphens: auto;
         text-align-last: left;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .grid.cards {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        width: 100%;
+        padding: 0 0.5rem;
+        gap: 1rem;
     }
 }
 
