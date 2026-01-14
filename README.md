@@ -1,4 +1,4 @@
-<div align="center">
+1<div align="center">
 
 # jakob1379.github.io The Page
 
@@ -12,46 +12,59 @@ This repository hosts the source code for my personal website and blog. It's bui
 ## Development Setup
 
 ### Prerequisites
+
 - [Nix](https://nixos.org/download/) (for reproducible development environment)
 - [Git](https://git-scm.com/)
 
 ### Getting Started
+
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/jakob1379/jakob1379.github.io.git
    cd jakob1379.github.io
    ```
 
 2. Enter the Nix development shell:
+
    ```bash
    nix develop
    ```
+
    This will provide all necessary tools (uv, pre-commit, etc.).
 
 3. Install Python dependencies:
+
    ```bash
    uv sync
    ```
 
 4. Install pre-commit hooks:
+
    ```bash
    poe setup
    ```
 
 ### Local Development
+
 - **Serve the site locally**:
+
   ```bash
   poe serve
   ```
-  The site will be available at http://localhost:8888
+
+  The site will be available at <http://localhost:8888>
 
 - **Build the site**:
+
   ```bash
   poe build
   ```
+
   This generates the static site in the `site/` directory.
 
 - **Build with minification** (production):
+
   ```bash
   poe build_prod
   ```
@@ -59,6 +72,7 @@ This repository hosts the source code for my personal website and blog. It's bui
 ## Adding Blog Posts
 
 1. Create a new Markdown file in `docs/blog/posts/` with the following frontmatter:
+
    ```yaml
    ---
    authors:
@@ -74,19 +88,24 @@ This repository hosts the source code for my personal website and blog. It's bui
 ## Quality Assurance
 
 ### Pre-commit Hooks
+
 This repository uses pre-commit hooks to ensure code quality. Hooks run automatically on `git commit` and check for:
+
 - Secret leakage (gitleaks)
 - Markdown linting
 - YAML/TOML syntax
 - Spell checking
 
 To run hooks manually:
+
 ```bash
 pre-commit run --all-files
 ```
 
 ### CI/CD Pipeline
+
 The GitHub Actions workflow (`gh-deploy.yml`):
+
 1. Builds the CV (RenderCV)
 2. Builds the Zensical site
 3. Minifies assets (HTML, CSS, JS)
@@ -106,8 +125,8 @@ This will build the site (with minification) and push to the `gh-pages` branch.
 
 ## Project Structure
 
-```
-├── docs/                    # Source content (Markdown files, assets)
+```bash
+├── docs/                   # Source content (Markdown files, assets)
 │   ├── blog/               # Blog posts
 │   ├── stylesheets/        # Custom CSS
 │   └── javascripts/        # Custom JavaScript
