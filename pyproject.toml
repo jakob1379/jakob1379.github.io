@@ -1,7 +1,7 @@
 [dependency-groups]
 dev = [
   "poethepoet>=0.40.0",
-  "prek>=0.2.27"
+  "prek>=0.2.28"
 ]
 
 [project]
@@ -12,7 +12,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
   "zensical>=0.0.15",
-  "prek>=0.2.27",
+  "prek>=0.2.28",
   "pymdown-extensions>=10.20",
   "rendercv[full]>=2.6"
 ]
@@ -30,15 +30,11 @@ update = {shell = 'set -e; poe update_flake & poe update_pre-commit & poe update
 build_rendercv = {shell = 'cd cv && rendercv render --pdf-path ../docs/assets/Jakob_Stender_Guldberg_CV.pdf Jakob_Stender_Guldberg_CV.yml'}
 build_zensical = 'zensical build'
 minify = {shell = '''
-if ! command -v minhtml >/dev/null 2>&1; then
-    echo "Error: minhtml not found. Run this command from the nix development shell: nix develop"
-    exit 1
-fi
 cd site && \
 find . -name "*.html" -exec minhtml --minify-js --minify-css {} + && \
 find . -name "*.css" -exec minhtml {} + && \
 find . -name "*.js" -exec minhtml {} +
-''', help = "Minify HTML, CSS, and JS files in the built site. Requires nix development shell."}
+''', help = "Minify HTML, CSS, and JS files in the built site."}
 build = {sequence = [
   "build_rendercv",
   "build_zensical"
@@ -52,7 +48,7 @@ ghpages_deploy = {shell = '''
 # Create or update gh-pages branch with site content
 git checkout --orphan gh-pages 2>/dev/null || git checkout gh-pages
 git rm -rf . || true
-cp -r ../site/* .
+cp -r site/* .
 git add --all
 git commit -m "Deploy $(date +'%Y-%m-%d %H:%M:%S')" --allow-empty
 git push origin gh-pages --force
