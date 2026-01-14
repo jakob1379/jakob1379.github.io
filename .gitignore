@@ -1,10 +1,12 @@
 *~
 .aider*
 .direnv
-/.cache/
-/cv/rendercv_output/
-rendercv_output/
-/site/
-/docs/assets/Jakob_Stender_Guldberg_CV.pdf
 /**/rendercv_output/
+/.cache/
 /.droid
+/cv/docs/
+/cv/rendercv_output/
+/docs/assets/Jakob_Stender_Guldberg_CV.pdf
+/site/
+cv/docs/
+rendercv_output/
