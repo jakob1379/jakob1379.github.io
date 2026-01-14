@@ -31,8 +31,7 @@ build_zensical = 'zensical build'
 minify = {shell = '''
 cd site && \
 find . -name "*.html" -exec minhtml --minify-js --minify-css {} + && \
-find . -name "*.css" -exec minhtml {} + && \
-find . -name "*.js" -exec minhtml {} +
+find . -name "*.css" -exec minhtml {} +
 ''', help = "Minify HTML, CSS, and JS files in the built site."}
 build = {sequence = [
   "build_rendercv",
