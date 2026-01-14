@@ -12,7 +12,6 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
   "zensical>=0.0.15",
-  "prek>=0.2.28",
   "pymdown-extensions>=10.20",
   "rendercv[full]>=2.6"
 ]
