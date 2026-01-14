@@ -50,28 +50,24 @@
 /* Define custom properties for backgrounds based on theme */
 :root {
   --hero-background-image: url('../assets/background_light.png'); /* Default for light theme */
-}
-
-/* Apply background image based on custom property */
-.hero {
-  background-image:
-    radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.3) 0%, transparent 70%),
-    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    var(--hero-background-image);
+  --hero-radial-gradient: radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+  --hero-linear-gradient: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
 }
 
 /* For dark theme (slate is the default dark scheme name) */
 [data-md-color-scheme="slate"] {
   --hero-background-image: url('../assets/background_dark.png');
+  --hero-radial-gradient: radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+  --hero-linear-gradient: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   /* Ensure text is white in dark mode hero for dark backgrounds */
   color: white;
 }
 
-/* Adjust overlay for dark theme */
-[data-md-color-scheme="slate"] .hero {
+/* Apply background image based on custom property */
+.hero {
   background-image:
-    radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.4) 0%, transparent 70%),
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    var(--hero-radial-gradient),
+    var(--hero-linear-gradient),
     var(--hero-background-image);
 }
 
