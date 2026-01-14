@@ -5,7 +5,6 @@
   outputs = { self, nixpkgs, utils }: utils.lib.eachDefaultSystem (system:
     let
       pkgs = nixpkgs.legacyPackages.${system};
-      # pythonEnv = pkgs.python312.withPackages ( ps: with ps; [] );
     in
       {
         devShell = pkgs.mkShell {
@@ -21,10 +20,6 @@
           LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath [
             pkgs.cairo
           ]}:$LD_LIBRARY_PATH";
-
-
-          shellHook = ''
-            '';
         };
       }
   );
