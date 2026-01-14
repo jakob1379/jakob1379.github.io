@@ -17,6 +17,9 @@ if (!CSS.supports('animation-timeline', 'view()')) {
     // We subtract the viewport height to find the scrollY value and ensure it's not negative.
     const startScroll = Math.max(0, scrollIndicator.offsetTop + scrollIndicator.offsetHeight - window.innerHeight);
 
+    let ticking = false;
+    let rafId = null;
+
     const handleScroll = () => {
       const scrollPosition = window.pageYOffset;
 
@@ -40,7 +43,17 @@ if (!CSS.supports('animation-timeline', 'view()')) {
       contentPane.style.opacity = progress;
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    const requestTick = () => {
+      if (!ticking) {
+        ticking = true;
+        rafId = requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+      }
+    };
+
+    window.addEventListener('scroll', requestTick, { passive: true });
 
     // Set the initial state on page load
     handleScroll();
