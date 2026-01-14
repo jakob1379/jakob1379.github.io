@@ -54,7 +54,7 @@
 
 /* Apply background image based on custom property */
 .hero {
-  background-image: 
+  background-image:
     radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.3) 0%, transparent 70%),
     linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     var(--hero-background-image);
@@ -69,7 +69,7 @@
 
 /* Adjust overlay for dark theme */
 [data-md-color-scheme="slate"] .hero {
-  background-image: 
+  background-image:
     radial-gradient(ellipse at bottom, rgba(0, 0, 0, 0.4) 0%, transparent 70%),
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     var(--hero-background-image);
