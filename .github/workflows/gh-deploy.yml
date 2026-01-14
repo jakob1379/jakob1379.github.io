@@ -45,8 +45,6 @@ jobs:
       - name: Build zensical
         if: steps.cache_zensical.outputs.cache-hit != 'true'
         run: nix develop -c uv run poe build_zensical
-      - name: Minify site
-        run: nix develop -c uv run poe minify
       - uses: actions/upload-pages-artifact@v4
         with:
           path: site
