@@ -9,12 +9,13 @@
       {
         devShell = pkgs.mkShell {
           buildInputs = with pkgs; [
-            uv
             act
-            ruby
-            gnupg
             git-crypt
+            gnupg
+            minhtml
             pinentry-gtk2
+            ruby
+            uv
           ];
 
           LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath [
