@@ -8,7 +8,9 @@
 }
 
 /* Hide headerlinks on homepage */
-[data-md-path="."] .headerlink {
+[data-md-path="."] .headerlink,
+.parallax .headerlink,
+#content-pane .headerlink {
     display: none;
 }
 
