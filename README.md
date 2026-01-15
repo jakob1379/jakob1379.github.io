@@ -110,8 +110,25 @@ The GitHub Actions workflow (`gh-deploy.yml`):
 2. Builds the Zensical site
 3. Minifies assets (HTML, CSS, JS)
 4. Deploys to GitHub Pages
+5. Creates PR previews with smokeshow (`preview.yml`)
 
 Build artifacts are cached between runs for faster deployments.
+
+## Pull Request Previews
+
+When a pull request is opened, a temporary preview of the static site is automatically built and deployed using [smokeshow](https://github.com/samuelcolvin/smokeshow). This allows you to visually review changes before merging.
+
+### Setting up previews
+
+1. Generate an upload key for smokeshow:
+
+   ```bash
+   nix develop -c smokeshow generate-key
+   ```
+
+2. Add the generated key as a repository secret named `SMOKESHOW_AUTH_KEY` in your GitHub repository settings (Settings → Secrets and variables → Actions → New repository secret).
+
+Once the secret is set, future pull requests will have a "Preview site" status with a link to the ephemeral preview site. The preview will expire after 30 days.
 
 ## Deployment
 

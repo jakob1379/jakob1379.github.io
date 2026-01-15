@@ -1,0 +1,61 @@
+---
+name: Preview static site with smokeshow
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - docs/**
+      - zensical.toml
+      - pyproject.toml
+      - uv.lock
+      - overrides/**
+      - .markdownlint.yml
+      - flake.nix
+      - flake.lock
+      - cv/**
+permissions:
+  contents: read
+  # needed for commit status updates
+  statuses: write
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+        with:
+          flakehub: false
+      - uses: DeterminateSystems/flake-checker-action@main
+      # check for cv pdf cache or build
+      - id: cache_rendercv
+        uses: actions/cache@v4
+        with:
+          path: docs/assets/Jakob_Stender_Guldberg_CV.pdf
+          key: ${{ runner.os }}-${{ hashFiles('cv/Jakob_Stender_Guldberg_CV.yml')
+            }}
+      - name: Render cv
+        if: steps.cache_rendercv.outputs.cache-hit != 'true'
+        run: nix develop -c uv run poe build_rendercv
+      # Check for zensical cache or build
+      - id: cache_zensical
+        uses: actions/cache@v4
+        with:
+          path: site
+          key: ${{ runner.os }}-${{ hashFiles('docs/**/*', 'zensical.toml', 'pyproject.toml',
+            'uv.lock', 'overrides/**/*', '.markdownlint.yml', 'flake.nix', 'flake.lock')
+            }}
+      - name: Build zensical
+        if: steps.cache_zensical.outputs.cache-hit != 'true'
+        run: nix develop -c uv run poe build_zensical
+      - name: Minify site
+        run: nix develop -c uv run poe minify
+      - name: Install smokeshow (dev dependencies)
+        run: nix develop -c uv sync --group dev
+      - name: Upload to smokeshow preview
+        env:
+          SMOKESHOW_AUTH_KEY: ${{ secrets.SMOKESHOW_AUTH_KEY }}
+          SMOKESHOW_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SMOKESHOW_GITHUB_PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          SMOKESHOW_GITHUB_STATUS_DESCRIPTION: Preview site
+        run: nix develop -c smokeshow upload site
+        # If you want to set a coverage threshold, add SMOKESHOW_GITHUB_COVERAGE_THRESHOLD
