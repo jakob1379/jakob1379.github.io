@@ -287,6 +287,11 @@
     padding-bottom: 3rem;
 }
 
+/* Ensure hero elements are visible initially */
+.parallax > *:not(#contact):not(.scroll-indicator-wrapper) {
+  opacity: 1;
+}
+
 .scroll-indicator-wrapper {
     position: fixed;
     bottom: 1.5rem;
@@ -455,24 +460,25 @@
 
   /* Apply animations to hero elements */
   .parallax > *:not(#contact):not(.scroll-indicator-wrapper) {
-    animation: fade-out-hero linear both;
+    opacity: 1;
+    animation: fade-out-hero linear;
     animation-timeline: view(--contact-timeline);
-    animation-range: exit 0% exit 400px;
+    animation-range: entry 100% exit 400px;
   }
 
   /* Apply animation to content pane */
   #content-pane {
-    animation: fade-in-content linear both;
+    animation: fade-in-content linear;
     animation-timeline: view(--contact-timeline);
-    animation-range: exit 0% exit 400px;
+    animation-range: entry 100% exit 400px;
     opacity: 1; /* Ensure content is visible when animation completes */
   }
 
   /* Scroll indicator fades with hero */
   .scroll-indicator-wrapper {
-    animation: fade-out-scroll-indicator linear both;
+    animation: fade-out-scroll-indicator linear;
     animation-timeline: view(--contact-timeline);
-    animation-range: exit 0% exit 400px;
+    animation-range: entry 100% exit 400px;
   }
 }
 

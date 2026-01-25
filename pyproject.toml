@@ -3,6 +3,11 @@ dev = [
   "poethepoet>=0.40.0",
   "prek>=0.2.28"
 ]
+test = [
+  "pytest>=8.3.0",
+  "pytest-playwright",
+  "playwright"
+]
 
 [project]
 name = "jga-blog-page"
@@ -62,6 +67,14 @@ serve = {sequence = [
   "build_rendercv",
   "_zensical_serve"
 ], help = "Serve the Zensical pages locally."}
+# test
+_test = {cmd = "pytest"}
+test = {sequence = [
+  "build_zensical",
+  "_test"
+], help = "Build the site and run Playwright tests."}
+# playwright
+playwright_install = {cmd = "playwright install", help = "Install Playwright browsers"}
 # clean
 _clean_zensical = {shell = 'rm -rf site .cache/zensical .cache/mkdocs .cache/mkdocs-material .cache'}
 _clean_rendercv = {shell = 'rm -rf .rendercv .rendercv-cache .cache/rendercv docs/assets/Jakob_Stender_Guldberg_CV.pdf'}
@@ -71,3 +84,11 @@ clean = {sequence = [
   "_clean_rendercv",
   "_clean_py"
 ], help = "Remove Zensical build/cache, RenderCV artifacts, and Python bytecode caches."}
+
+[tool.pytest]
+addopts = ["--browser", "chromium", "--browser", "firefox"]
+markers = [
+    "browser: mark test to run only on specific browser (chromium, firefox, webkit)",
+    "viewport: mark test to run with specific viewport size",
+    "slow: mark test as slow",
+]
