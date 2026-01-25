@@ -348,3 +348,52 @@ def test_parallax_cross_browser(page, browser_name):
     assert page.locator("#contact").is_visible()
     assert page.locator(".scroll-indicator-wrapper").is_visible()
     assert page.locator("#content-pane").is_visible()
+
+
+def test_parallax_timeline_validation(page, browser_name):
+    """Verify that the parallax timeline is correctly attached (CSS mode) or JS fallback works (JS mode) and the hero banner is visible at page load."""
+    if browser_name == "webkit":
+        pytest.skip("webkit browser not available in nix environment")
+    page.goto(f"file://{SITE_BASE_PATH}/index.html?debug=parallax")
+    page.wait_for_load_state("networkidle")
+
+    result = page.evaluate("""() => {
+        const mode = document.body.classList.contains('js-parallax-fallback') ? 'js' : 'css';
+        const hero = document.querySelector('.hero');
+        const computed = hero ? window.getComputedStyle(hero) : null;
+        const animationTimeline = computed ? computed.animationTimeline : null;
+        const animationRange = computed ? computed.animationRange : null;
+        const opacity = computed ? computed.opacity : null;
+        const contact = document.getElementById('contact');
+        const contactStyle = contact ? window.getComputedStyle(contact) : null;
+        const viewTimelineName = contactStyle ? contactStyle.viewTimelineName : null;
+
+        return {
+            mode,
+            animationTimeline,
+            animationRange,
+            opacity,
+            viewTimelineName,
+            hasJsFallbackClass: document.body.classList.contains('js-parallax-fallback')
+        };
+    }""")
+
+    # Hero must be visible
+    assert result["opacity"] != "0", (
+        f"Hero opacity is 0 (invisible) at page load. Mode: {result['mode']}"
+    )
+
+    if result["mode"] == "css":
+        assert result["animationTimeline"] not in ("auto", "none", None), (
+            f"CSS mode active but animationTimeline is {result['animationTimeline']}"
+        )
+        assert result["animationRange"] not in ("", None), (
+            f"CSS mode active but animationRange is empty"
+        )
+        assert result["viewTimelineName"] == "--contact-timeline", (
+            f"View timeline not registered: {result['viewTimelineName']}"
+        )
+    else:
+        assert result["hasJsFallbackClass"] == True, (
+            "JS fallback should be active (body.js-parallax-fallback)"
+        )

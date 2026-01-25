@@ -422,6 +422,7 @@
 @supports (animation-timeline: view()) {
   /* Define view timeline on contact section */
   #contact {
+    view-timeline: --contact-timeline block;
     view-timeline-name: --contact-timeline;
     view-timeline-axis: block;
   }
@@ -463,14 +464,16 @@
     opacity: 1;
     animation: fade-out-hero linear;
     animation-timeline: view(--contact-timeline);
-    animation-range: exit 0px exit 400px;
+    animation-range: exit 0px 400px;
+    animation-fill-mode: forwards;
   }
 
   /* Apply animation to content pane */
   #content-pane {
     animation: fade-in-content linear;
     animation-timeline: view(--contact-timeline);
-    animation-range: exit 0px exit 400px;
+    animation-range: exit 0px 400px;
+    animation-fill-mode: forwards;
     opacity: 1; /* Ensure content is visible when animation completes */
   }
 
@@ -478,7 +481,8 @@
   .scroll-indicator-wrapper {
     animation: fade-out-scroll-indicator linear;
     animation-timeline: view(--contact-timeline);
-    animation-range: exit 0px exit 400px;
+    animation-range: exit 0px 400px;
+    animation-fill-mode: forwards;
   }
 
   /* Disable CSS animations when JS fallback is forced (e.g., headless Chromium) */

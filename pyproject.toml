@@ -26,10 +26,10 @@ test = [
 
 [tool.poe.tasks]
 # setup
-_setup_pre-commit = "pre-commit install"
+_setup_pre-commit = "prek install"
 setup = {sequence = ["_setup_pre-commit"], help = "Setup dev environment"}
 # update
-update_pre-commit = "pre-commit autoupdate -j0"
+update_pre-commit = "prek autoupdate"
 update_python_packages = {shell = "uv sync --upgrade && uvx uv-bump"}
 update_flake = "nix flake update"
 update = {shell = 'set -e; poe update_flake & poe update_pre-commit & poe update_python_packages & wait', help = "Update dependencies in parallel"}
@@ -76,8 +76,6 @@ test = {sequence = [
   "build_zensical",
   "_test"
 ], help = "Build the site and run Playwright tests."}
-# playwright
-playwright_install = {cmd = "playwright install", help = "Install Playwright browsers"}
 # clean
 _clean_zensical = {shell = 'rm -rf site .cache/zensical .cache/mkdocs .cache/mkdocs-material .cache'}
 _clean_rendercv = {shell = 'rm -rf .rendercv .rendercv-cache .cache/rendercv docs/assets/Jakob_Stender_Guldberg_CV.pdf'}
