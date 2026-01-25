@@ -88,7 +88,7 @@ clean = {sequence = [
 [tool.pytest]
 addopts = ["--browser", "chromium", "--browser", "firefox"]
 markers = [
-    "browser: mark test to run only on specific browser (chromium, firefox, webkit)",
-    "viewport: mark test to run with specific viewport size",
-    "slow: mark test as slow",
+  "browser: mark test to run only on specific browser (chromium, firefox, webkit)",
+  "viewport: mark test to run with specific viewport size",
+  "slow: mark test as slow"
 ]

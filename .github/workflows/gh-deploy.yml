@@ -49,7 +49,6 @@ jobs:
           path: |
             test-results/
             playwright-report/
-  
   deploy:
     environment:
       name: github-pages
