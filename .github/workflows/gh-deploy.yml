@@ -3,6 +3,8 @@ name: Zensical test and deploy
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
 permissions:
   contents: read
   pages: write
@@ -50,6 +52,7 @@ jobs:
             test-results/
             playwright-report/
   deploy:
+    if: github.event_name == 'push'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
