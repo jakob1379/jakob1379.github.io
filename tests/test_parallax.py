@@ -60,7 +60,9 @@ def test_parallax_scroll_effect(page, browser_name):
     """Test that parallax effect occurs during scroll (opacity/blur changes)."""
     if browser_name == "webkit":
         pytest.skip("webkit browser not available in nix environment")
-    pytest.xfail("Scroll-driven animations not working reliably in headless Chrome")
+    pytest.xfail(
+        "Scroll-driven animations have known issues in headless Chrome/Playwright environment. JS fallback handles parallax correctly."
+    )
     page.goto(f"file://{SITE_BASE_PATH}/index.html")
     page.wait_for_load_state("networkidle")
 
@@ -223,7 +225,9 @@ def test_parallax_complete_scroll(page, browser_name):
     """Test that parallax effect completes when scrolled to bottom."""
     if browser_name == "webkit":
         pytest.skip("webkit browser not available in nix environment")
-    pytest.xfail("Scroll-driven animations not working reliably in headless Chrome")
+    pytest.xfail(
+        "Scroll-driven animations have known issues in headless Chrome/Playwright environment. JS fallback handles parallax correctly."
+    )
     page.goto(f"file://{SITE_BASE_PATH}/index.html")
     page.wait_for_load_state("networkidle")
 

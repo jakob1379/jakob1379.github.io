@@ -1,12 +1,8 @@
 [dependency-groups]
 dev = [
+  "jga-blog-page[test]",
   "poethepoet>=0.40.0",
-  "prek>=0.2.28"
-]
-test = [
-  "pytest>=8.3.0",
-  "pytest-playwright",
-  "playwright"
+  "prek>=0.3.0"
 ]
 
 [project]
@@ -16,9 +12,16 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-  "zensical>=0.0.15",
-  "pymdown-extensions>=10.20",
+  "zensical>=0.0.19",
+  "pymdown-extensions>=10.20.1",
   "rendercv[full]>=2.6"
+]
+
+[project.optional-dependencies]
+test = [
+  "playwright>=1.57.0",
+  "pytest>=9.0.2",
+  "pytest-playwright>=0.7.2"
 ]
 
 [tool.poe.tasks]
@@ -92,3 +95,6 @@ markers = [
   "viewport: mark test to run with specific viewport size",
   "slow: mark test as slow"
 ]
+
+[tool.uv.sources]
+jga-blog-page = {workspace = true}

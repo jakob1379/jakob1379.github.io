@@ -38,7 +38,7 @@ jobs:
         if: steps.cache_zensical.outputs.cache-hit != 'true'
         run: nix develop -c uv run poe build_zensical
       - name: Install test dependencies
-        run: nix develop -c uv sync --group test
+        run: nix develop -c uv sync --extra test
       - name: Run Playwright tests across browsers
         run: nix develop -c uv run poe test
       - name: Upload test artifacts on failure

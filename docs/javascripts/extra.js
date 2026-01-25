@@ -1,7 +1,5 @@
 // Only run if CSS scroll-driven animations are not supported
-console.log('Parallax: CSS.supports("animation-timeline", "view()") =', CSS.supports('animation-timeline', 'view()'));
 if (!CSS.supports('animation-timeline', 'view()')) {
-  console.log('Parallax: CSS scroll-driven animations not supported, using JS fallback');
   document.addEventListener("DOMContentLoaded", function() {
     const heroContainer = document.querySelector('.parallax');
     const contentPane = document.getElementById('content-pane');

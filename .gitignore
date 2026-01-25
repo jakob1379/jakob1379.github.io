@@ -10,3 +10,11 @@ rendercv_output/
 /site/
 /docs/assets/Jakob_Stender_Guldberg_CV.pdf
 /.droid
+
+# Test artifacts
+test-results/
+playwright-report/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
