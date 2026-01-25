@@ -60,9 +60,6 @@ def test_parallax_scroll_effect(page, browser_name):
     """Test that parallax effect occurs during scroll (opacity/blur changes)."""
     if browser_name == "webkit":
         pytest.skip("webkit browser not available in nix environment")
-    pytest.xfail(
-        "Scroll-driven animations have known issues in headless Chrome/Playwright environment. JS fallback handles parallax correctly."
-    )
     page.goto(f"file://{SITE_BASE_PATH}/index.html")
     page.wait_for_load_state("networkidle")
 
@@ -123,22 +120,22 @@ def test_parallax_scroll_effect(page, browser_name):
         f"Hero element should start opaque, got {initial_opacity}"
     )
 
-    # Get scroll indicator element for scroll position calculation
+    # Get contact section for scroll position calculation
+    contact = page.locator("#contact")
     scroll_indicator = page.locator(".scroll-indicator-wrapper")
-    indicator_bottom = page.evaluate(
+    contact_bottom = page.evaluate(
         """
         (el) => {
             const rect = el.getBoundingClientRect();
-            return rect.bottom;
+            return rect.bottom + window.pageYOffset;
         }
     """,
-        scroll_indicator.element_handle(),
+        contact.element_handle(),
     )
-
     # Calculate scroll position needed to trigger parallax
-    # The effect starts when scroll indicator bottom leaves viewport
+    # The effect starts when contact bottom leaves viewport
     viewport_height = page.viewport_size["height"]
-    start_scroll = max(0, indicator_bottom - viewport_height)
+    start_scroll = max(0, contact_bottom - viewport_height)
 
     # Scroll to trigger parallax (scroll past start position)
     scroll_position = start_scroll + 200  # 200px into the fade distance
@@ -225,9 +222,6 @@ def test_parallax_complete_scroll(page, browser_name):
     """Test that parallax effect completes when scrolled to bottom."""
     if browser_name == "webkit":
         pytest.skip("webkit browser not available in nix environment")
-    pytest.xfail(
-        "Scroll-driven animations have known issues in headless Chrome/Playwright environment. JS fallback handles parallax correctly."
-    )
     page.goto(f"file://{SITE_BASE_PATH}/index.html")
     page.wait_for_load_state("networkidle")
 

@@ -463,14 +463,14 @@
     opacity: 1;
     animation: fade-out-hero linear;
     animation-timeline: view(--contact-timeline);
-    animation-range: entry 100% exit 400px;
+    animation-range: exit 0px exit 400px;
   }
 
   /* Apply animation to content pane */
   #content-pane {
     animation: fade-in-content linear;
     animation-timeline: view(--contact-timeline);
-    animation-range: entry 100% exit 400px;
+    animation-range: exit 0px exit 400px;
     opacity: 1; /* Ensure content is visible when animation completes */
   }
 
@@ -478,7 +478,15 @@
   .scroll-indicator-wrapper {
     animation: fade-out-scroll-indicator linear;
     animation-timeline: view(--contact-timeline);
-    animation-range: entry 100% exit 400px;
+    animation-range: exit 0px exit 400px;
+  }
+
+  /* Disable CSS animations when JS fallback is forced (e.g., headless Chromium) */
+  body.js-parallax-fallback .parallax > *:not(#contact):not(.scroll-indicator-wrapper),
+  body.js-parallax-fallback #content-pane,
+  body.js-parallax-fallback .scroll-indicator-wrapper {
+    animation: none !important;
+    opacity: 1; /* Ensure default visible */
   }
 }
 
