@@ -102,13 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log('  shouldUseCSSAnimations:', shouldUseCSSAnimations);
     console.log('  parallaxMode:', parallaxMode);
 
-    // Check which @supports block is active
-    const testEl = document.createElement('div');
-    document.body.appendChild(testEl);
-    testEl.style.animationTimeline = 'view()';
-    const animationTimelineSupported = testEl.style.animationTimeline === 'view()';
-    document.body.removeChild(testEl);
-    console.log('  animationTimeline style property supported:', animationTimelineSupported);
+
 
     // Check if CSS animations are actually applied
     if (heroContainer) {
@@ -150,22 +144,7 @@ document.addEventListener("DOMContentLoaded", function() {
     console.warn('Firefox detected with partial scroll-driven animations support. Enable full support with flag: layout.css.scroll-driven-animations.enabled = true');
   }
 
-  // Create debug indicator if enabled
-  const createDebugIndicator = (mode) => {
-    const indicator = document.createElement('div');
-    indicator.style.position = 'fixed';
-    indicator.style.bottom = '10px';
-    indicator.style.right = '10px';
-    indicator.style.background = 'rgba(0,0,0,0.7)';
-    indicator.style.color = 'white';
-    indicator.style.padding = '5px 10px';
-    indicator.style.borderRadius = '4px';
-    indicator.style.fontFamily = 'monospace';
-    indicator.style.fontSize = '12px';
-    indicator.style.zIndex = '9999';
-    indicator.textContent = `Parallax: ${mode}`;
-    document.body.appendChild(indicator);
-  };
+
 
   // Function to activate JavaScript fallback
   const activateJSFallback = () => {
@@ -272,8 +251,5 @@ document.addEventListener("DOMContentLoaded", function() {
     activateJSFallback();
   }
 
-  // Create debug indicator if enabled
-  if (debugParallax || localStorage.getItem('debugParallax') === 'true') {
-    createDebugIndicator(parallaxMode);
-  }
+
 });

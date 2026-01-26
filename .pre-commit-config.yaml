@@ -62,7 +62,6 @@ repos:
     hooks:
       - id: codespell
         args: [--write-changes]
-        exclude: ^cv/vault/.*
         additional_dependencies: [tomli]
   - repo: https://github.com/DavidAnson/markdownlint-cli2
     # Markdown style and syntax linter
