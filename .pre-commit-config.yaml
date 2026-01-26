@@ -5,11 +5,11 @@ ci:
   autoupdate_commit_msg: 'chore: update pre-commit hooks'
   autofix_commit_msg: 'style: pre-commit fixes'
   autoupdate_schedule: monthly
-  skip: [zensical_build_check]
+  skip: [zensical_build_check, yamlfix]
   submodules: false
 # Default stages for hooks
 default_stages: [pre-commit, commit-msg, pre-push]
-exclude: ^cv/vault/.*
+
 # Default hook types to install
 default_install_hook_types: [pre-commit, commit-msg, pre-push]
 repos:
