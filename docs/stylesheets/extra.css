@@ -287,6 +287,11 @@
     padding-bottom: 3rem;
 }
 
+/* Ensure hero elements are visible initially */
+.parallax > *:not(#contact):not(.scroll-indicator-wrapper) {
+  opacity: 1;
+}
+
 .scroll-indicator-wrapper {
     position: fixed;
     bottom: 1.5rem;
@@ -417,6 +422,7 @@
 @supports (animation-timeline: view()) {
   /* Define view timeline on contact section */
   #contact {
+    view-timeline: --contact-timeline block;
     view-timeline-name: --contact-timeline;
     view-timeline-axis: block;
   }
@@ -455,24 +461,36 @@
 
   /* Apply animations to hero elements */
   .parallax > *:not(#contact):not(.scroll-indicator-wrapper) {
-    animation: fade-out-hero linear both;
+    opacity: 1;
+    animation: fade-out-hero linear;
     animation-timeline: view(--contact-timeline);
-    animation-range: exit 0% exit 400px;
+    animation-range: exit 0px 400px;
+    animation-fill-mode: forwards;
   }
 
   /* Apply animation to content pane */
   #content-pane {
-    animation: fade-in-content linear both;
+    animation: fade-in-content linear;
     animation-timeline: view(--contact-timeline);
-    animation-range: exit 0% exit 400px;
+    animation-range: exit 0px 400px;
+    animation-fill-mode: forwards;
     opacity: 1; /* Ensure content is visible when animation completes */
   }
 
   /* Scroll indicator fades with hero */
   .scroll-indicator-wrapper {
-    animation: fade-out-scroll-indicator linear both;
+    animation: fade-out-scroll-indicator linear;
     animation-timeline: view(--contact-timeline);
-    animation-range: exit 0% exit 400px;
+    animation-range: exit 0px 400px;
+    animation-fill-mode: forwards;
+  }
+
+  /* Disable CSS animations when JS fallback is forced (e.g., headless Chromium) */
+  body.js-parallax-fallback .parallax > *:not(#contact):not(.scroll-indicator-wrapper),
+  body.js-parallax-fallback #content-pane,
+  body.js-parallax-fallback .scroll-indicator-wrapper {
+    animation: none !important;
+    opacity: 1; /* Ensure default visible */
   }
 }
 

@@ -1,7 +1,8 @@
 [dependency-groups]
 dev = [
+  "jga-blog-page[test]",
   "poethepoet>=0.40.0",
-  "prek>=0.2.28"
+  "prek>=0.3.0"
 ]
 
 [project]
@@ -11,17 +12,24 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-  "zensical>=0.0.15",
-  "pymdown-extensions>=10.20",
+  "zensical>=0.0.19",
+  "pymdown-extensions>=10.20.1",
   "rendercv[full]>=2.6"
+]
+
+[project.optional-dependencies]
+test = [
+  "playwright>=1.57.0",
+  "pytest>=9.0.2",
+  "pytest-playwright>=0.7.2"
 ]
 
 [tool.poe.tasks]
 # setup
-_setup_pre-commit = "pre-commit install"
+_setup_pre-commit = "prek install"
 setup = {sequence = ["_setup_pre-commit"], help = "Setup dev environment"}
 # update
-update_pre-commit = "pre-commit autoupdate -j0"
+update_pre-commit = "prek autoupdate"
 update_python_packages = {shell = "uv sync --upgrade && uvx uv-bump"}
 update_flake = "nix flake update"
 update = {shell = 'set -e; poe update_flake & poe update_pre-commit & poe update_python_packages & wait', help = "Update dependencies in parallel"}
@@ -62,6 +70,12 @@ serve = {sequence = [
   "build_rendercv",
   "_zensical_serve"
 ], help = "Serve the Zensical pages locally."}
+# test
+_test = {cmd = "pytest"}
+test = {sequence = [
+  "build_zensical",
+  "_test"
+], help = "Build the site and run Playwright tests."}
 # clean
 _clean_zensical = {shell = 'rm -rf site .cache/zensical .cache/mkdocs .cache/mkdocs-material .cache'}
 _clean_rendercv = {shell = 'rm -rf .rendercv .rendercv-cache .cache/rendercv docs/assets/Jakob_Stender_Guldberg_CV.pdf'}
@@ -71,3 +85,14 @@ clean = {sequence = [
   "_clean_rendercv",
   "_clean_py"
 ], help = "Remove Zensical build/cache, RenderCV artifacts, and Python bytecode caches."}
+
+[tool.pytest]
+addopts = ["--browser", "chromium", "--browser", "firefox"]
+markers = [
+  "browser: mark test to run only on specific browser (chromium, firefox, webkit)",
+  "viewport: mark test to run with specific viewport size",
+  "slow: mark test as slow"
+]
+
+[tool.uv.sources]
+jga-blog-page = {workspace = true}
