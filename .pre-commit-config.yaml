@@ -48,7 +48,7 @@ repos:
       - id: fix-byte-order-marker  # Remove UTF-8 BOM (fixes file)
   - repo: https://github.com/abravalheri/validate-pyproject
     # pyproject.toml schema validator
-    rev: v0.24.1
+    rev: v0.25
     hooks:
       - id: validate-pyproject
         additional_dependencies: ['validate-pyproject-schema-store[all]']
@@ -65,7 +65,7 @@ repos:
         additional_dependencies: [tomli]
   - repo: https://github.com/DavidAnson/markdownlint-cli2
     # Markdown style and syntax linter
-    rev: v0.20.0
+    rev: v0.21.0
     hooks:
       - id: markdownlint-cli2
         files: \.(md|mdown|markdown)$
