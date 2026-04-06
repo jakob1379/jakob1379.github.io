@@ -58,14 +58,14 @@ repos:
   # ============================================================================
   - repo: https://github.com/codespell-project/codespell
     # Spell checker for source code and documentation
-    rev: v2.4.1
+    rev: v2.4.2
     hooks:
       - id: codespell
         args: [--write-changes]
         additional_dependencies: [tomli]
   - repo: https://github.com/DavidAnson/markdownlint-cli2
     # Markdown style and syntax linter
-    rev: v0.21.0
+    rev: v0.22.0
     hooks:
       - id: markdownlint-cli2
         files: \.(md|mdown|markdown)$
@@ -82,7 +82,7 @@ repos:
         files: \.(yml|yaml)$
   - repo: https://github.com/pappasam/toml-sort
     # TOML key sorting formatter
-    rev: v0.24.3
+    rev: v0.24.4
     hooks:
       - id: toml-sort-fix
         files: \.toml$
