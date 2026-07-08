@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "kind": "html",
+  "title": "new-design/signal-map.html",
+  "entry": "new-design/signal-map.html",
+  "renderer": "html",
+  "status": "complete",
+  "exports": [
+    "html",
+    "pdf",
+    "zip"
+  ],
+  "createdAt": "2026-06-15T17:26:15.495Z",
+  "updatedAt": "2026-06-15T17:26:15.495Z",
+  "metadata": {
+    "inferred": true,
+    "reconciled": true
+  }
+}

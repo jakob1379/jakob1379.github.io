@@ -31,18 +31,12 @@ This repository hosts the source code for my personal website and blog. It's bui
    nix develop
    ```
 
-   This will provide all necessary tools (uv, pre-commit, etc.).
+   This will provide all necessary tools (uv, pre-commit, etc.) and install the generated git hooks.
 
 3. Install Python dependencies:
 
    ```bash
    uv sync
-   ```
-
-4. Install pre-commit hooks:
-
-   ```bash
-   poe setup
    ```
 
 ### Local Development
@@ -99,7 +93,7 @@ This repository uses pre-commit hooks to ensure code quality. Hooks run automati
 To run hooks manually:
 
 ```bash
-pre-commit run --all-files
+nix develop -c pre-commit run --all-files
 ```
 
 ### CI/CD Pipeline

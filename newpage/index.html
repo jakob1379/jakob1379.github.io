@@ -1,0 +1,1393 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jakob Stender Guldberg - Backend and Data Platform Engineer</title>
+    <meta name="description" content="Backend and data platform engineer building automation, internal tools, and reliable scientific systems for biotech, bioinformatics, and regulated environments.">
+    <meta property="og:title" content="Jakob Stender Guldberg - Backend and Data Platform Engineer">
+    <meta property="og:description" content="Automation, internal tools, and reliable scientific systems for biotech, bioinformatics, and regulated environments.">
+    <meta property="og:image" content="https://jgalabs.dk/assets/portrait.jpg">
+    <meta name="theme-color" content="#0f7d82">
+    <!-- Clickjacking protection must be configured as an HTTP header; embedding directives are ignored in meta CSP. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://jgalabs.dk data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-ih1T1c5vRTGEwcHpIe3vdRZhUa8SBQgrjtBift+aOAY='; connect-src 'self'; form-action 'none';">
+    <link rel="icon" href="../site/assets/images/favicon.png">
+    <style>
+      :root {
+        --bg: #f3f8f8;
+        --paper: #ffffff;
+        --paper-2: #e8eff0;
+        --ink: #202b31;
+        --muted: #69757b;
+        --line: #cbd7d8;
+        --line-strong: #4a575f;
+        --accent: #0f7d82;
+        --accent-2: #3869b3;
+        --warn: #a6622b;
+        --ok: #247b5e;
+        --shadow: 0 28px 80px rgb(24 33 38 / 0.11);
+        --display: "Iowan Old Style", "Charter", "Palatino Linotype", Georgia, serif;
+        --body: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+        --mono: "IBM Plex Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        --radius: 8px;
+        color-scheme: light;
+      }
+
+      @supports (color: oklch(0% 0 0)) {
+        :root {
+          --bg: oklch(97% 0.006 210);
+          --paper: oklch(100% 0 0);
+          --paper-2: oklch(94% 0.01 210);
+          --ink: oklch(19% 0.02 220);
+          --muted: oklch(48% 0.018 220);
+          --line: oklch(84% 0.012 210);
+          --line-strong: oklch(34% 0.024 220);
+          --accent: oklch(50% 0.105 190);
+          --accent-2: oklch(46% 0.11 255);
+          --warn: oklch(54% 0.13 42);
+          --ok: oklch(47% 0.11 155);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-padding-top: 0;
+      }
+
+      @media (min-width: 641px) {
+        html {
+          scroll-padding-top: 82px;
+        }
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        html {
+          scroll-behavior: smooth;
+        }
+
+        .motion-ready [data-reveal] {
+          opacity: 0;
+          transform: translate3d(0, 18px, 0);
+          transition:
+            opacity 420ms cubic-bezier(0.2, 0, 0, 1),
+            transform 420ms cubic-bezier(0.2, 0, 0, 1);
+          transition-delay: var(--reveal-delay, 0ms);
+        }
+
+        .motion-ready [data-reveal].is-visible {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+          will-change: auto;
+        }
+
+        .motion-ready .identity-card[data-reveal],
+        .motion-ready .proof-rail[data-reveal] {
+          transform: translate3d(0, 12px, 0) scale(0.985);
+        }
+
+        .motion-ready .identity-card[data-reveal].is-visible,
+        .motion-ready .proof-rail[data-reveal].is-visible {
+          transform: translate3d(0, 0, 0) scale(1);
+        }
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        background:
+          linear-gradient(90deg, rgb(15 120 126 / 0.075) 1px, transparent 1px),
+          linear-gradient(0deg, rgb(26 36 40 / 0.045) 1px, transparent 1px),
+          var(--bg);
+        background-size: 92px 92px, 23px 23px, auto;
+        color: var(--ink);
+        font-family: var(--body);
+        line-height: 1.55;
+        letter-spacing: 0;
+      }
+
+      a {
+        color: inherit;
+        text-decoration-color: rgb(15 120 126 / 0.52);
+        text-decoration-color: color-mix(in srgb, var(--accent), transparent 44%);
+        text-underline-offset: 0.18em;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      :focus-visible {
+        outline: 3px solid rgb(15 120 126 / 0.48);
+        outline-offset: 4px;
+      }
+
+      @supports (color: color-mix(in srgb, white, black)) {
+        :focus-visible {
+          outline-color: color-mix(in srgb, var(--accent), transparent 42%);
+        }
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .skip-link {
+        position: fixed;
+        left: 1rem;
+        top: -4rem;
+        z-index: 20;
+        padding: 0.75rem 1rem;
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .skip-link:focus {
+        top: 1rem;
+      }
+
+      .shell {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .site-nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--line);
+        -webkit-backdrop-filter: blur(18px);
+        backdrop-filter: blur(18px);
+        background: rgb(246 249 249 / 0.86);
+      }
+
+      .site-nav[data-scrolled="true"] {
+        border-bottom-color: var(--line-strong);
+        background: rgb(246 249 249 / 0.95);
+        box-shadow: 0 16px 42px rgb(24 33 38 / 0.08);
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .site-nav {
+          transition:
+            background 180ms cubic-bezier(0.2, 0, 0, 1),
+            border-color 180ms cubic-bezier(0.2, 0, 0, 1),
+            box-shadow 180ms cubic-bezier(0.2, 0, 0, 1);
+        }
+      }
+
+      .nav-inner {
+        display: flex;
+        min-height: 72px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.2rem;
+      }
+
+      .brand {
+        display: inline-grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        align-items: center;
+        gap: 0.8rem;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 42px;
+        height: 42px;
+        place-items: center;
+        border: 1px solid var(--line-strong);
+        background: var(--ink);
+        color: var(--paper);
+        font-family: var(--mono);
+        font-size: 0.8rem;
+        font-weight: 800;
+      }
+
+      .brand span:last-child {
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .nav-links a {
+        position: relative;
+        padding: 0.35rem 0;
+        text-decoration: none;
+        transition: color 150ms ease;
+      }
+
+      .nav-links a:hover,
+      .nav-links a:focus-visible,
+      .nav-links a[aria-current="location"] {
+        color: var(--ink);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        background: var(--accent);
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+
+      .nav-links a[aria-current="location"]::after {
+        transform: scaleX(1);
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .nav-links a::after {
+          transition: transform 180ms cubic-bezier(0.2, 0, 0, 1);
+        }
+      }
+
+      .nav-toggle {
+        display: none;
+        min-height: 42px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        padding: 0.5rem 0.78rem;
+        background: var(--paper);
+        color: var(--ink);
+        cursor: pointer;
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .hero {
+        position: relative;
+        padding: clamp(34px, 5.8vw, 72px) 0 clamp(34px, 5vw, 64px);
+        overflow: hidden;
+      }
+
+      .hero-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+        gap: clamp(2rem, 6vw, 5.5rem);
+        align-items: start;
+      }
+
+      .kicker,
+      .label,
+      .meta {
+        color: var(--accent);
+        font-family: var(--mono);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.11em;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1,
+      h2 {
+        font-family: var(--display);
+        line-height: 0.98;
+        letter-spacing: -0.018em;
+      }
+
+      h1 {
+        max-width: 1040px;
+        margin-top: 1rem;
+        font-size: clamp(2.9rem, 5.8vw, 5.95rem);
+        font-weight: 700;
+      }
+
+      h2 {
+        max-width: 790px;
+        font-size: clamp(2.25rem, 5.3vw, 5.05rem);
+      }
+
+      h3 {
+        font-size: 1.04rem;
+        line-height: 1.2;
+      }
+
+      .lede {
+        max-width: 770px;
+        margin-top: 1.05rem;
+        color: var(--muted);
+        font-size: clamp(1.06rem, 1.7vw, 1.28rem);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 1.45rem;
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 46px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        padding: 0.76rem 1.08rem;
+        background: var(--paper);
+        color: var(--ink);
+        cursor: pointer;
+        font-weight: 800;
+        text-decoration: none;
+        transition:
+          border-color 160ms ease,
+          background 160ms ease,
+          color 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .button:hover,
+      .button:focus-visible {
+        border-color: var(--accent);
+      }
+
+      .button:disabled {
+        cursor: progress;
+        opacity: 0.72;
+      }
+
+      .button[data-feedback="success"] {
+        border-color: var(--ok);
+        background: var(--ok);
+        color: var(--paper);
+      }
+
+      .button[data-feedback="fallback"] {
+        border-color: var(--warn);
+        background: var(--warn);
+        color: var(--paper);
+      }
+
+      .button.primary {
+        border-color: var(--accent);
+        background: var(--accent);
+        color: var(--paper);
+      }
+
+      .button.ghost {
+        border-color: var(--line);
+        background: transparent;
+      }
+
+      .identity-card {
+        position: sticky;
+        top: 98px;
+        border: 1px solid var(--line-strong);
+        background: var(--paper);
+        box-shadow: var(--shadow);
+      }
+
+      .portrait-wrap {
+        position: relative;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        border-bottom: 1px solid var(--line-strong);
+        background: var(--paper-2);
+      }
+
+      .portrait-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: saturate(0.82) contrast(1.04);
+      }
+
+      .portrait-wrap::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgb(15 120 126 / 0.15) 1px, transparent 1px),
+          linear-gradient(0deg, rgb(24 32 34 / 0.14) 1px, transparent 1px);
+        background-size: 24px 24px;
+        mix-blend-mode: multiply;
+        pointer-events: none;
+      }
+
+      .identity-body {
+        display: grid;
+        gap: 0.75rem;
+        padding: 1rem;
+      }
+
+      .identity-row {
+        display: grid;
+        grid-template-columns: 92px minmax(0, 1fr);
+        gap: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .identity-row:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .identity-row strong {
+        color: var(--ink);
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+      }
+
+      .proof-rail {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1px;
+        margin-top: clamp(24px, 4vw, 44px);
+        border: 1px solid var(--line-strong);
+        background: var(--line-strong);
+      }
+
+      .proof {
+        min-height: 124px;
+        padding: 0.88rem;
+        background: var(--paper);
+      }
+
+      .proof strong {
+        display: block;
+        color: var(--ink);
+        font-family: var(--mono);
+        font-size: clamp(1.25rem, 2.3vw, 2.15rem);
+        line-height: 1;
+      }
+
+      .proof span {
+        display: block;
+        margin-top: 0.64rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      section {
+        padding: clamp(58px, 9vw, 112px) 0;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.78fr) minmax(280px, 0.42fr);
+        gap: clamp(1.6rem, 5vw, 5rem);
+        align-items: end;
+        margin-bottom: clamp(28px, 5vw, 56px);
+      }
+
+      .section-head p {
+        color: var(--muted);
+        font-size: 1.02rem;
+      }
+
+      .grid-3,
+      .grid-2 {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card,
+      .case {
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgb(255 255 255 / 0.92);
+      }
+
+      .card {
+        min-height: 250px;
+        padding: 1.25rem;
+      }
+
+      .card .label,
+      .case .label {
+        display: block;
+        margin-bottom: 1.35rem;
+      }
+
+      .card p {
+        margin-top: 1rem;
+        color: var(--muted);
+      }
+
+      .card .stack {
+        margin-top: 1.1rem;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: -1px auto -1px -1px;
+        width: 4px;
+        background: var(--accent);
+        opacity: 0;
+        transition: opacity 160ms ease;
+      }
+
+      .card:hover::before {
+        opacity: 1;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .button,
+        .filter-button,
+        .card {
+          transition:
+            border-color 160ms cubic-bezier(0.2, 0, 0, 1),
+            background 160ms cubic-bezier(0.2, 0, 0, 1),
+            color 160ms cubic-bezier(0.2, 0, 0, 1),
+            box-shadow 160ms cubic-bezier(0.2, 0, 0, 1),
+            transform 160ms cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        .button:hover,
+        .button:focus-visible,
+        .filter-button:hover,
+        .filter-button:focus-visible {
+          transform: translate3d(0, -1px, 0);
+        }
+
+        .button:active,
+        .filter-button:active {
+          transform: translate3d(0, 1px, 0);
+        }
+
+        .card:hover,
+        .card:focus-within {
+          transform: translate3d(0, -2px, 0);
+          box-shadow: 0 16px 42px rgb(24 33 38 / 0.08);
+        }
+      }
+
+      .case-controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        margin-bottom: 1rem;
+      }
+
+      .filter-button {
+        min-height: 40px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.52rem 0.82rem;
+        background: var(--paper);
+        color: var(--muted);
+        cursor: pointer;
+        font-family: var(--mono);
+        font-size: 0.76rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .filter-button[aria-pressed="true"] {
+        border-color: var(--accent);
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .filter-button:hover,
+      .filter-button:focus-visible {
+        border-color: var(--line-strong);
+        color: var(--ink);
+      }
+
+      .case {
+        display: grid;
+        grid-template-columns: minmax(180px, 0.34fr) minmax(0, 1fr);
+        gap: 1rem;
+        padding: 1.25rem;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .case {
+          transition:
+            opacity 220ms cubic-bezier(0.2, 0, 0, 1),
+            transform 220ms cubic-bezier(0.2, 0, 0, 1),
+            border-color 220ms cubic-bezier(0.2, 0, 0, 1),
+            box-shadow 220ms cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        .case:hover,
+        .case:focus-within {
+          transform: translate3d(0, -2px, 0);
+          box-shadow: 0 16px 42px rgb(24 33 38 / 0.08);
+        }
+
+        .case.is-entering {
+          opacity: 0;
+          transform: translate3d(0, 8px, 0);
+        }
+
+        .case.is-exiting {
+          opacity: 0;
+          transform: translate3d(0, -6px, 0);
+        }
+      }
+
+      .case[hidden] {
+        display: none;
+      }
+
+      .case + .case {
+        margin-top: 0.8rem;
+      }
+
+      .case p,
+      .case ul {
+        color: var(--muted);
+      }
+
+      .case ul {
+        margin: 0;
+        padding-left: 1.1rem;
+      }
+
+      .case li + li {
+        margin-top: 0.42rem;
+      }
+
+      .evidence-spine {
+        position: relative;
+        display: grid;
+        gap: 1rem;
+        padding-left: 2rem;
+      }
+
+      .evidence-spine::before {
+        content: "";
+        position: absolute;
+        left: 0.48rem;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: var(--line-strong);
+      }
+
+      .spine-item {
+        position: relative;
+        display: grid;
+        grid-template-columns: 120px minmax(0, 1fr);
+        gap: 1rem;
+        padding: 1rem;
+        border: 1px solid var(--line);
+        background: var(--paper);
+      }
+
+      .spine-item::before {
+        content: "";
+        position: absolute;
+        left: calc(-1.52rem - 5px);
+        top: 1.25rem;
+        width: 10px;
+        height: 10px;
+        border: 2px solid var(--paper);
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 1px var(--line-strong);
+      }
+
+      .stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.52rem;
+      }
+
+      .chip {
+        display: inline-flex;
+        min-height: 32px;
+        align-items: center;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.35rem 0.64rem;
+        background: var(--paper);
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.77rem;
+      }
+
+      .split-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 0.5fr) minmax(0, 0.5fr);
+        gap: 1rem;
+      }
+
+      .panel {
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius);
+        background: var(--paper);
+        padding: clamp(1.25rem, 3vw, 2rem);
+      }
+
+      .panel p {
+        color: var(--muted);
+      }
+
+      .availability {
+        border-top: 1px solid var(--line-strong);
+        border-bottom: 1px solid var(--line-strong);
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .availability .label,
+      .availability .lede {
+        color: rgb(100 190 195 / 0.88);
+        color: oklch(78% 0.08 190);
+      }
+
+      .contact-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 1.2rem;
+        align-items: center;
+      }
+
+      .availability .button.primary {
+        border-color: var(--paper);
+        background: var(--paper);
+        color: var(--ink);
+      }
+
+      .noscript-contact {
+        margin-top: 0.85rem;
+        color: var(--paper);
+        font-family: var(--mono);
+        font-size: 0.82rem;
+      }
+
+      .site-footer {
+        padding: 2rem 0;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.78rem;
+      }
+
+      @media (max-width: 980px) {
+        .hero-layout,
+        .section-head,
+        .split-panel,
+        .contact-panel {
+          grid-template-columns: 1fr;
+        }
+
+        .identity-card {
+          position: static;
+          max-width: 440px;
+        }
+
+        .proof-rail,
+        .grid-3,
+        .grid-2 {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .nav-inner {
+          flex-wrap: wrap;
+        }
+
+        .site-nav[data-enhanced="true"] .nav-toggle {
+          display: inline-flex;
+        }
+
+        .nav-links {
+          flex-basis: 100%;
+          flex-wrap: wrap;
+          gap: 0.55rem;
+          width: 100%;
+          padding: 0 0 0.9rem 50px;
+        }
+
+        .site-nav[data-enhanced="true"] .nav-links {
+          display: none;
+        }
+
+        .site-nav[data-menu-open="true"] .nav-links {
+          display: flex;
+        }
+
+        .nav-links a {
+          min-height: 38px;
+          border: 1px solid var(--line);
+          border-radius: 999px;
+          padding: 0.5rem 0.72rem;
+          background: var(--paper);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .shell {
+          width: min(100% - 28px, 1180px);
+        }
+
+        h1 {
+          font-size: clamp(2.7rem, 15vw, 4.4rem);
+        }
+
+        h2 {
+          font-size: clamp(2rem, 11vw, 3.2rem);
+        }
+
+        .proof-rail,
+        .grid-3,
+        .grid-2,
+        .case,
+        .spine-item {
+          grid-template-columns: 1fr;
+        }
+
+        .proof {
+          min-height: auto;
+        }
+
+        .brand {
+          grid-template-columns: 38px minmax(0, 1fr);
+        }
+
+        .brand span:last-child {
+          font-size: 0.68rem;
+        }
+
+        .nav-links {
+          padding-left: 0;
+        }
+
+        .site-nav {
+          position: static;
+        }
+
+        .actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-nav">
+      <div class="shell nav-inner">
+        <a class="brand" href="#top" aria-label="Jakob Stender Guldberg homepage">
+          <span class="brand-mark">JG</span>
+          <span>Backend / data / automation</span>
+        </a>
+        <button class="nav-toggle" type="button" data-nav-toggle aria-controls="page-nav" aria-expanded="false">Menu</button>
+        <nav class="nav-links" id="page-nav" aria-label="Page">
+          <a href="#qualifications">Qualifications</a>
+          <a href="#evidence">Evidence</a>
+          <a href="#signature">Working style</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content">
+      <section class="hero" id="top">
+        <div class="shell">
+          <div class="hero-layout">
+            <div>
+              <p class="kicker">Senior software developer for biotech and scientific platforms</p>
+              <h1>I turn research-heavy workflows into reliable systems.</h1>
+              <p class="lede">I build the Python services, data pipelines, internal tools, and LLM-agent workflows that turn scientific work into something teams can operate.</p>
+              <div class="actions">
+                <a class="button primary" href="#contact" data-email-link>Start a role conversation</a>
+                <button class="button" type="button" data-copy-email aria-describedby="email-copy-status">Copy email</button>
+                <span class="sr-only" id="email-copy-status" role="status" aria-live="polite"></span>
+                <a class="button ghost" href="../cv/vault/archive/rendercv_output/Jakob_Stender_Guldberg_CV.pdf">Download CV</a>
+              </div>
+            </div>
+
+            <aside class="identity-card" aria-label="Profile summary">
+              <div class="portrait-wrap">
+                <img src="assets/portrait.jpg" alt="Portrait of Jakob Stender Guldberg, backend and data platform engineer">
+              </div>
+              <div class="identity-body">
+                <div class="identity-row"><strong>Focus</strong><span>Backend systems for scientific automation and operational data work</span></div>
+                <div class="identity-row"><strong>Domain</strong><span>Biotech, medicinal research, and regulated scientific teams</span></div>
+                <div class="identity-row"><strong>Status</strong><span>Full-time roles first; focused consulting selectively</span></div>
+              </div>
+            </aside>
+          </div>
+
+        <div class="proof-rail" aria-label="Selected proof points">
+            <div class="proof"><strong>20,000</strong><span>scientific articles screened in 3 hours with source-grounded review tooling.</span></div>
+            <div class="proof"><strong>Weeks to minutes</strong><span>spreadsheet and handoff bottlenecks replaced with practical internal tools.</span></div>
+            <div class="proof"><strong>Platform</strong><span>reproducible compute foundations across Docker, Ansible, Nix, Slurm, and CI.</span></div>
+            <div class="proof"><strong>Audit aware</strong><span>RBAC, ReBAC, GDPR-sensitive contexts, NIS2 and ISO 27001 readiness.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="qualifications">
+        <div class="shell">
+          <div class="section-head">
+            <div>
+              <p class="label">Primary qualifications</p>
+              <h2>Three capabilities, with the stack behind them.</h2>
+            </div>
+            <p>A compact view of the work I am strongest at and the tools I use when messy scientific or operational workflows need to become reliable software.</p>
+          </div>
+
+          <div class="grid-3">
+            <article class="card">
+              <span class="label">LLM agents / RAG</span>
+              <h3>Source-grounded workflow agents instead of generic chat.</h3>
+              <p>Article screening, document-scoped retrieval, knowledge bases, chatbot interfaces, vector search, and validation loops with researchers.</p>
+              <div class="stack" aria-label="LLM-assisted workflow stack">
+                <span class="chip">RAG</span><span class="chip">AnythingLLM</span><span class="chip">Chatbots</span><span class="chip">LlamaIndex</span><span class="chip">Pinecone</span><span class="chip">pgvector</span><span class="chip">Prompt design</span><span class="chip">LangGraph exposure</span>
+              </div>
+            </article>
+            <article class="card">
+              <span class="label">Backend / data platforms</span>
+              <h3>Typed Python services with persistence that can be operated.</h3>
+              <p>FastAPI, Django, Pydantic, PostgreSQL, SQLAlchemy, Alembic, Docker, admin surfaces, secure APIs, and durable data models.</p>
+              <div class="stack" aria-label="Backend and data platform stack">
+                <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">Django</span><span class="chip">Pydantic</span><span class="chip">PostgreSQL</span><span class="chip">SQLAlchemy</span><span class="chip">Alembic</span><span class="chip">Docker</span><span class="chip">Internal webapps</span><span class="chip">Admin tooling</span>
+              </div>
+            </article>
+            <article class="card">
+              <span class="label">Scientific modernization</span>
+              <h3>Fragile research flows moved toward repeatable execution.</h3>
+              <p>Prefect, Snakemake migration, Streamlit review tools, QC plots, reproducible environments, CI, Nix, Ansible, and Slurm/HPC operations.</p>
+              <div class="stack" aria-label="Scientific workflow and regulated systems stack">
+                <span class="chip">Prefect</span><span class="chip">Snakemake</span><span class="chip">Streamlit</span><span class="chip">n8n-like workflows</span><span class="chip">Nix</span><span class="chip">Ansible</span><span class="chip">Slurm</span><span class="chip">GitHub/GitLab CI</span><span class="chip">RBAC</span><span class="chip">ReBAC</span><span class="chip">GDPR</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="evidence">
+        <div class="shell">
+          <div class="section-head">
+            <div>
+              <p class="label">Evidence surface</p>
+              <h2>Selected outcomes.</h2>
+            </div>
+            <p>Concrete examples across scientific review, workflow modernization, internal tooling, and platform foundations.</p>
+          </div>
+
+          <div class="case-controls" data-filter-group data-filter-target="[data-case]">
+            <button class="filter-button" type="button" data-filter-value="all" aria-pressed="true">All evidence</button>
+            <button class="filter-button" type="button" data-filter-value="llm" aria-pressed="false">LLM/RAG</button>
+            <button class="filter-button" type="button" data-filter-value="platform" aria-pressed="false">Platforms</button>
+            <button class="filter-button" type="button" data-filter-value="science" aria-pressed="false">Scientific workflows</button>
+            <button class="filter-button" type="button" data-filter-value="security" aria-pressed="false">Security</button>
+          </div>
+
+          <article class="case" data-case data-tags="llm science">
+            <div><span class="label">Biotech / article review</span><h3>Scientific article screening automation</h3></div>
+            <ul>
+              <li>Processed 20,000 scientific articles in 3 hours versus roughly 800 per week for a five-person manual workflow.</li>
+              <li>Used source-linked retrieval and researcher validation to keep generated output tied to reviewable evidence.</li>
+              <li>Built around practical retrieval tooling, vector search, and review loops rather than model research.</li>
+            </ul>
+          </article>
+
+          <article class="case" data-case data-tags="platform science">
+            <div><span class="label">Diagnostics / workflow automation</span><h3>Bioinformatics workflow modernization</h3></div>
+            <ul>
+              <li>Modernizing a Snakemake proof of concept toward Prefect orchestration for clearer repeatability and operations.</li>
+              <li>Focus is not just execution: observability, reproducibility, and reduced manual handling around scientific analysis.</li>
+            </ul>
+          </article>
+
+          <article class="case" data-case data-tags="platform llm">
+            <div><span class="label">Internal tools / webapps</span><h3>Fast development of practical workflow software</h3></div>
+            <ul>
+              <li>Builds small, useful webapps and internal tools when a spreadsheet, chat thread, or manual handoff has become the bottleneck.</li>
+              <li>Combines Python backends, typed APIs, review surfaces, lightweight workflow automation, and enough UX to replace ad hoc handoffs.</li>
+            </ul>
+          </article>
+
+          <article class="case" data-case data-tags="platform security">
+            <div><span class="label">Regulated platform</span><h3>Access-control aware backend foundations</h3></div>
+            <ul>
+              <li>Typed API foundations with FastAPI, SQLAlchemy, Alembic, PostgreSQL, and durable data modeling.</li>
+              <li>Granular authorization patterns across RBAC, ReBAC, least privilege, and audit-conscious workflows.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="signature">
+        <div class="shell">
+          <div class="section-head">
+            <div>
+              <p class="label">Working style</p>
+              <h2>Experiment quickly, harden what works, contribute back.</h2>
+            </div>
+            <p>I evaluate new tools by what they unlock in real workflows, keep the useful parts, and return small improvements to the shared software underneath.</p>
+          </div>
+
+          <div class="split-panel">
+          <div class="panel">
+            <p class="label">Operating pattern</p>
+            <h2>Small tools first, platform habits second.</h2>
+            <p class="lede">I test current tools early, including T3Code, Hermes, Codex, OpenCode, Aider, AnythingLLM, RAG stacks, and agent harnesses, but the test is always practical: can this help an engineer or domain expert move faster?</p>
+            <p>When a spreadsheet, inbox, review queue, finance process, or scientific handoff becomes the bottleneck, I build the smallest useful webapp or workflow. The pieces that prove useful get migrations, tests, observability, reproducible environments, CI, access control, documentation, and cleanup.</p>
+            <div class="actions">
+              <a class="button ghost" href="https://github.com/jakob1379" rel="noopener noreferrer">Open GitHub profile</a>
+            </div>
+          </div>
+          <div class="panel evidence-spine" aria-label="Open-source evidence">
+            <div class="spine-item"><span class="meta">Open-source value</span><p>Modern organizations stand on shared tools. I contribute because even small patches improve the foundation, build trust, and help communities move forward.</p></div>
+            <div class="spine-item"><span class="meta">Public learning loop</span><p>Small public projects and patches show a habit of testing tools in the open, keeping what works, and feeding improvements back.</p></div>
+            <div class="spine-item"><span class="meta">Foundation software</span><p>Public pull requests across projects such as NixOS/nixpkgs, wind-up, statix, and supervenn, plus packaging and developer-tooling work others can build on.</p></div>
+            <div class="spine-item"><span class="meta">Smaller experiments</span><p>Small repos are part of the signal: quick trials of RAG patterns, local memory, packaging ideas, and workflow tools that either become useful or fail fast enough to teach something.</p></div>
+          </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="availability">
+        <div class="shell contact-panel">
+          <div>
+            <p class="label">Availability</p>
+            <h2>Primarily looking for full-time software developer roles.</h2>
+            <p class="lede">Best fit: biotech, medtech, bioinformatics, scientific computing, internal automation, backend platforms, and regulated systems. Focused consulting is possible when the problem is specific and technical.</p>
+            <noscript><p class="noscript-contact">Email: jakob1379 [at] gmail [dot] com</p></noscript>
+          </div>
+          <a class="button primary" href="#contact" data-email-link>Email Jakob</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="shell">Jakob Stender Guldberg / Backend, data workflows, and automation / <span data-current-year></span></div>
+    </footer>
+
+    <script>
+      (() => {
+        const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+        let reduceMotion = motionQuery.matches;
+        const syncMotionPreference = (event) => {
+          reduceMotion = event.matches;
+        };
+        if (motionQuery.addEventListener) {
+          motionQuery.addEventListener("change", syncMotionPreference);
+        }
+
+        if (!reduceMotion) {
+          const revealTargets = [
+            ".hero .kicker",
+            ".hero h1",
+            ".hero .lede",
+            ".hero .actions",
+            ".identity-card",
+            ".proof-rail",
+            ".section-head",
+            ".card",
+            ".case",
+            ".panel"
+          ];
+          const revealItems = document.querySelectorAll(revealTargets.join(", "));
+
+          revealItems.forEach((item, index) => {
+            item.setAttribute("data-reveal", "");
+            item.style.setProperty("--reveal-delay", `${Math.min(index * 24, 240)}ms`);
+          });
+
+          document.documentElement.classList.add("motion-ready");
+
+          const reveal = (item) => {
+            item.style.willChange = "opacity, transform";
+            item.classList.add("is-visible");
+            const clearWillChange = () => {
+              item.style.willChange = "";
+              item.removeEventListener("transitionend", clearWillChange);
+            };
+            item.addEventListener("transitionend", clearWillChange);
+            window.setTimeout(clearWillChange, 520);
+          };
+
+          if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver((entries) => {
+              entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                  return;
+                }
+
+                reveal(entry.target);
+                observer.unobserve(entry.target);
+              });
+            }, {
+              // Reveal shortly before an element reaches the viewport bottom.
+              rootMargin: "0px 0px -10% 0px",
+              threshold: 0.12
+            });
+
+            revealItems.forEach((item) => observer.observe(item));
+          } else {
+            revealItems.forEach(reveal);
+          }
+        }
+
+        document.querySelectorAll("[data-current-year]").forEach((target) => {
+          target.textContent = new Date().getFullYear();
+        });
+
+        const nav = document.querySelector(".site-nav");
+        const navToggle = document.querySelector("[data-nav-toggle]");
+        if (nav && navToggle) {
+          nav.setAttribute("data-enhanced", "true");
+          const navLinks = Array.from(nav.querySelectorAll('.nav-links a[href^="#"]'));
+          let navFrame = 0;
+          const setNavDepth = () => {
+            navFrame = 0;
+            nav.setAttribute("data-scrolled", String(window.scrollY > 24));
+          };
+          const queueNavDepth = () => {
+            if (navFrame) {
+              return;
+            }
+            navFrame = window.requestAnimationFrame(setNavDepth);
+          };
+          setNavDepth();
+          window.addEventListener("scroll", queueNavDepth, { passive: true });
+
+          navToggle.addEventListener("click", () => {
+            const isOpen = nav.getAttribute("data-menu-open") === "true";
+            const nextOpen = String(!isOpen);
+            nav.setAttribute("data-menu-open", nextOpen);
+            navToggle.setAttribute("aria-expanded", nextOpen);
+          });
+
+          navLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+              nav.setAttribute("data-menu-open", "false");
+              navToggle.setAttribute("aria-expanded", "false");
+            });
+          });
+
+          const sectionMap = new Map();
+          navLinks.forEach((link) => {
+            const section = document.querySelector(link.hash);
+            if (section) {
+              sectionMap.set(section.id, link);
+            }
+          });
+
+          const setActiveSection = (id) => {
+            navLinks.forEach((link) => {
+              if (link === sectionMap.get(id)) {
+                link.setAttribute("aria-current", "location");
+              } else {
+                link.removeAttribute("aria-current");
+              }
+            });
+          };
+
+          if (sectionMap.size > 0 && "IntersectionObserver" in window) {
+            const visibleSections = new Map();
+            const sectionObserver = new IntersectionObserver((entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  visibleSections.set(entry.target.id, entry.boundingClientRect.top);
+                } else {
+                  visibleSections.delete(entry.target.id);
+                }
+              });
+
+              const active = Array.from(visibleSections.entries())
+                .sort((first, second) => {
+                  // Use an upper-third target line so the nav follows what the reader is entering.
+                  const targetLine = window.innerHeight * 0.28;
+                  return Math.abs(first[1] - targetLine) - Math.abs(second[1] - targetLine);
+                })[0];
+              if (active) {
+                setActiveSection(active[0]);
+              }
+            }, {
+              // The active band sits around the upper third of the viewport.
+              rootMargin: "-24% 0px -58% 0px",
+              threshold: 0.01
+            });
+
+            sectionMap.forEach((_, id) => {
+              const section = document.getElementById(id);
+              if (section) {
+                sectionObserver.observe(section);
+              }
+            });
+          }
+        }
+
+        const publicEmail = ["moc.liamg", "9731bokaj"]
+          .map((part) => Array.from(part).reverse().join(""))
+          .reverse()
+          .join("@");
+
+        document.querySelectorAll("[data-email-link]").forEach((link) => {
+          link.setAttribute("href", `mailto:${publicEmail}`);
+        });
+
+        document.querySelectorAll("[data-copy-email]").forEach((button) => {
+          const originalText = button.textContent;
+          const statusId = button.getAttribute("aria-describedby");
+          const status = statusId ? document.getElementById(statusId) : null;
+          let resetTimer;
+
+          button.addEventListener("click", async () => {
+            window.clearTimeout(resetTimer);
+            button.removeAttribute("data-feedback");
+            button.disabled = true;
+            try {
+              if (!navigator.clipboard?.writeText) {
+                throw new Error("Clipboard API unavailable");
+              }
+              await navigator.clipboard.writeText(publicEmail);
+              button.textContent = "Email copied";
+              button.setAttribute("data-feedback", "success");
+              if (status) {
+                status.textContent = "Email address copied to clipboard.";
+              }
+            } catch (error) {
+              console.error("Clipboard copy failed; opening the email client instead.", error);
+              button.textContent = "Opening email client";
+              button.setAttribute("data-feedback", "fallback");
+              if (status) {
+                status.textContent = "Clipboard unavailable; opening the email client.";
+              }
+              window.location.href = `mailto:${publicEmail}`;
+            } finally {
+              resetTimer = window.setTimeout(() => {
+                button.textContent = originalText;
+                button.removeAttribute("data-feedback");
+                button.disabled = false;
+                if (status) {
+                  status.textContent = "";
+                }
+              }, 1800);
+            }
+          });
+        });
+
+        document.querySelectorAll("[data-filter-group]").forEach((group) => {
+          const buttons = group.querySelectorAll("[data-filter-value]");
+          const targetSelector = group.getAttribute("data-filter-target");
+          if (!targetSelector) {
+            return;
+          }
+
+          let items;
+          try {
+            items = document.querySelectorAll(targetSelector);
+          } catch {
+            return;
+          }
+
+          const transitionDuration = 220;
+          const hideTimers = new WeakMap();
+
+          const hideCase = (item) => {
+            window.clearTimeout(hideTimers.get(item));
+            item.classList.remove("is-entering");
+            item.classList.add("is-exiting");
+            const timer = window.setTimeout(() => {
+              item.hidden = true;
+              item.classList.remove("is-exiting");
+              hideTimers.delete(item);
+            }, transitionDuration);
+            hideTimers.set(item, timer);
+          };
+
+          const showCase = (item) => {
+            window.clearTimeout(hideTimers.get(item));
+            hideTimers.delete(item);
+            item.classList.remove("is-exiting");
+            item.hidden = false;
+            item.classList.add("is-entering");
+          };
+
+          buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+              const value = button.getAttribute("data-filter-value");
+              buttons.forEach((candidate) => {
+                candidate.setAttribute("aria-pressed", String(candidate === button));
+              });
+              const enteringItems = [];
+              items.forEach((item) => {
+                const tags = (item.getAttribute("data-tags") || "").split(/\s+/).filter(Boolean);
+                const shouldHide = value !== "all" && !tags.includes(value);
+
+                if (reduceMotion) {
+                  item.hidden = shouldHide;
+                  return;
+                }
+
+                if (shouldHide) {
+                  hideCase(item);
+                  return;
+                }
+
+                showCase(item);
+                enteringItems.push(item);
+              });
+              if (enteringItems.length > 0) {
+                // Force layout before removing the enter state so the transition can run.
+                void group.offsetHeight;
+                enteringItems.forEach((item) => {
+                  item.classList.remove("is-entering");
+                });
+              }
+            });
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

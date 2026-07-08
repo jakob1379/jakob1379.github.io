@@ -1,8 +1,7 @@
 [dependency-groups]
 dev = [
   "jga-blog-page[test]",
-  "poethepoet>=0.44.0",
-  "prek>=0.3.8"
+  "poethepoet>=0.44.0"
 ]
 
 [project]
@@ -25,14 +24,10 @@ test = [
 ]
 
 [tool.poe.tasks]
-# setup
-_setup_pre-commit = "prek install"
-setup = {sequence = ["_setup_pre-commit"], help = "Setup dev environment"}
 # update
-update_pre-commit = "prek autoupdate"
 update_python_packages = {shell = "uv sync --upgrade && uvx uv-bump"}
 update_flake = "nix flake update"
-update = {shell = 'set -e; poe update_flake & poe update_pre-commit & poe update_python_packages & wait', help = "Update dependencies in parallel"}
+update = {shell = 'set -e; poe update_flake & poe update_python_packages & wait', help = "Update dependencies in parallel"}
 # build
 build_rendercv = {shell = 'cd cv && rendercv render --pdf-path ../docs/assets/Jakob_Stender_Guldberg_CV.pdf Jakob_Stender_Guldberg_CV.yml'}
 build_zensical = 'zensical build'

@@ -1,6 +1,7 @@
 *~
 .aider*
 .direnv
+/.pre-commit-config.yaml
 /.cache/
 /cv/rendercv_output/
 cv/docs/
