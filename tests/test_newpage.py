@@ -49,6 +49,11 @@ def test_newpage_cv_grounded_evidence(page, browser_name):
     expect(page.get_by_text("Snakemake pipeline into an installable Python/Prefect workflow")).to_be_visible()
     expect(page.get_by_text("FastAPI, React, SQLAlchemy/Alembic")).to_be_visible()
     expect(page.get_by_text("uv, Nix, OCI images, Docker, Ansible, Slurm")).to_be_visible()
+    expect(page.get_by_alt_text("Evaxion logo")).to_have_attribute("src", "assets/evaxion.svg")
+    expect(page.get_by_alt_text("SeeQ Diagnostics logo")).to_have_attribute(
+        "src",
+        "assets/seeq-diagnostics.svg",
+    )
 
 
 def test_newpage_mobile_nav(page, browser_name):

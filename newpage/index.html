@@ -509,6 +509,26 @@
         margin-bottom: 0.9rem;
       }
 
+      .case-heading {
+        display: grid;
+        align-content: start;
+      }
+
+      .company-logo {
+        display: flex;
+        align-items: center;
+        width: min(152px, 100%);
+        height: 34px;
+        margin-bottom: 0.85rem;
+      }
+
+      .company-logo img {
+        display: block;
+        max-width: 100%;
+        max-height: 28px;
+        object-fit: contain;
+      }
+
       @media (prefers-reduced-motion: no-preference) {
         .button,
         .case {
@@ -781,7 +801,11 @@
 
           <div class="case-list">
             <article class="case" data-case>
-              <div><span class="label">Evaxion / applied AI</span><h3>Literature review at useful scale</h3></div>
+              <div class="case-heading">
+                <span class="company-logo"><img src="assets/evaxion.svg" alt="Evaxion logo"></span>
+                <span class="label">Evaxion / applied AI</span>
+                <h3>Literature review at useful scale</h3>
+              </div>
               <ul>
                 <li>Processed 20,000 scientific articles in 3 hours versus roughly 800 per week for a five-person manual workflow.</li>
                 <li>Used LlamaIndex, Pinecone, PostgreSQL/pgvector, researcher validation, and source-linked review to reduce hallucination risk.</li>
@@ -789,7 +813,11 @@
             </article>
 
             <article class="case" data-case>
-              <div><span class="label">SeeQ Diagnostics / bioinformatics</span><h3>Research pipeline to operable workflow</h3></div>
+              <div class="case-heading">
+                <span class="company-logo"><img src="assets/seeq-diagnostics.svg" alt="SeeQ Diagnostics logo"></span>
+                <span class="label">SeeQ Diagnostics / bioinformatics</span>
+                <h3>Research pipeline to operable workflow</h3>
+              </div>
               <ul>
                 <li>Modernizing an expert-operated Snakemake pipeline into an installable Python/Prefect workflow product.</li>
                 <li>Added deterministic validation data, CI regression execution, configuration validation, logging, and one-command execution paths.</li>
