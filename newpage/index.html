@@ -568,6 +568,30 @@
         color: var(--muted);
       }
 
+      .case-claim {
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      .case-detail {
+        color: #7c878c;
+        font-family: var(--mono);
+        font-size: 0.84rem;
+      }
+
+      .case-detail::before {
+        content: " • ";
+        color: var(--accent);
+        font-family: var(--body);
+        font-weight: 700;
+      }
+
+      @supports (color: color-mix(in srgb, white, black)) {
+        .case-detail {
+          color: color-mix(in srgb, var(--muted), transparent 16%);
+        }
+      }
+
       .case ul {
         margin: 0;
         padding-left: 1.1rem;
@@ -803,12 +827,18 @@
             <article class="case" data-case>
               <div class="case-heading">
                 <span class="company-logo"><img src="assets/evaxion.svg" alt="Evaxion logo"></span>
-                <span class="label">Evaxion / applied AI</span>
-                <h3>Literature review at useful scale</h3>
+                <span class="label">Evaxion / scientific tooling</span>
+                <h3>Research workflows made faster and safer</h3>
               </div>
               <ul>
-                <li>Processed 20,000 scientific articles in 3 hours versus roughly 800 per week for a five-person manual workflow.</li>
-                <li>Used LlamaIndex, Pinecone, PostgreSQL/pgvector, researcher validation, and source-linked review to reduce hallucination risk.</li>
+                <li>
+                  <span class="case-claim">Accelerated expert literature screening: 20,000 articles in 3 hours, compared with roughly 800 per week for a five-person manual workflow</span>
+                  <span class="case-detail">LLM-assisted screening, source-grounded RAG, LlamaIndex, Pinecone, PostgreSQL/pgvector.</span>
+                </li>
+                <li>
+                  <span class="case-claim">Turned fragile research handoffs into runnable internal tools for lab data, compute, service intake, and operational visibility</span>
+                  <span class="case-detail">Streamlit, structured validation, QC plots, Ansible, Slurm, Azure AD, GitLab Service Desk, Grafana/logging.</span>
+                </li>
               </ul>
             </article>
 
@@ -819,24 +849,48 @@
                 <h3>Research pipeline to operable workflow</h3>
               </div>
               <ul>
-                <li>Modernizing an expert-operated Snakemake pipeline into an installable Python/Prefect workflow product.</li>
-                <li>Added deterministic validation data, CI regression execution, configuration validation, logging, and one-command execution paths.</li>
+                <li>
+                  <span class="case-claim">Modernized an expert-operated Snakemake pipeline into an installable Python/Prefect workflow product</span>
+                  <span class="case-detail">Python packaging, Prefect, Snakemake, one-command execution.</span>
+                </li>
+                <li>
+                  <span class="case-claim">Made the workflow safer to change with deterministic validation data, CI regression runs, configuration validation, and logging</span>
+                  <span class="case-detail">Validation fixtures, CI regression execution, configuration checks, structured logs.</span>
+                </li>
               </ul>
             </article>
 
             <article class="case" data-case>
-              <div><span class="label">Compliance / platform engineering</span><h3>Typed platform foundations for regulated work</h3></div>
+              <div class="case-heading">
+                <span class="label">Compliance / platform engineering</span>
+                <h3>Typed platform foundations for regulated work</h3>
+              </div>
               <ul>
-                <li>Built FastAPI, React, SQLAlchemy/Alembic, background workers, scheduled jobs, and payment integration for a compliance-sensitive platform.</li>
-                <li>Kept privileged operations server-side and implemented RBAC/ReBAC across users, organizations, and shared resources.</li>
+                <li>
+                  <span class="case-claim">Built typed platform foundations for compliance-sensitive product work across APIs, UI, jobs, payments, and schema migrations</span>
+                  <span class="case-detail">FastAPI, React, SQLAlchemy/Alembic, background workers, scheduled jobs, payment integration.</span>
+                </li>
+                <li>
+                  <span class="case-claim">Kept privileged operations server-side and modeled access across users, organizations, and shared resources</span>
+                  <span class="case-detail">RBAC/ReBAC, organization boundaries, shared-resource authorization, regulated-system constraints.</span>
+                </li>
               </ul>
             </article>
 
             <article class="case" data-case>
-              <div><span class="label">Scientific compute / reproducibility</span><h3>Tools that researchers can actually run</h3></div>
+              <div class="case-heading">
+                <span class="label">Scientific compute / reproducibility</span>
+                <h3>Tools that researchers can actually run</h3>
+              </div>
               <ul>
-                <li>Reduced lab workflow time from weeks to minutes with structured Streamlit input, QC plots, and downstream analysis boundaries.</li>
-                <li>Built reproducible compute foundations across uv, Nix, OCI images, Docker, Ansible, Slurm, CI, and observability.</li>
+                <li>
+                  <span class="case-claim">Reduced lab workflow time from weeks to minutes by turning messy inputs into structured review and analysis paths</span>
+                  <span class="case-detail">Streamlit, structured input, QC plots, validation boundaries, downstream analysis.</span>
+                </li>
+                <li>
+                  <span class="case-claim">Made scientific tools reproducible and runnable across local, containerized, and cluster environments</span>
+                  <span class="case-detail">uv, Nix, OCI images, Docker, Ansible, Slurm, CI, observability.</span>
+                </li>
               </ul>
             </article>
           </div>

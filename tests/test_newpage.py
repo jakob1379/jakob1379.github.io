@@ -45,7 +45,8 @@ def test_newpage_cv_grounded_evidence(page, browser_name):
 
     expect(page.locator("[data-case]")).to_have_count(4)
     expect(page.get_by_role("heading", name="Selected work.")).to_be_visible()
-    expect(page.get_by_text("20,000 scientific articles in 3 hours")).to_be_visible()
+    expect(page.get_by_text("20,000 articles in 3 hours")).to_be_visible()
+    expect(page.get_by_text("runnable internal tools for lab data, compute")).to_be_visible()
     expect(page.get_by_text("Snakemake pipeline into an installable Python/Prefect workflow")).to_be_visible()
     expect(page.get_by_text("FastAPI, React, SQLAlchemy/Alembic")).to_be_visible()
     expect(page.get_by_text("uv, Nix, OCI images, Docker, Ansible, Slurm")).to_be_visible()
