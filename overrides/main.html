@@ -10,3 +10,52 @@
     {% endif %}
   </title>
 {% endblock %}
+
+{% block extrahead %}
+  <meta name="theme-color" content="#0f7d82">
+  <meta property="og:site_name" content="Jakob Stender Guldberg / Field Notes">
+{% endblock %}
+
+{% block header %}
+  <header class="site-nav" data-md-component="header">
+    <div class="shell nav-inner">
+      <a class="brand" href="{{ config.extra.homepage }}" aria-label="Jakob Stender Guldberg homepage">
+        <span class="brand-mark">JG</span>
+        <span>Science enabler / tools / backend</span>
+      </a>
+
+      <nav class="nav-links" id="page-nav" aria-label="Primary navigation">
+        <a href="{{ config.extra.homepage }}">Portfolio</a>
+        <a href="{{ config.extra.homepage }}#contact">Contact</a>
+        <a href="{{ 'blog/' | url }}" aria-current="page">Field notes</a>
+      </nav>
+
+      <div class="nav-actions">
+        {% if "search" in config.plugins %}
+          {% set search = config.plugins["search"] | attr("config") %}
+          {% if search.enabled %}
+            <label class="nav-search md-icon" for="__search" aria-label="{{ lang.t('search') }}">
+              {% set icon = config.theme.icon.search or "material/magnify" %}
+              {% include ".icons/" ~ icon ~ ".svg" %}
+            </label>
+            {% include "partials/search.html" %}
+          {% endif %}
+        {% endif %}
+        <button class="nav-toggle" type="button" data-nav-toggle aria-controls="page-nav" aria-expanded="false">Menu</button>
+      </div>
+    </div>
+  </header>
+{% endblock %}
+
+{% block footer %}
+  <footer class="field-footer">
+    <div class="shell field-footer__inner">
+      <p>Jakob Stender Guldberg / Science enabler, backend, and simple tools / <span data-current-year>2026</span></p>
+      <nav aria-label="Footer navigation">
+        <a href="{{ config.extra.homepage }}">Portfolio</a>
+        <a href="{{ 'blog/' | url }}">Field notes</a>
+        <a href="https://zensical.org/" rel="noopener">Built with Zensical</a>
+      </nav>
+    </div>
+  </footer>
+{% endblock %}

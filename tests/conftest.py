@@ -3,8 +3,36 @@ Playwright pytest configuration for cross-browser testing and device emulation.
 This extends the pytest-playwright plugin with custom viewport options.
 """
 
-import pytest
+from functools import partial
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+from threading import Thread
 from typing import Optional, Tuple
+
+import pytest
+
+
+class QuietSiteHandler(SimpleHTTPRequestHandler):
+    """Serve the built site without writing request logs to stderr."""
+
+    def log_message(self, format, *args):
+        """Suppress request logging during browser tests."""
+
+
+@pytest.fixture(scope="session")
+def site_url():
+    """Serve the built site over HTTP for cross-document navigation tests."""
+    handler = partial(QuietSiteHandler, directory=Path("site").absolute())
+    server = ThreadingHTTPServer(("127.0.0.1", 0), handler)
+    thread = Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+
+    try:
+        yield f"http://127.0.0.1:{server.server_port}"
+    finally:
+        server.shutdown()
+        server.server_close()
+        thread.join(timeout=5)
 
 
 def pytest_addoption(parser):

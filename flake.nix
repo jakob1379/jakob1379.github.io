@@ -29,6 +29,7 @@
           ruby
           uv
 
+
           # Playwright requirements
           nodejs # Required to run the driver without patching
           stdenv.cc.cc.lib # For greenlet module

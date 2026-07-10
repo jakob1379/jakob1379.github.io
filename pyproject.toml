@@ -30,7 +30,7 @@ update_flake = "nix flake update"
 update = {shell = 'set -e; poe update_flake & poe update_python_packages & wait', help = "Update dependencies in parallel"}
 # build
 build_rendercv = {shell = 'cd cv && rendercv render --pdf-path ../docs/assets/Jakob_Stender_Guldberg_CV.pdf Jakob_Stender_Guldberg_CV.yml'}
-build_zensical = 'zensical build'
+build_zensical = {cmd = "zensical build", help = "Build the portfolio and Zensical blog."}
 minify = {shell = '''
 cd site && \
 find . -name "*.html" -exec minhtml --minify-js --minify-css {} + && \

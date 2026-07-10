@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Custom Zensical homepage template. -->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -10,8 +11,8 @@
     <meta property="og:image" content="https://jgalabs.dk/assets/portrait.jpg">
     <meta name="theme-color" content="#0f7d82">
     <!-- Clickjacking protection must be configured as an HTTP header; embedding directives are ignored in meta CSP. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://jgalabs.dk data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-MU6izjJ48zJTYLCjWBlOsinSTkbBwcIAW7qBfcyCkuQ='; connect-src 'self'; form-action 'none';">
-    <link rel="icon" href="../site/assets/images/favicon.png">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://jgalabs.dk data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-o82eajm9STb88UoApk6A/NbUgR3Yrj9egfULneBgTBA='; connect-src 'self'; form-action 'none';">
+    <link rel="icon" type="image/png" href="assets/goose.png">
     <style>
       :root {
         --bg: #f3f8f8;
@@ -23,8 +24,6 @@
         --line-strong: #4a575f;
         --accent: #0f7d82;
         --accent-2: #3869b3;
-        --warn: #a6622b;
-        --ok: #247b5e;
         --shadow: 0 28px 80px rgb(24 33 38 / 0.11);
         --display: "Iowan Old Style", "Charter", "Palatino Linotype", Georgia, serif;
         --body: "Avenir Next", "Segoe UI", system-ui, sans-serif;
@@ -44,8 +43,6 @@
           --line-strong: oklch(34% 0.024 220);
           --accent: oklch(50% 0.105 190);
           --accent-2: oklch(46% 0.11 255);
-          --warn: oklch(54% 0.13 42);
-          --ok: oklch(47% 0.11 155);
         }
       }
 
@@ -175,6 +172,12 @@
         gap: 1.2rem;
       }
 
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
       .brand {
         display: inline-grid;
         grid-template-columns: 42px minmax(0, 1fr);
@@ -208,6 +211,7 @@
         display: flex;
         align-items: center;
         gap: 1rem;
+        margin-left: auto;
         color: var(--muted);
         font-size: 0.9rem;
       }
@@ -329,8 +333,45 @@
       .actions {
         display: flex;
         flex-wrap: wrap;
+        align-items: center;
         gap: 0.75rem;
         margin-top: 1.45rem;
+      }
+
+      .social-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+      }
+
+      .social-link {
+        display: grid;
+        width: 46px;
+        height: 46px;
+        place-items: center;
+        border: 1px solid var(--line-strong);
+        border-radius: 999px;
+        background: var(--paper);
+        color: var(--ink);
+        text-decoration: none;
+        transition:
+          border-color 160ms ease,
+          background 160ms ease,
+          color 160ms ease,
+          transform 160ms ease;
+      }
+
+      .social-link svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .social-link:hover,
+      .social-link:focus-visible {
+        border-color: var(--accent);
+        background: var(--ink);
+        color: var(--paper);
+        transform: translateY(-1px);
       }
 
       .button {
@@ -358,23 +399,6 @@
         border-color: var(--accent);
       }
 
-      .button:disabled {
-        cursor: progress;
-        opacity: 0.72;
-      }
-
-      .button[data-feedback="success"] {
-        border-color: var(--ok);
-        background: var(--ok);
-        color: var(--paper);
-      }
-
-      .button[data-feedback="fallback"] {
-        border-color: var(--warn);
-        background: var(--warn);
-        color: var(--paper);
-      }
-
       .button.primary {
         border-color: var(--accent);
         background: var(--accent);
@@ -384,6 +408,21 @@
       .button.ghost {
         border-color: var(--line);
         background: transparent;
+      }
+
+      .button.cv-download {
+        border-color: var(--accent-2);
+        background: var(--accent-2);
+        color: var(--paper);
+        box-shadow: 0 8px 22px rgb(56 105 179 / 0.2);
+      }
+
+      .button.cv-download:hover,
+      .button.cv-download:focus-visible {
+        border-color: var(--ink);
+        background: var(--ink);
+        color: var(--paper);
+        box-shadow: 0 10px 28px rgb(32 43 49 / 0.22);
       }
 
       .identity-card {
@@ -643,6 +682,18 @@
         color: var(--paper);
       }
 
+      .availability .social-link {
+        border-color: var(--paper);
+        background: transparent;
+        color: var(--paper);
+      }
+
+      .availability .social-link:hover,
+      .availability .social-link:focus-visible {
+        background: var(--paper);
+        color: var(--ink);
+      }
+
       .noscript-contact {
         margin-top: 0.85rem;
         color: var(--paper);
@@ -686,6 +737,7 @@
         }
 
         .nav-links {
+          order: 3;
           flex-basis: 100%;
           flex-wrap: wrap;
           gap: 0.55rem;
@@ -707,6 +759,10 @@
           border-radius: 999px;
           padding: 0.5rem 0.72rem;
           background: var(--paper);
+        }
+
+        .nav-actions {
+          order: 2;
         }
       }
 
@@ -753,6 +809,10 @@
           flex-direction: column;
         }
 
+        .social-links {
+          width: 100%;
+        }
+
         .button,
         .contact-actions {
           width: 100%;
@@ -768,11 +828,14 @@
           <span class="brand-mark">JG</span>
           <span>Science enabler / tools / backend</span>
         </a>
-        <button class="nav-toggle" type="button" data-nav-toggle aria-controls="page-nav" aria-expanded="false">Menu</button>
-        <nav class="nav-links" id="page-nav" aria-label="Page">
-          <a href="#evidence">Evidence</a>
+        <nav class="nav-links" id="page-nav" aria-label="Primary navigation">
+          <a href="#top" aria-current="location">Portfolio</a>
           <a href="#contact">Contact</a>
+          <a href="blog/">Field notes</a>
         </nav>
+        <div class="nav-actions">
+          <button class="nav-toggle" type="button" data-nav-toggle aria-controls="page-nav" aria-expanded="false">Menu</button>
+        </div>
       </div>
     </header>
 
@@ -785,10 +848,18 @@
               <h1>Science enabler.</h1>
               <p class="lede">I simplify research work into small webapps, Python services, data workflows, and source-grounded AI tools that remove process drag without turning every task into a platform.</p>
               <div class="actions">
-                <a class="button primary" href="#contact" data-email-link>Start a role conversation</a>
-                <button class="button" type="button" data-copy-email aria-describedby="email-copy-status">Copy email</button>
-                <span class="sr-only" id="email-copy-status" role="status" aria-live="polite"></span>
-                <a class="button ghost" href="../cv/vault/archive/rendercv_output/Jakob_Stender_Guldberg_CV.pdf">Download CV</a>
+                <div class="social-links" aria-label="Social links">
+                  <a class="social-link" href="mailto:jakob1379+jgalabs@gmail.com" aria-label="Email Jakob" title="Email Jakob">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5h18v13H3zM3.8 6.3 12 13l8.2-6.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                  <a class="social-link" href="https://github.com/jakob1379" aria-label="GitHub" title="GitHub" rel="me noopener noreferrer">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.82a9.6 9.6 0 0 1 2.5.34c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.35 4.68-4.58 4.93.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+                  </a>
+                  <a class="social-link" href="https://www.linkedin.com/in/jakobguldberg/" aria-label="LinkedIn" title="LinkedIn" rel="me noopener noreferrer">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5.34 3.5A1.84 1.84 0 1 1 5.33 7.2a1.84 1.84 0 0 1 .01-3.69ZM3.75 8.6h3.18v10.15H3.75V8.6Zm5.14 0h3.05v1.39h.04c.43-.8 1.47-1.65 3.02-1.65 3.23 0 3.83 2.13 3.83 4.9v5.51h-3.18v-4.88c0-1.17-.02-2.66-1.62-2.66-1.63 0-1.88 1.27-1.88 2.58v4.96H8.97V8.6Z"/></svg>
+                  </a>
+                </div>
+                <a class="button cv-download" href="assets/Jakob_Stender_Guldberg_CV.pdf">Download CV</a>
               </div>
             </div>
 
@@ -903,11 +974,20 @@
             <p class="label">Availability</p>
             <h2>Primarily looking for full-time software developer roles.</h2>
             <p class="lede">Best fit: biotech, medtech, bioinformatics, scientific computing, internal automation, backend platforms, and regulated systems where simple tools can unlock scientific work. Focused consulting is possible when the problem is specific and technical.</p>
-            <noscript><p class="noscript-contact">Email: jakob1379 [at] gmail [dot] com</p></noscript>
+            <noscript><p class="noscript-contact">Email: jakob1379+jgalabs [at] gmail [dot] com</p></noscript>
           </div>
           <div class="contact-actions" aria-label="Contact links">
-            <a class="button primary" href="#contact" data-email-link>Email Jakob</a>
-            <a class="button ghost" href="https://www.linkedin.com/in/jakobguldberg/" rel="noopener noreferrer">LinkedIn</a>
+            <div class="social-links">
+              <a class="social-link" href="mailto:jakob1379+jgalabs@gmail.com" aria-label="Email Jakob" title="Email Jakob">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5h18v13H3zM3.8 6.3 12 13l8.2-6.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a class="social-link" href="https://github.com/jakob1379" aria-label="GitHub" title="GitHub" rel="me noopener noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.82a9.6 9.6 0 0 1 2.5.34c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.35 4.68-4.58 4.93.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+              </a>
+              <a class="social-link" href="https://www.linkedin.com/in/jakobguldberg/" aria-label="LinkedIn" title="LinkedIn" rel="me noopener noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5.34 3.5A1.84 1.84 0 1 1 5.33 7.2a1.84 1.84 0 0 1 .01-3.69ZM3.75 8.6h3.18v10.15H3.75V8.6Zm5.14 0h3.05v1.39h.04c.43-.8 1.47-1.65 3.02-1.65 3.23 0 3.83 2.13 3.83 4.9v5.51h-3.18v-4.88c0-1.17-.02-2.66-1.62-2.66-1.63 0-1.88 1.27-1.88 2.58v4.96H8.97V8.6Z"/></svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -1008,56 +1088,6 @@
             });
           }
         }
-
-        const publicEmail = ["moc.liamg", "9731bokaj"]
-          .map((part) => Array.from(part).reverse().join(""))
-          .reverse()
-          .join("@");
-
-        document.querySelectorAll("[data-email-link]").forEach((link) => {
-          link.setAttribute("href", `mailto:${publicEmail}`);
-        });
-
-        document.querySelectorAll("[data-copy-email]").forEach((button) => {
-          const originalText = button.textContent;
-          const statusId = button.getAttribute("aria-describedby");
-          const status = statusId ? document.getElementById(statusId) : null;
-          let resetTimer;
-
-          button.addEventListener("click", async () => {
-            window.clearTimeout(resetTimer);
-            button.removeAttribute("data-feedback");
-            button.disabled = true;
-            try {
-              if (!navigator.clipboard?.writeText) {
-                throw new Error("Clipboard API unavailable");
-              }
-              await navigator.clipboard.writeText(publicEmail);
-              button.textContent = "Email copied";
-              button.setAttribute("data-feedback", "success");
-              if (status) {
-                status.textContent = "Email address copied to clipboard.";
-              }
-            } catch (error) {
-              console.error("Clipboard copy failed; opening the email client instead.", error);
-              button.textContent = "Opening email client";
-              button.setAttribute("data-feedback", "fallback");
-              if (status) {
-                status.textContent = "Clipboard unavailable; opening the email client.";
-              }
-              window.location.href = `mailto:${publicEmail}`;
-            } finally {
-              resetTimer = window.setTimeout(() => {
-                button.textContent = originalText;
-                button.removeAttribute("data-feedback");
-                button.disabled = false;
-                if (status) {
-                  status.textContent = "";
-                }
-              }, 1800);
-            }
-          });
-        });
 
       })();
     </script>

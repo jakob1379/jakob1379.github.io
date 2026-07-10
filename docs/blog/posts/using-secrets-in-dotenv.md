@@ -2,17 +2,24 @@
 authors:
  - jsg
 date: 2025-11-13
+description: Store dotenv secrets in the operating system keyring while keeping local configuration convenient.
 ---
 
-As a first try on writing and article I thought of many topics that could be fun, but starting with
-something simple, that I actually find myself using more often, might be the better topic to start
-off with. So here goes nothing!
+<div class="post-header" markdown>
 
----
+<p class="post-meta">Field note 001 / Security / 13 November 2025</p>
 
-# Managing Secrets in Dotenv Files with the Keyring #
+# Managing secrets in dotenv files with the keyring
 
-When developing software, we often fine ourselves relying on `.env` files to store configuration and
+<p class="post-deck">Keep the convenience of project-local configuration without leaving every
+credential sitting in plaintext.</p>
+
+</div>
+
+As a first article, I considered plenty of ambitious topics. Starting with a small technique that I
+actually use is probably more useful. So here goes nothing.
+
+When developing software, we often find ourselves relying on `.env` files to store configuration and
 secrets. But this common practice has some serious drawbacks as anyone with access to your computer
 can read these plaintext passwords.
 
@@ -24,8 +31,9 @@ The problem gets worse when:
 
 A better approach exists: using your system's keyring. Most operating systems include encrypted
 vaults like [GnomeKeyring](https://wiki.gnome.org/Projects/GnomeKeyring) or [KWalletManager](https://apps.kde.org/en-gb/kwalletmanager5/) that store WiFi passwords and browser logins
-behind a master password. Many tools for interacting with the keyring exists, but I prefer the
-simplicity of the cli-tool [keyring](https://github.com/jaraco/keyring) for programmatic interactions.
+behind a master password. Many tools for interacting with the keyring exist, but I prefer the
+simplicity of the command-line tool [keyring](https://github.com/jaraco/keyring) for programmatic
+interactions.
 
 Install however you like, but for the sake of inclusion, here is one way:
 

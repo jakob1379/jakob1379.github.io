@@ -1,23 +1,22 @@
 from pathlib import Path
-import re
 
 import pytest
 from playwright.sync_api import expect
 
 
-NEWPAGE_PATH = Path("newpage/index.html").absolute()
+PORTFOLIO_PATH = Path("site/index.html").absolute()
 
 
-def open_newpage(page):
-    page.goto(f"file://{NEWPAGE_PATH}")
+def open_portfolio(page):
+    page.goto(f"file://{PORTFOLIO_PATH}")
     page.wait_for_load_state("networkidle")
 
 
-def test_newpage_science_enabler_positioning(page, browser_name):
+def test_portfolio_science_enabler_positioning(page, browser_name):
     if browser_name == "webkit":
         pytest.skip("webkit browser not available in nix environment")
 
-    open_newpage(page)
+    open_portfolio(page)
 
     expect(
         page.get_by_role(
@@ -27,21 +26,31 @@ def test_newpage_science_enabler_positioning(page, browser_name):
     ).to_be_visible()
     expect(page.get_by_text("Backend, data, and simple tools for scientific teams")).to_be_visible()
     expect(page.get_by_text("Science enabler / tools / backend")).to_be_visible()
-    expect(page.locator("[data-email-link]").first).to_have_attribute(
+    hero_actions = page.locator(".hero .actions")
+    expect(hero_actions.get_by_role("link", name="Email Jakob")).to_have_attribute(
         "href",
-        re.compile(r"^mailto:"),
+        "mailto:jakob1379+jgalabs@gmail.com",
     )
-    expect(page.get_by_role("link", name="LinkedIn")).to_have_attribute(
+    expect(hero_actions.get_by_role("link", name="GitHub")).to_have_attribute(
+        "href",
+        "https://github.com/jakob1379",
+    )
+    expect(hero_actions.get_by_role("link", name="LinkedIn")).to_have_attribute(
         "href",
         "https://www.linkedin.com/in/jakobguldberg/",
     )
+    expect(hero_actions.get_by_role("link", name="Download CV")).to_have_class(
+        "button cv-download"
+    )
+    expect(page.get_by_text("Start a role conversation")).to_have_count(0)
+    expect(page.get_by_text("Copy email")).to_have_count(0)
 
 
-def test_newpage_cv_grounded_evidence(page, browser_name):
+def test_portfolio_cv_grounded_evidence(page, browser_name):
     if browser_name == "webkit":
         pytest.skip("webkit browser not available in nix environment")
 
-    open_newpage(page)
+    open_portfolio(page)
 
     expect(page.locator("[data-case]")).to_have_count(4)
     expect(page.get_by_role("heading", name="Selected work.")).to_be_visible()
@@ -57,12 +66,12 @@ def test_newpage_cv_grounded_evidence(page, browser_name):
     )
 
 
-def test_newpage_mobile_nav(page, browser_name):
+def test_portfolio_mobile_nav(page, browser_name):
     if browser_name == "webkit":
         pytest.skip("webkit browser not available in nix environment")
 
     page.set_viewport_size({"width": 375, "height": 812})
-    open_newpage(page)
+    open_portfolio(page)
 
     menu = page.get_by_role("button", name="Menu")
     expect(menu).to_have_attribute("aria-expanded", "false")
@@ -70,5 +79,5 @@ def test_newpage_mobile_nav(page, browser_name):
     menu.click()
     expect(menu).to_have_attribute("aria-expanded", "true")
 
-    page.get_by_role("link", name="Evidence").click()
+    page.get_by_role("link", name="Contact").click()
     expect(menu).to_have_attribute("aria-expanded", "false")

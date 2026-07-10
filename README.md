@@ -7,7 +7,9 @@
 
 </div>
 
-This repository hosts the source code for my personal website and blog. It's built using [Zensical](https://zensical.org/) and automatically deployed to GitHub Pages using Github Actions.
+This repository hosts my portfolio and blog. [Zensical](https://zensical.org/) builds the custom
+portfolio template at the site root and the field notes under `/blog/`. Both surfaces share the same
+visual language and are automatically deployed to GitHub Pages.
 
 ## Development Setup
 
@@ -55,7 +57,8 @@ This repository hosts the source code for my personal website and blog. It's bui
   poe build
   ```
 
-  This generates the static site in the `site/` directory.
+This generates the complete static site in `site/`: the portfolio at `/` and the Zensical blog at
+`/blog/`.
 
 - **Build with minification** (production):
 
@@ -120,13 +123,12 @@ This will build the site (with minification) and push to the `gh-pages` branch.
 ## Project Structure
 
 ```bash
-├── docs/                   # Source content (Markdown files, assets)
+├── docs/                   # Zensical field-note content and shared site assets
 │   ├── blog/               # Blog posts
 │   ├── stylesheets/        # Custom CSS
 │   └── javascripts/        # Custom JavaScript
 ├── cv/                     # CV source (YAML) and RenderCV configuration
-├── overrides/              # Zensical theme overrides
-├── scripts/                # Build utilities (minification)
+├── overrides/              # Zensical templates, including the custom portfolio homepage
 ├── pyproject.toml          # Python dependencies and Poe tasks
 ├── zensical.toml           # Zensical configuration
 └── flake.nix               # Nix development environment
