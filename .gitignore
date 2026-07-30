@@ -20,3 +20,4 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 /.codex
+/cv/vault/archive/*/

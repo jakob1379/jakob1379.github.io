@@ -1,7 +1,7 @@
 [dependency-groups]
 dev = [
   "jga-blog-page[test]",
-  "poethepoet>=0.44.0"
+  "poethepoet>=0.48.0"
 ]
 
 [project]
@@ -11,16 +11,16 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-  "zensical>=0.0.32",
-  "pymdown-extensions>=10.21.2",
+  "zensical>=0.0.51",
+  "pymdown-extensions>=11.0.1",
   "rendercv[full]>=2.8"
 ]
 
 [project.optional-dependencies]
 test = [
-  "playwright>=1.57,<1.58",
-  "pytest>=9.0.3",
-  "pytest-playwright>=0.7.2"
+  "playwright>=1.57.0,<1.58",
+  "pytest>=9.1.1",
+  "pytest-playwright>=0.8.0"
 ]
 
 [tool.poe.tasks]

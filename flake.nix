@@ -28,11 +28,13 @@
           pinentry-gtk2
           ruby
           uv
-
-
           # Playwright requirements
           nodejs # Required to run the driver without patching
           stdenv.cc.cc.lib # For greenlet module
+          # cv
+          rendercv
+          texliveFull # lualatex for CVs, xelatex for cover_letters/cover.cls
+          poppler-utils # pdftotext, for the ATS text-layer check
         ];
 
         preCommitCheck = git-hooks.lib.${system}.run {

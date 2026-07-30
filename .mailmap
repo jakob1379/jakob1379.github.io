@@ -1,0 +1,8 @@
+# Collapse historical author identities onto the current legal name.
+# Two entries map by email alone (those addresses are malformed and unique);
+# two map by name+email because they share the correct address.
+Jakob Stender Guldberg <jakob1379@gmail.com> <jakob1379gmail.com>
+Jakob Stender Guldberg <jakob1379@gmail.com> <jakob1379@gmali.com>
+Jakob Stender Guldberg <jakob1379@gmail.com> <17257805+jakob1379@users.noreply.github.com>
+Jakob Stender Guldberg <jakob1379@gmail.com> Jakob Stender Gulberg <jakob1379@gmail.com>
+Jakob Stender Guldberg <jakob1379@gmail.com> Jakob Guldberg Aaes <jakob1379@gmail.com>
