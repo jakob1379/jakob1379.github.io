@@ -1,0 +1,91 @@
+# Repo-specific vocabulary accepted by cspell. One word per line, sorted.
+#
+# Everything here was triaged from a full run over git-tracked files: tooling
+# and product names, Nix and Python vocabulary, and personal names.
+# Real typos were fixed in the source instead of being added here.
+#
+# Regenerated after the job-search workspace moved to its own repo, which
+# retired roughly 270 of the previous 349 entries - LaTeX/moderncv macros,
+# Danish job-board vocabulary, job portals, employer names and KU course codes
+# all left with it. Regenerate the same way rather than pruning by hand.
+#
+# Add genuine vocabulary; do not add a word to silence a real mistake.
+addinivalue
+addoption
+addopts
+Anemo
+arithmatex
+betterem
+cachix
+codespell
+Darerl
+DIKU
+direnv
+dotenv
+evaxion
+Evaxion
+extrahead
+fetchzip
+flakehub
+fleksibiliet
+fontawesome
+frontmatter
+getfixturevalue
+ghpages
+giscus
+gnused
+Guldberg
+htmltitle
+inlinehilite
+jakob
+jakobguldberg
+javascripts
+jgalabs
+libstdc
+lockfiles
+lualatex
+minhtml
+mkdocs
+moderncv
+MQTT
+networkidle
+nixpkgs
+Nixpkgs
+numtide
+Obital
+pdftotext
+pgvector
+pinentry
+pkgs
+poethepoet
+poppler
+pycache
+Pydantic
+pymdown
+pymdownx
+pyproject
+pytest
+Pytest
+pytestconfig
+Redpanda
+rendercv
+seeq
+Slurm
+smartsymbols
+Snakemake
+stdenv
+Stender
+Streamlit
+superfences
+tasklist
+texlive
+tryg
+twemoji
+Typer
+venv
+widthxheight
+worktree
+xelatex
+yamlfix
+zensical
+Zensical

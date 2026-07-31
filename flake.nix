@@ -20,6 +20,58 @@
         pkgs = nixpkgs.legacyPackages.${system};
         lib = pkgs.lib;
 
+        # Danish dictionary for cspell. Only en_us, en-gb-mit and
+        # en-common-misspellings ship in @cspell/cspell-bundled-dicts, so Danish
+        # has to be fetched. It is a zero-dependency data package (a
+        # cspell-ext.json plus a 2.1 MB trie), so the tarball is taken directly
+        # rather than going through buildNpmPackage for one static file.
+        # cspell.config.yaml imports it through the .cspell-dicts symlink that
+        # the shellHook below creates.
+        cspellDictDaDk = pkgs.fetchzip {
+          url = "https://registry.npmjs.org/@cspell/dict-da-dk/-/dict-da-dk-4.1.2.tgz";
+          hash = "sha256-a3LWAJPt80RPaIlEx/aQfAqH9snExZ51CcMDEhe4Psc=";
+        };
+
+        # A zero-byte file matched by the git-crypt filter breaks every commit:
+        # git's ce_match_stat_basic() marks any zero-size worktree file whose
+        # blob is not the empty blob as permanently changed, without consulting
+        # the filter, and git-crypt never stores the empty blob. pre-commit then
+        # snapshots a patch of changes that do not exist and cannot re-apply it,
+        # failing with "No valid patches in input" after every hook has passed.
+        # Without this guard the next empty file rediscovers that from scratch.
+        gitCryptEmptyGuard = pkgs.writeShellApplication {
+          name = "git-crypt-empty-guard";
+          runtimeInputs = [
+            pkgs.git
+            pkgs.gnused
+          ];
+          text = ''
+            status=0
+            for f in "$@"; do
+              [ -f "$f" ] || continue
+              [ -s "$f" ] && continue
+              if [ "$(git check-attr filter -- "$f" | sed 's/.*: //')" = "git-crypt" ]; then
+                echo "error: $f is empty and matched by the git-crypt filter" >&2
+                status=1
+              fi
+            done
+            if [ "$status" -ne 0 ]; then
+              cat >&2 <<'EOF'
+
+            git cannot round-trip a zero-byte file through a clean filter, so the
+            files above read as permanently modified and every commit will fail in
+            pre-commit with "No valid patches in input".
+
+            Fix it either way:
+              - give the file content (preferred for real source files), or
+              - unset the filter for it in .gitattributes, alongside the existing
+                .codex exception, then: git add --renormalize -- cv/vault
+            EOF
+            fi
+            exit "$status"
+          '';
+        };
+
         devPackages = with pkgs; [
           act
           git-crypt
@@ -58,12 +110,31 @@
             };
             trim-trailing-whitespace.enable = true;
 
-            codespell = {
+            # Replaces codespell, which was monolingual and ran with
+            # --write-changes, so it rewrote Danish words it did not recognise.
+            # cspell has no write mode at all: it reports instead of corrupting,
+            # and cspell.config.yaml enables Danish only on the paths that are
+            # actually Danish.
+            #
+            # Deliberately no Danish examples in this comment: flake.nix is
+            # English-scope, so quoting them here would force them into the
+            # global project-words.txt and undo the per-path scoping.
+            cspell = {
               enable = true;
-              name = "codespell";
-              package = pkgs.codespell;
-              entry = "${lib.getExe pkgs.codespell} --write-changes";
-              excludes = [ "^cv/" ];
+              name = "cspell";
+              package = pkgs.cspell;
+              entry = "${pkgs.cspell}/bin/cspell lint --config cspell.config.yaml --no-config-search --no-progress --no-summary --no-must-find-files --show-suggestions";
+              # The built-in hook has no file filter and would otherwise run on
+              # lockfiles, fonts and binaries. ignorePaths in the config is the
+              # second line of defence.
+              files = "\\.(md|mdown|markdown|txt|tex|cls|html|ts|js|py|nix|ya?ml|json|toml)$";
+            };
+
+            git-crypt-empty-guard = {
+              enable = true;
+              name = "no empty files under git-crypt";
+              package = gitCryptEmptyGuard;
+              entry = "${gitCryptEmptyGuard}/bin/git-crypt-empty-guard";
             };
 
             gitleaks = {
@@ -80,6 +151,11 @@
               package = pkgs.markdownlint-cli2;
               entry = "${pkgs.markdownlint-cli2}/bin/markdownlint-cli2 --fix --config .markdownlint.yml";
               files = "\\.(md|mdown|markdown)$";
+              # Same rationale as codespell above: cv/ holds vendored upstream
+              # trees whose markdown does not meet this repo's rules (500
+              # unfixable MD025/MD040 errors), and reformatting them would make
+              # every upstream diff unreadable.
+              excludes = [ "^cv/" ];
             };
 
             toml-sort-fix = {
@@ -128,6 +204,11 @@
 
           shellHook = ''
             ${preCommitCheck.shellHook}
+
+            # cspell.config.yaml imports the Danish dictionary through this
+            # symlink. The store path cannot be committed and the config has to
+            # stay hand-editable, so the indirection lives here. Gitignored.
+            ln -sfn ${cspellDictDaDk} .cspell-dicts
 
             # 1. Use the pre-patched browsers from Nixpkgs
             export PLAYWRIGHT_BROWSERS_PATH=${pkgs.playwright-driver.browsers}

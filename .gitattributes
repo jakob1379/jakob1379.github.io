@@ -1,2 +1,22 @@
 cv/vault/** filter=git-crypt diff=git-crypt
 *.key filter=git-crypt diff=git-crypt
+
+# Zero-byte files must never go through a clean filter. git's
+# ce_match_stat_basic() short-circuits on a zero-size worktree file: if the
+# stored blob is not the empty blob it is marked DATA_CHANGED permanently, and
+# the filter is never consulted. git-crypt stores even an empty file as a
+# 22-byte header, never the empty blob, so such files read as dirty forever and
+# pre-commit's stash/restore dies on "No valid patches in input" - every commit
+# fails after all hooks have passed.
+#
+# These markers are empty by definition, so plaintext costs nothing: git-crypt
+# never encrypted paths anyway, and its deterministic nonce means an empty file
+# is already identifiable from its fixed 22-byte ciphertext.
+#
+# A later line overrides an earlier one, so these must stay below the rules
+# above. `!filter` unsets the attribute; `-filter` would set it to false.
+# Real source files should be given content rather than an exception here; the
+# git-crypt-empty-guard hook in flake.nix enforces that and explains it when a
+# new empty file trips over it.
+# Refs: pre-commit#776, git-crypt#53, git-crypt PR#210.
+cv/vault/**/.codex !filter !diff
