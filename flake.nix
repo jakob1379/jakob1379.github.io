@@ -20,18 +20,6 @@
         pkgs = nixpkgs.legacyPackages.${system};
         lib = pkgs.lib;
 
-        # Danish dictionary for cspell. Only en_us, en-gb-mit and
-        # en-common-misspellings ship in @cspell/cspell-bundled-dicts, so Danish
-        # has to be fetched. It is a zero-dependency data package (a
-        # cspell-ext.json plus a 2.1 MB trie), so the tarball is taken directly
-        # rather than going through buildNpmPackage for one static file.
-        # cspell.config.yaml imports it through the .cspell-dicts symlink that
-        # the shellHook below creates.
-        cspellDictDaDk = pkgs.fetchzip {
-          url = "https://registry.npmjs.org/@cspell/dict-da-dk/-/dict-da-dk-4.1.2.tgz";
-          hash = "sha256-a3LWAJPt80RPaIlEx/aQfAqH9snExZ51CcMDEhe4Psc=";
-        };
-
         # A zero-byte file matched by the git-crypt filter breaks every commit:
         # git's ce_match_stat_basic() marks any zero-size worktree file whose
         # blob is not the empty blob as permanently changed, without consulting
@@ -204,11 +192,6 @@
 
           shellHook = ''
             ${preCommitCheck.shellHook}
-
-            # cspell.config.yaml imports the Danish dictionary through this
-            # symlink. The store path cannot be committed and the config has to
-            # stay hand-editable, so the indirection lives here. Gitignored.
-            ln -sfn ${cspellDictDaDk} .cspell-dicts
 
             # 1. Use the pre-patched browsers from Nixpkgs
             export PLAYWRIGHT_BROWSERS_PATH=${pkgs.playwright-driver.browsers}

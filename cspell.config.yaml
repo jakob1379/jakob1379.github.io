@@ -9,18 +9,17 @@
 # single-item lists to flow style and strands a comment left inside one.
 version: '0.2'
 
-# English everywhere by default. en-GB alongside en-US because the prose here
-# uses British forms throughout (behaviour, prioritise, visualisation,
-# Authorisation); both dictionaries ship bundled, so this costs nothing.
-# Danish is enabled per-path in `overrides` below rather than globally: under a
-# repo-wide "en,da" union, a Danish word that is also an English typo would stop
-# being caught anywhere.
+# en-GB alongside en-US because the prose here uses British forms throughout
+# (behaviour, prioritise, visualisation, Authorisation); both dictionaries ship
+# bundled, so this costs nothing.
+#
+# There is no Danish dictionary any more. It arrived with the job-search
+# workspace, which now lives in its own repo; once that left, the entire
+# apparatus - a 2.1 MB fetchzip in flake.nix, a .cspell-dicts symlink from the
+# shellHook, an import here and a per-path override - was earning exactly one
+# word ("lede", in overrides/portfolio.html). That word is in project-words.txt
+# instead. Bring the dictionary back only if real Danish prose returns.
 language: en,en-GB
-
-# Danish dictionary, fetched by flake.nix and symlinked in by the shellHook.
-# Importing the package's own cspell-ext.json keeps its repMap (aa -> å) and
-# suggestion costs instead of hand-rewriting the dictionary definition.
-import: [./.cspell-dicts/cspell-ext.json]
 dictionaryDefinitions:
   - name: project-words
     path: ./project-words.txt
@@ -30,25 +29,12 @@ ignorePaths:
   - .git/**
   - .direnv/**
   - .venv/**
-  - .cspell-dicts/**
   - site/**  # Zensical build output
   - '**/node_modules/**'
   - flake.lock
   - '**/*.lock'
   - '**/package-lock.json'
-  - '**/*.trie'
   # Frozen record of documents that were actually submitted. Editing them to
   # satisfy a linter would falsify the archive, so it is not linted.
   # (It does contain at least one real typo: "fleksibiliet" in cph/star/tryg.)
   - cv/vault/archive/**
-# Danish-language content, which is mixed rather than purely Danish, so both
-# dictionaries apply rather than just `da`. Everything else stays strict
-# English: under a repo-wide union a Danish word that is also an English typo
-# would stop being caught anywhere.
-#
-# `cv/vault/**` used to be listed here too. It is gone with the job-search
-# workspace, which now lives in its own repo; the only Danish left under cv/ is
-# cv/vault/archive/**, and that is an ignorePath above.
-overrides:
-  - filename: overrides/*.html
-    language: en,en-GB,da

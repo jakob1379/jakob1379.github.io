@@ -3,8 +3,6 @@
 .direnv
 /.pre-commit-config.yaml
 /.cache/
-# Symlink to the Nix-fetched cspell Danish dictionary, created by the shellHook.
-/.cspell-dicts
 /.cspellcache
 /cv/rendercv_output/
 cv/docs/

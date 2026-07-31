@@ -9,12 +9,17 @@
 # Danish job-board vocabulary, job portals, employer names and KU course codes
 # all left with it. Regenerate the same way rather than pruning by hand.
 #
+# The Danish cspell dictionary went with it. Dropping it cost three entries
+# here (lede, and two neighbours), against a 2.1 MB fetchzip and a symlink in
+# the devShell - see cspell.config.yaml.
+#
 # Add genuine vocabulary; do not add a word to silence a real mistake.
 addinivalue
 addoption
 addopts
 Anemo
 arithmatex
+Avenir
 betterem
 cachix
 codespell
@@ -37,13 +42,14 @@ gnused
 Guldberg
 htmltitle
 inlinehilite
-jakob
 jakobguldberg
 javascripts
 jgalabs
+lede
 libstdc
 lockfiles
 lualatex
+medtech
 minhtml
 mkdocs
 moderncv
@@ -83,6 +89,7 @@ tryg
 twemoji
 Typer
 venv
+webapps
 widthxheight
 worktree
 xelatex
