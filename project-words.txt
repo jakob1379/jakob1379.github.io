@@ -23,6 +23,9 @@ Avenir
 betterem
 cachix
 codespell
+crossfade
+crossfades
+crossfading
 Darerl
 DIKU
 direnv

@@ -250,6 +250,67 @@
         display: none;
       }
 
+      /* Cross-document view transitions: the chrome stays put and only the
+         document body crossfades, so navigating to the notes has no flash. */
+      @view-transition {
+        navigation: auto;
+      }
+
+      .site-nav {
+        view-transition-name: site-nav;
+      }
+
+      .brand-mark {
+        view-transition-name: brand-mark;
+      }
+
+      .brand span:last-child {
+        view-transition-name: brand-name;
+      }
+
+      /* Both templates carry the same three links in the same order. Naming each
+         one means they slide to their new position instead of the whole bar
+         crossfading, which would ghost against the blog's extra search field. */
+      .nav-links a:nth-child(1) {
+        view-transition-name: nav-item-1;
+      }
+
+      .nav-links a:nth-child(2) {
+        view-transition-name: nav-item-2;
+      }
+
+      .nav-links a:nth-child(3) {
+        view-transition-name: nav-item-3;
+      }
+
+      /* Exactly one link carries aria-current, so the active underline is a
+         single named element and slides between nav items across a navigation. */
+      .nav-links a[aria-current]::after {
+        view-transition-name: nav-active;
+      }
+
+      ::view-transition-group(nav-active),
+      ::view-transition-group(nav-item-1),
+      ::view-transition-group(nav-item-2),
+      ::view-transition-group(nav-item-3),
+      ::view-transition-group(brand-name) {
+        animation-duration: 340ms;
+        animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+      }
+
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation-duration: 200ms;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        ::view-transition-group(*),
+        ::view-transition-old(*),
+        ::view-transition-new(*) {
+          animation: none !important;
+        }
+      }
+
       .hero {
         padding: clamp(34px, 5.8vw, 72px) 0 clamp(34px, 5vw, 60px);
       }

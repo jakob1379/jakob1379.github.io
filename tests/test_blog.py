@@ -1,5 +1,6 @@
 from pathlib import Path
 
+import pytest
 from playwright.sync_api import expect
 
 
@@ -151,3 +152,52 @@ def test_blog_post_keeps_reading_features(page) -> None:
     expect(page.locator(".post-meta")).to_contain_text("Field note 001")
     expect(page.locator("pre code").first).to_contain_text("uv tool install keyring")
     expect(page.locator("script[src*='giscus.app/client.js']")).to_have_count(1)
+
+
+def view_transition_contract(page) -> dict[str, object]:
+    return page.evaluate(
+        """
+        () => {
+          const optedIn = [...document.styleSheets].some((sheet) => {
+            try {
+              return [...sheet.cssRules].some(
+                (rule) => rule.constructor.name === 'CSSViewTransitionRule'
+              );
+            } catch (error) {
+              return false;
+            }
+          });
+          const active = document.querySelector('.nav-links a[aria-current]');
+          return {
+            optedIn,
+            active: active.textContent.trim(),
+            underline: getComputedStyle(active, '::after').viewTransitionName,
+            items: [...document.querySelectorAll('.nav-links a')].map(
+              (link) => getComputedStyle(link).viewTransitionName
+            ),
+          };
+        }
+        """
+    )
+
+
+def test_nav_slides_between_portfolio_and_blog(page, site_url) -> None:
+    """Both templates must opt in and name the same elements, or the active
+    underline crossfades instead of sliding to the new page's nav item."""
+    # Served over HTTP: reading the blog's external stylesheet rules is blocked under file://.
+    page.goto(f"{site_url}/")
+    if not page.evaluate("() => typeof CSSViewTransitionRule !== 'undefined'"):
+        pytest.skip("browser does not support cross-document view transitions")
+    portfolio = view_transition_contract(page)
+
+    page.goto(f"{site_url}/blog/")
+    blog = view_transition_contract(page)
+
+    for signature in (portfolio, blog):
+        assert signature["optedIn"]
+        assert signature["underline"] == "nav-active"
+        assert signature["items"] == ["nav-item-1", "nav-item-2", "nav-item-3"]
+
+    # A different link is current on each page, so the shared name has somewhere to travel.
+    assert portfolio["active"] == "Portfolio"
+    assert blog["active"] == "Field notes"
