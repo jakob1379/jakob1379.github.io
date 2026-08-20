@@ -4,7 +4,7 @@ from playwright.sync_api import expect
 
 
 SITE_PATH = Path("site").absolute()
-NAV_LABELS = ["Portfolio", "Contact", "Field notes"]
+NAV_LABELS = ["Portfolio", "Field notes", "Get in touch"]
 
 
 def open_site_page(page, path: str) -> None:
@@ -39,11 +39,13 @@ def navigation_signature(page) -> dict[str, object]:
 def test_portfolio_is_deployed_at_site_root(page) -> None:
     open_site_page(page, "index.html")
 
-    expect(page.get_by_role("heading", name="Science enabler.")).to_be_visible()
-    expect(page.get_by_role("link", name="Field notes")).to_have_attribute(
-        "href", "blog/"
-    )
-    expect(page.get_by_role("link", name="Download CV")).to_have_attribute(
+    expect(
+        page.get_by_role("heading", name="Tools scientists actually run.")
+    ).to_be_visible()
+    expect(
+        page.get_by_label("Primary navigation").get_by_role("link", name="Field notes")
+    ).to_have_attribute("href", "blog/")
+    expect(page.get_by_role("link", name="Download CV · PDF")).to_have_attribute(
         "href", "assets/Jakob_Stender_Guldberg_CV.pdf"
     )
     expect(page.locator("link[rel='icon']")).to_have_attribute(
@@ -91,13 +93,13 @@ def test_blog_index_uses_portfolio_design_language(page) -> None:
         """
     )
     assert tokens["accent"]
-    assert "Iowan Old Style" in tokens["display"]
+    assert "Newsreader" in tokens["display"]
 
 
 def test_blog_portfolio_links_navigate_and_scroll(page, site_url) -> None:
     destinations = [
         ("Portfolio", "", "#top"),
-        ("Contact", "#contact", "#contact"),
+        ("Get in touch", "#contact", "#contact"),
     ]
 
     for label, fragment, target in destinations:
@@ -121,21 +123,17 @@ def test_navigation_geometry_matches_between_portfolio_and_blog(page) -> None:
     assert blog_navigation == portfolio_navigation
 
 
-def test_blog_mobile_navigation_keeps_search_and_menu(page) -> None:
+def test_blog_mobile_navigation_keeps_search_and_links(page) -> None:
     page.set_viewport_size({"width": 375, "height": 812})
     open_site_page(page, "blog/index.html")
 
-    menu = page.get_by_role("button", name="Menu")
-    expect(menu).to_have_attribute("aria-expanded", "false")
+    expect(page.get_by_role("button", name="Menu")).to_have_count(0)
     expect(page.locator(".nav-search")).to_be_visible()
+    expect(page.get_by_label("Primary navigation")).to_be_visible()
     mobile_heading_size = page.get_by_role("heading", name="Field notes.").evaluate(
         "element => parseFloat(getComputedStyle(element).fontSize)"
     )
     assert mobile_heading_size <= 65
-
-    menu.click()
-    expect(menu).to_have_attribute("aria-expanded", "true")
-    expect(page.get_by_label("Primary navigation")).to_be_visible()
 
 
 def test_blog_post_keeps_reading_features(page) -> None:

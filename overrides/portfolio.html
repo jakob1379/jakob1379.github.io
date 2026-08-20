@@ -11,25 +11,53 @@
     <meta property="og:image" content="https://jgalabs.dk/assets/portrait.jpg">
     <meta name="theme-color" content="#0f7d82">
     <!-- Clickjacking protection must be configured as an HTTP header; embedding directives are ignored in meta CSP. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://jgalabs.dk data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'sha256-o82eajm9STb88UoApk6A/NbUgR3Yrj9egfULneBgTBA='; connect-src 'self'; form-action 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://jgalabs.dk data:; style-src 'self' 'unsafe-inline'; script-src 'none'; connect-src 'self'; form-action 'none';">
     <link rel="icon" type="image/png" href="assets/goose.png">
+    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-600.woff2" crossorigin>
+    <link rel="preload" as="font" type="font/woff2" href="assets/fonts/ibm-plex-mono-400.woff2" crossorigin>
     <style>
+      @font-face {
+        font-family: "Newsreader";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url("assets/fonts/newsreader-600.woff2") format("woff2");
+      }
+
+      @font-face {
+        font-family: "IBM Plex Mono";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("assets/fonts/ibm-plex-mono-400.woff2") format("woff2");
+      }
+
+      @font-face {
+        font-family: "IBM Plex Mono";
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: url("assets/fonts/ibm-plex-mono-600.woff2") format("woff2");
+      }
+
       :root {
         --bg: #f3f8f8;
         --paper: #ffffff;
         --paper-2: #e8eff0;
         --ink: #202b31;
-        --muted: #69757b;
+        --muted: #5c686e;
         --line: #cbd7d8;
         --line-strong: #4a575f;
         --accent: #0f7d82;
-        --accent-2: #3869b3;
         --shadow: 0 28px 80px rgb(24 33 38 / 0.11);
-        --display: "Iowan Old Style", "Charter", "Palatino Linotype", Georgia, serif;
+        --grid-line: rgb(15 120 126 / 0.075);
+        --grid-line-2: rgb(26 36 40 / 0.045);
+        --nav-bg: rgb(246 249 249 / 0.9);
+        --display: "Newsreader", "Iowan Old Style", Charter, Georgia, serif;
         --body: "Avenir Next", "Segoe UI", system-ui, sans-serif;
-        --mono: "IBM Plex Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
         --radius: 8px;
-        color-scheme: light;
+        color-scheme: light dark;
       }
 
       @supports (color: oklch(0% 0 0)) {
@@ -38,11 +66,28 @@
           --paper: oklch(100% 0 0);
           --paper-2: oklch(94% 0.01 210);
           --ink: oklch(19% 0.02 220);
-          --muted: oklch(48% 0.018 220);
+          --muted: oklch(44% 0.02 220);
           --line: oklch(84% 0.012 210);
           --line-strong: oklch(34% 0.024 220);
           --accent: oklch(50% 0.105 190);
-          --accent-2: oklch(46% 0.11 255);
+        }
+      }
+
+      /* Mirrors the slate palette the blog already ships in stylesheets/extra.css. */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #11191d;
+          --paper: #182328;
+          --paper-2: #202d33;
+          --ink: #e8f0f1;
+          --muted: #a9b8bc;
+          --line: #33454b;
+          --line-strong: #8ba0a5;
+          --accent: #65bec3;
+          --shadow: 0 28px 80px rgb(0 0 0 / 0.28);
+          --grid-line: rgb(101 190 195 / 0.07);
+          --grid-line-2: rgb(232 240 241 / 0.045);
+          --nav-bg: rgb(17 25 29 / 0.92);
         }
       }
 
@@ -51,34 +96,26 @@
       }
 
       html {
-        scroll-padding-top: 0;
-      }
-
-      @media (min-width: 641px) {
-        html {
-          scroll-padding-top: 82px;
-        }
+        scroll-padding-top: 82px;
       }
 
       @media (prefers-reduced-motion: no-preference) {
         html {
           scroll-behavior: smooth;
         }
-
       }
 
       body {
         margin: 0;
         min-width: 320px;
         background:
-          linear-gradient(90deg, rgb(15 120 126 / 0.075) 1px, transparent 1px),
-          linear-gradient(0deg, rgb(26 36 40 / 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+          linear-gradient(0deg, var(--grid-line-2) 1px, transparent 1px),
           var(--bg);
         background-size: 92px 92px, 23px 23px, auto;
         color: var(--ink);
         font-family: var(--body);
         line-height: 1.55;
-        letter-spacing: 0;
       }
 
       a {
@@ -88,14 +125,13 @@
         text-underline-offset: 0.18em;
       }
 
+      a:hover {
+        color: var(--accent);
+      }
+
       img {
         display: block;
         max-width: 100%;
-      }
-
-      button,
-      input {
-        font: inherit;
       }
 
       :focus-visible {
@@ -109,17 +145,6 @@
         }
       }
 
-      .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-      }
-
       .skip-link {
         position: fixed;
         left: 1rem;
@@ -127,7 +152,7 @@
         z-index: 20;
         padding: 0.75rem 1rem;
         background: var(--ink);
-        color: var(--paper);
+        color: var(--bg);
       }
 
       .skip-link:focus {
@@ -146,36 +171,14 @@
         border-bottom: 1px solid var(--line);
         -webkit-backdrop-filter: blur(18px);
         backdrop-filter: blur(18px);
-        background: rgb(246 249 249 / 0.86);
-      }
-
-      .site-nav[data-scrolled="true"] {
-        border-bottom-color: var(--line-strong);
-        background: rgb(246 249 249 / 0.95);
-        box-shadow: 0 16px 42px rgb(24 33 38 / 0.08);
-      }
-
-      @media (prefers-reduced-motion: no-preference) {
-        .site-nav {
-          transition:
-            background 180ms cubic-bezier(0.2, 0, 0, 1),
-            border-color 180ms cubic-bezier(0.2, 0, 0, 1),
-            box-shadow 180ms cubic-bezier(0.2, 0, 0, 1);
-        }
+        background: var(--nav-bg);
       }
 
       .nav-inner {
         display: flex;
         min-height: 72px;
         align-items: center;
-        justify-content: space-between;
         gap: 1.2rem;
-      }
-
-      .nav-actions {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
       }
 
       .brand {
@@ -193,24 +196,23 @@
         place-items: center;
         border: 1px solid var(--line-strong);
         background: var(--ink);
-        color: var(--paper);
+        color: var(--bg);
         font-family: var(--mono);
         font-size: 0.8rem;
-        font-weight: 800;
+        font-weight: 600;
       }
 
       .brand span:last-child {
-        color: var(--muted);
+        color: var(--ink);
         font-family: var(--mono);
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
       }
 
       .nav-links {
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 1.35rem;
         margin-left: auto;
         color: var(--muted);
         font-size: 0.9rem;
@@ -220,7 +222,6 @@
         position: relative;
         padding: 0.35rem 0;
         text-decoration: none;
-        transition: color 150ms ease;
       }
 
       .nav-links a:hover,
@@ -245,46 +246,23 @@
         transform: scaleX(1);
       }
 
-      @media (prefers-reduced-motion: no-preference) {
-        .nav-links a::after {
-          transition: transform 180ms cubic-bezier(0.2, 0, 0, 1);
-        }
-      }
-
-      .nav-toggle {
+      .nav-links a.button::after {
         display: none;
-        min-height: 42px;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid var(--line-strong);
-        border-radius: 999px;
-        padding: 0.5rem 0.78rem;
-        background: var(--paper);
-        color: var(--ink);
-        cursor: pointer;
-        font-family: var(--mono);
-        font-size: 0.72rem;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
       }
 
       .hero {
-        position: relative;
-        padding: clamp(34px, 5.8vw, 72px) 0 clamp(34px, 5vw, 64px);
-        overflow: hidden;
+        padding: clamp(34px, 5.8vw, 72px) 0 clamp(34px, 5vw, 60px);
       }
 
       .hero-layout {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
-        gap: clamp(2rem, 6vw, 5.5rem);
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 340px);
+        gap: clamp(2rem, 6vw, 5rem);
         align-items: start;
       }
 
       .kicker,
-      .label,
-      .meta {
+      .label {
         color: var(--accent);
         font-family: var(--mono);
         font-size: 0.75rem;
@@ -295,53 +273,61 @@
       h1,
       h2,
       h3,
-      p {
+      p,
+      ul {
         margin: 0;
       }
 
       h1,
       h2 {
         font-family: var(--display);
-        line-height: 0.98;
-        letter-spacing: -0.018em;
+        font-weight: 600;
+        line-height: 0.97;
+        letter-spacing: -0.02em;
       }
 
       h1 {
-        max-width: 1040px;
+        max-width: 13ch;
         margin-top: 1rem;
-        font-size: clamp(2.9rem, 5.8vw, 5.95rem);
-        font-weight: 700;
+        font-size: clamp(2.9rem, 5.6vw, 5.6rem);
       }
 
       h2 {
-        max-width: 790px;
-        font-size: clamp(2.25rem, 5.3vw, 5.05rem);
+        max-width: 18ch;
+        font-size: clamp(2.25rem, 4.6vw, 4.4rem);
       }
 
       h3 {
-        font-size: 1.04rem;
-        line-height: 1.2;
+        font-size: 1.12rem;
+        line-height: 1.25;
       }
 
       .lede {
-        max-width: 770px;
-        margin-top: 1.05rem;
+        max-width: 640px;
+        margin-top: 1.3rem;
         color: var(--muted);
-        font-size: clamp(1.06rem, 1.7vw, 1.28rem);
+        font-size: clamp(1.06rem, 1.7vw, 1.24rem);
       }
 
       .actions {
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        gap: 0.75rem;
-        margin-top: 1.45rem;
+        gap: 0.7rem;
+        margin-top: 1.8rem;
+      }
+
+      .actions-divider {
+        width: 1px;
+        height: 32px;
+        margin: 0 0.35rem;
+        background: var(--line);
       }
 
       .social-links {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.65rem;
+        gap: 0.6rem;
       }
 
       .social-link {
@@ -354,11 +340,6 @@
         background: var(--paper);
         color: var(--ink);
         text-decoration: none;
-        transition:
-          border-color 160ms ease,
-          background 160ms ease,
-          color 160ms ease,
-          transform 160ms ease;
       }
 
       .social-link svg {
@@ -370,8 +351,7 @@
       .social-link:focus-visible {
         border-color: var(--accent);
         background: var(--ink);
-        color: var(--paper);
-        transform: translateY(-1px);
+        color: var(--bg);
       }
 
       .button {
@@ -381,22 +361,18 @@
         justify-content: center;
         border: 1px solid var(--line-strong);
         border-radius: 999px;
-        padding: 0.76rem 1.08rem;
+        padding: 0.76rem 1.15rem;
         background: var(--paper);
         color: var(--ink);
         cursor: pointer;
-        font-weight: 800;
+        font-weight: 700;
         text-decoration: none;
-        transition:
-          border-color 160ms ease,
-          background 160ms ease,
-          color 160ms ease,
-          box-shadow 160ms ease;
       }
 
       .button:hover,
       .button:focus-visible {
         border-color: var(--accent);
+        color: var(--ink);
       }
 
       .button.primary {
@@ -405,24 +381,44 @@
         color: var(--paper);
       }
 
-      .button.ghost {
-        border-color: var(--line);
-        background: transparent;
-      }
-
-      .button.cv-download {
-        border-color: var(--accent-2);
-        background: var(--accent-2);
-        color: var(--paper);
-        box-shadow: 0 8px 22px rgb(56 105 179 / 0.2);
-      }
-
-      .button.cv-download:hover,
-      .button.cv-download:focus-visible {
+      .button.primary:hover,
+      .button.primary:focus-visible {
         border-color: var(--ink);
         background: var(--ink);
-        color: var(--paper);
-        box-shadow: 0 10px 28px rgb(32 43 49 / 0.22);
+        color: var(--bg);
+      }
+
+      .nav-links .button.primary {
+        min-height: 40px;
+        padding: 0.45rem 1rem;
+        font-size: 0.88rem;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .button,
+        .social-link,
+        .nav-links a {
+          transition:
+            border-color 160ms cubic-bezier(0.2, 0, 0, 1),
+            background 160ms cubic-bezier(0.2, 0, 0, 1),
+            color 160ms cubic-bezier(0.2, 0, 0, 1),
+            transform 160ms cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        .nav-links a::after {
+          transition: transform 180ms cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        .button:hover,
+        .button:focus-visible,
+        .social-link:hover,
+        .social-link:focus-visible {
+          transform: translate3d(0, -1px, 0);
+        }
+
+        .button:active {
+          transform: translate3d(0, 1px, 0);
+        }
       }
 
       .identity-card {
@@ -434,7 +430,6 @@
       }
 
       .portrait-wrap {
-        position: relative;
         aspect-ratio: 1 / 1;
         overflow: hidden;
         border-bottom: 1px solid var(--line-strong);
@@ -445,19 +440,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        filter: saturate(0.82) contrast(1.04);
-      }
-
-      .portrait-wrap::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background:
-          linear-gradient(90deg, rgb(15 120 126 / 0.15) 1px, transparent 1px),
-          linear-gradient(0deg, rgb(24 32 34 / 0.14) 1px, transparent 1px);
-        background-size: 24px 24px;
-        mix-blend-mode: multiply;
-        pointer-events: none;
+        filter: saturate(0.86) contrast(1.03);
       }
 
       .identity-body {
@@ -468,7 +451,7 @@
 
       .identity-row {
         display: grid;
-        grid-template-columns: 92px minmax(0, 1fr);
+        grid-template-columns: 84px minmax(0, 1fr);
         gap: 0.75rem;
         padding-top: 0.75rem;
         border-top: 1px solid var(--line);
@@ -484,23 +467,22 @@
       .identity-row strong {
         color: var(--ink);
         font-family: var(--mono);
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         text-transform: uppercase;
         letter-spacing: 0.09em;
       }
 
       .proof-rail {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1px;
-        margin-top: clamp(24px, 4vw, 44px);
+        margin-top: clamp(28px, 4.5vw, 52px);
         border: 1px solid var(--line-strong);
         background: var(--line-strong);
       }
 
       .proof {
-        min-height: 124px;
-        padding: 0.88rem;
+        padding: 1.6rem 1.4rem;
         background: var(--paper);
       }
 
@@ -508,19 +490,50 @@
         display: block;
         color: var(--ink);
         font-family: var(--mono);
-        font-size: clamp(1.25rem, 2.3vw, 2.15rem);
+        font-size: clamp(2.1rem, 3.6vw, 3.4rem);
+        font-weight: 600;
         line-height: 1;
+        letter-spacing: -0.02em;
       }
 
       .proof span {
         display: block;
-        margin-top: 0.64rem;
+        margin-top: 0.7rem;
         color: var(--muted);
-        font-size: 0.9rem;
+        font-size: 0.98rem;
+      }
+
+      .proof span strong {
+        display: inline;
+        font-family: inherit;
+        font-size: inherit;
+        letter-spacing: inherit;
+      }
+
+      .capability-rail {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1px;
+        border: 1px solid var(--line-strong);
+        border-top: 0;
+        background: var(--line-strong);
+      }
+
+      .capability {
+        padding: 0.85rem 1.4rem;
+        background: var(--paper-2);
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.78rem;
+      }
+
+      .capability b {
+        color: var(--accent);
+        font-weight: 400;
       }
 
       section {
-        padding: clamp(58px, 9vw, 112px) 0;
+        padding: clamp(58px, 9vw, 100px) 0;
       }
 
       .section-head {
@@ -528,7 +541,12 @@
         grid-template-columns: minmax(0, 0.78fr) minmax(280px, 0.42fr);
         gap: clamp(1.6rem, 5vw, 5rem);
         align-items: end;
-        margin-bottom: clamp(28px, 5vw, 56px);
+        margin-bottom: clamp(28px, 5vw, 48px);
+      }
+
+      .section-head .label {
+        display: block;
+        margin-bottom: 0.7rem;
       }
 
       .section-head p {
@@ -536,75 +554,54 @@
         font-size: 1.02rem;
       }
 
-      .case {
-        position: relative;
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        background: rgb(255 255 255 / 0.92);
+      .case-list {
+        display: grid;
+        gap: 1rem;
       }
 
-      .case .label {
-        display: block;
-        margin-bottom: 0.9rem;
+      .case {
+        display: grid;
+        grid-template-columns: minmax(200px, 0.3fr) minmax(0, 1fr);
+        gap: 2rem;
+        padding: 1.6rem;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: var(--paper);
       }
 
       .case-heading {
         display: grid;
         align-content: start;
+        gap: 0.7rem;
+      }
+
+      .case-heading .label {
+        display: block;
       }
 
       .company-logo {
         display: flex;
         align-items: center;
         width: min(152px, 100%);
-        height: 34px;
-        margin-bottom: 0.85rem;
+        height: 32px;
       }
 
       .company-logo img {
-        display: block;
         max-width: 100%;
         max-height: 28px;
         object-fit: contain;
       }
 
-      @media (prefers-reduced-motion: no-preference) {
-        .button,
-        .case {
-          transition:
-            border-color 160ms cubic-bezier(0.2, 0, 0, 1),
-            background 160ms cubic-bezier(0.2, 0, 0, 1),
-            color 160ms cubic-bezier(0.2, 0, 0, 1),
-            box-shadow 160ms cubic-bezier(0.2, 0, 0, 1),
-            transform 160ms cubic-bezier(0.2, 0, 0, 1);
-        }
-
-        .button:hover,
-        .button:focus-visible {
-          transform: translate3d(0, -1px, 0);
-        }
-
-        .button:active {
-          transform: translate3d(0, 1px, 0);
-        }
-
-        .case:hover,
-        .case:focus-within {
-          transform: translate3d(0, -2px, 0);
-          box-shadow: 0 16px 42px rgb(24 33 38 / 0.08);
+      @media (prefers-color-scheme: dark) {
+        .company-logo img {
+          filter: invert(1) hue-rotate(180deg) saturate(0.85);
         }
       }
 
-      .case {
+      .case-points {
         display: grid;
-        grid-template-columns: minmax(180px, 0.34fr) minmax(0, 1fr);
         gap: 1rem;
-        padding: 1.25rem;
-      }
-
-      .case p,
-      .case ul {
-        color: var(--muted);
+        align-content: start;
       }
 
       .case-claim {
@@ -612,100 +609,140 @@
         font-weight: 600;
       }
 
-      .case-detail {
-        color: #7c878c;
+      .case-stack {
+        margin-top: 0.3rem;
+        color: var(--muted);
         font-family: var(--mono);
-        font-size: 0.84rem;
+        font-size: 0.82rem;
       }
 
-      .case-detail::before {
-        content: " • ";
-        color: var(--accent);
-        font-family: var(--body);
-        font-weight: 700;
-      }
-
-      @supports (color: color-mix(in srgb, white, black)) {
-        .case-detail {
-          color: color-mix(in srgb, var(--muted), transparent 16%);
-        }
-      }
-
-      .case ul {
-        margin: 0;
-        padding-left: 1.1rem;
-      }
-
-      .case li + li {
-        margin-top: 0.42rem;
-      }
-
-      .case-list {
-        display: grid;
-        gap: 1rem;
+      .undisclosed {
+        width: fit-content;
+        color: var(--muted);
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.09em;
+        border: 1px dashed var(--line-strong);
+        border-radius: 999px;
+        padding: 0.2rem 0.6rem;
       }
 
       .availability {
         border-top: 1px solid var(--line-strong);
         border-bottom: 1px solid var(--line-strong);
         background: var(--ink);
-        color: var(--paper);
+        color: var(--bg);
       }
 
       .availability .label,
-      .availability .lede {
-        color: rgb(100 190 195 / 0.88);
-        color: oklch(78% 0.08 190);
+      .availability .lede,
+      .availability .contact-email {
+        color: rgb(126 201 205 / 0.95);
+        color: oklch(80% 0.06 195);
       }
 
       .contact-panel {
         display: grid;
         grid-template-columns: minmax(0, 1fr) auto;
-        gap: 1.2rem;
+        gap: 3rem;
         align-items: center;
       }
 
       .contact-actions {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: end;
+        display: grid;
+        justify-items: end;
         gap: 0.75rem;
       }
 
+      .contact-email {
+        font-family: var(--mono);
+        font-size: 0.8rem;
+      }
+
       .availability .button.primary {
-        border-color: var(--paper);
-        background: var(--paper);
+        border-color: var(--bg);
+        background: var(--bg);
+        color: var(--ink);
+        padding: 0.9rem 1.5rem;
+      }
+
+      .availability .button.primary:hover,
+      .availability .button.primary:focus-visible {
+        border-color: var(--accent);
+        background: var(--accent);
         color: var(--ink);
       }
 
-      .availability .button.ghost {
-        color: var(--paper);
-      }
-
       .availability .social-link {
-        border-color: var(--paper);
+        border-color: var(--bg);
         background: transparent;
-        color: var(--paper);
+        color: var(--bg);
       }
 
       .availability .social-link:hover,
       .availability .social-link:focus-visible {
-        background: var(--paper);
+        background: var(--bg);
         color: var(--ink);
       }
 
-      .noscript-contact {
-        margin-top: 0.85rem;
-        color: var(--paper);
-        font-family: var(--mono);
-        font-size: 0.82rem;
+      /* The inverted band would become a near-white slab in dark mode; keep it a raised panel instead. */
+      @media (prefers-color-scheme: dark) {
+        .availability {
+          background: var(--paper-2);
+          color: var(--ink);
+        }
+
+        .availability .label,
+        .availability .lede,
+        .availability .contact-email {
+          color: var(--accent);
+        }
+
+        .availability .button.primary {
+          border-color: var(--accent);
+          background: var(--accent);
+          color: var(--bg);
+        }
+
+        .availability .button.primary:hover,
+        .availability .button.primary:focus-visible {
+          border-color: var(--ink);
+          background: var(--ink);
+          color: var(--bg);
+        }
+
+        .availability .social-link {
+          border-color: var(--line-strong);
+          color: var(--ink);
+        }
+
+        .availability .social-link:hover,
+        .availability .social-link:focus-visible {
+          background: var(--ink);
+          color: var(--bg);
+        }
       }
 
       .site-footer {
-        padding: 2rem 0;
+        padding: 2.2rem 0;
         color: var(--muted);
         font-family: var(--mono);
         font-size: 0.78rem;
+      }
+
+      .footer-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.1rem;
+        margin-left: auto;
       }
 
       @media (max-width: 980px) {
@@ -721,19 +758,11 @@
         }
 
         .contact-actions {
-          justify-content: start;
-        }
-
-        .proof-rail {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
+          justify-items: start;
         }
 
         .nav-inner {
           flex-wrap: wrap;
-        }
-
-        .site-nav[data-enhanced="true"] .nav-toggle {
-          display: inline-flex;
         }
 
         .nav-links {
@@ -742,66 +771,84 @@
           flex-wrap: wrap;
           gap: 0.55rem;
           width: 100%;
-          padding: 0 0 0.9rem 50px;
-        }
-
-        .site-nav[data-enhanced="true"] .nav-links {
-          display: none;
-        }
-
-        .site-nav[data-menu-open="true"] .nav-links {
-          display: flex;
+          padding: 0 0 0.9rem;
         }
 
         .nav-links a {
           min-height: 38px;
+          display: inline-flex;
+          align-items: center;
           border: 1px solid var(--line);
           border-radius: 999px;
           padding: 0.5rem 0.72rem;
           background: var(--paper);
         }
 
-        .nav-actions {
-          order: 2;
+        .nav-links a::after {
+          display: none;
         }
       }
 
       @media (max-width: 640px) {
+        html {
+          scroll-padding-top: 70px;
+        }
+
         .shell {
           width: min(100% - 28px, 1180px);
         }
 
         h1 {
-          font-size: clamp(2.7rem, 15vw, 4.4rem);
+          font-size: clamp(2.7rem, 13vw, 4.4rem);
         }
 
         h2 {
-          font-size: clamp(2rem, 11vw, 3.2rem);
+          font-size: clamp(2rem, 10vw, 3.2rem);
         }
 
         .proof-rail,
+        .capability-rail,
         .case {
           grid-template-columns: 1fr;
         }
 
-        .proof {
-          min-height: auto;
+        .case {
+          gap: 1.2rem;
+          padding: 1.2rem;
         }
 
+        /* The name is repeated in the hero kicker directly below, so the mark carries it here. */
         .brand {
-          grid-template-columns: 38px minmax(0, 1fr);
+          grid-template-columns: 34px;
         }
 
         .brand span:last-child {
+          display: none;
+        }
+
+        .brand-mark {
+          width: 34px;
+          height: 34px;
           font-size: 0.68rem;
         }
 
-        .nav-links {
-          padding-left: 0;
+        .nav-inner {
+          min-height: 60px;
         }
 
-        .site-nav {
-          position: static;
+        .nav-links {
+          order: 0;
+          flex-basis: auto;
+          width: auto;
+          gap: 0.4rem;
+          padding: 0;
+        }
+
+        .nav-links a,
+        .nav-links a.button.primary {
+          min-height: 34px;
+          padding: 0.4rem 0.62rem;
+          font-size: 0.8rem;
         }
 
         .actions {
@@ -809,13 +856,18 @@
           flex-direction: column;
         }
 
-        .social-links {
+        .actions-divider {
+          display: none;
+        }
+
+        .social-links,
+        .actions .button,
+        .contact-actions {
           width: 100%;
         }
 
-        .button,
-        .contact-actions {
-          width: 100%;
+        .footer-links {
+          margin-left: 0;
         }
       }
     </style>
@@ -826,16 +878,13 @@
       <div class="shell nav-inner">
         <a class="brand" href="#top" aria-label="Jakob Stender Guldberg homepage">
           <span class="brand-mark">JG</span>
-          <span>Science enabler / tools / backend</span>
+          <span>Jakob Stender Guldberg</span>
         </a>
         <nav class="nav-links" id="page-nav" aria-label="Primary navigation">
           <a href="#top" aria-current="location">Portfolio</a>
-          <a href="#contact">Contact</a>
           <a href="blog/">Field notes</a>
+          <a class="button primary" href="#contact">Get in touch</a>
         </nav>
-        <div class="nav-actions">
-          <button class="nav-toggle" type="button" data-nav-toggle aria-controls="page-nav" aria-expanded="false">Menu</button>
-        </div>
       </div>
     </header>
 
@@ -844,42 +893,47 @@
         <div class="shell">
           <div class="hero-layout">
             <div>
-              <p class="kicker">Backend, data, and simple tools for scientific teams</p>
-              <h1>Science enabler.</h1>
-              <p class="lede">I simplify research work into small webapps, Python services, data workflows, and source-grounded AI tools that remove process drag without turning every task into a platform.</p>
+              <p class="kicker">Jakob Stender Guldberg &mdash; science enabler</p>
+              <h1>Tools scientists actually run.</h1>
+              <p class="lede">Small webapps, Python services, data workflows and source-grounded AI tools for biotech and bioinformatics teams &mdash; built to remove process drag without turning every task into a platform.</p>
               <div class="actions">
+                <a class="button primary" href="mailto:jakob1379+jgalabs@gmail.com">Get in touch</a>
+                <a class="button" href="assets/Jakob_Stender_Guldberg_CV.pdf" download>Download CV &middot; PDF</a>
+                <span class="actions-divider" aria-hidden="true"></span>
                 <div class="social-links" aria-label="Social links">
-                  <a class="social-link" href="mailto:jakob1379+jgalabs@gmail.com" aria-label="Email Jakob" title="Email Jakob">
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5h18v13H3zM3.8 6.3 12 13l8.2-6.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  </a>
                   <a class="social-link" href="https://github.com/jakob1379" aria-label="GitHub" title="GitHub" rel="me noopener noreferrer">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.82a9.6 9.6 0 0 1 2.5.34c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.35 4.68-4.58 4.93.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
                   </a>
                   <a class="social-link" href="https://www.linkedin.com/in/jakobguldberg/" aria-label="LinkedIn" title="LinkedIn" rel="me noopener noreferrer">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5.34 3.5A1.84 1.84 0 1 1 5.33 7.2a1.84 1.84 0 0 1 .01-3.69ZM3.75 8.6h3.18v10.15H3.75V8.6Zm5.14 0h3.05v1.39h.04c.43-.8 1.47-1.65 3.02-1.65 3.23 0 3.83 2.13 3.83 4.9v5.51h-3.18v-4.88c0-1.17-.02-2.66-1.62-2.66-1.63 0-1.88 1.27-1.88 2.58v4.96H8.97V8.6Z"/></svg>
                   </a>
+                  <a class="social-link" href="https://pypi.org/user/jakob1379/" aria-label="PyPI" title="PyPI" rel="me noopener noreferrer">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2.6 20.5 7v10L12 21.4 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5V21.4"/></svg>
+                  </a>
                 </div>
-                <a class="button cv-download" href="assets/Jakob_Stender_Guldberg_CV.pdf">Download CV</a>
               </div>
             </div>
 
             <aside class="identity-card" aria-label="Profile summary">
               <div class="portrait-wrap">
-                <img src="assets/portrait.jpg" alt="Portrait of Jakob Stender Guldberg, backend and data platform engineer">
+                <img src="assets/portrait.jpg" alt="Portrait of Jakob Stender Guldberg, backend and data platform engineer" width="360" height="360">
               </div>
               <div class="identity-body">
-                <div class="identity-row"><strong>Focus</strong><span>Simple internal tools and backend systems for scientific work</span></div>
-                <div class="identity-row"><strong>Domain</strong><span>Biotech, medicinal research, and regulated scientific teams</span></div>
-                <div class="identity-row"><strong>Status</strong><span>Full-time roles first; focused consulting selectively</span></div>
+                <div class="identity-row"><strong>Focus</strong><span>Internal tools and backend systems for scientific work</span></div>
+                <div class="identity-row"><strong>Domain</strong><span>Biotech, bioinformatics, and regulated scientific teams</span></div>
+                <div class="identity-row"><strong>Based</strong><span>Copenhagen &middot; CET &middot; English / Danish</span></div>
+                <div class="identity-row"><strong>Status</strong><span>Open to full-time roles</span></div>
               </div>
             </aside>
           </div>
 
-        <div class="proof-rail" aria-label="Selected metrics">
-            <div class="proof"><strong>20,000</strong><span>scientific articles screened in 3 hours with source-grounded review tooling.</span></div>
-            <div class="proof"><strong>Weeks to minutes</strong><span>spreadsheet and handoff bottlenecks replaced with simple internal tools.</span></div>
-            <div class="proof"><strong>Platform</strong><span>reproducible compute foundations across Docker, Ansible, Nix, Slurm, and CI.</span></div>
-            <div class="proof"><strong>Audit aware</strong><span>RBAC, ReBAC, GDPR-sensitive contexts, NIS2 and ISO 27001 readiness.</span></div>
+          <div class="proof-rail" aria-label="Selected metrics">
+            <div class="proof"><strong>20,000</strong><span>articles screened in <strong>3 hours</strong>. The manual five-person workflow managed about 800 a week.</span></div>
+            <div class="proof"><strong>Weeks &rarr; min</strong><span>lab workflow turnaround, once spreadsheet handoffs became one internal tool.</span></div>
+          </div>
+          <div class="capability-rail">
+            <p class="capability"><b>Reproducible compute &middot;</b> Docker &middot; Nix &middot; Ansible &middot; Slurm &middot; CI</p>
+            <p class="capability"><b>Regulated context &middot;</b> RBAC / ReBAC &middot; GDPR &middot; NIS2 &middot; ISO 27001</p>
           </div>
         </div>
       </section>
@@ -891,78 +945,74 @@
               <p class="label">Selected work</p>
               <h2>Selected work.</h2>
             </div>
-            <p>Grounded in recent CV work: applied AI, bioinformatics workflows, regulated platform engineering, and reproducible scientific compute.</p>
+            <p>Applied AI, bioinformatics workflows, regulated platform engineering, and reproducible scientific compute.</p>
           </div>
 
           <div class="case-list">
             <article class="case" data-case>
               <div class="case-heading">
                 <span class="company-logo"><img src="assets/evaxion.svg" alt="Evaxion logo"></span>
-                <span class="label">Evaxion / scientific tooling</span>
+                <span class="label">Evaxion &middot; scientific tooling</span>
                 <h3>Research workflows made faster and safer</h3>
               </div>
-              <ul>
-                <li>
-                  <span class="case-claim">Accelerated expert literature screening: 20,000 articles in 3 hours, compared with roughly 800 per week for a five-person manual workflow</span>
-                  <span class="case-detail">LLM-assisted screening, source-grounded RAG, LlamaIndex, Pinecone, PostgreSQL/pgvector.</span>
-                </li>
-                <li>
-                  <span class="case-claim">Turned fragile research handoffs into runnable internal tools for lab data, compute, service intake, and operational visibility</span>
-                  <span class="case-detail">Streamlit, structured validation, QC plots, Ansible, Slurm, Azure AD, GitLab Service Desk, Grafana/logging.</span>
-                </li>
-              </ul>
+              <div class="case-points">
+                <div>
+                  <p class="case-claim">Screened 20,000 articles in 3 hours &mdash; the five-person manual workflow managed about 800 a week.</p>
+                  <p class="case-stack">LLM screening &middot; source-grounded RAG &middot; LlamaIndex &middot; pgvector</p>
+                </div>
+                <div>
+                  <p class="case-claim">Replaced fragile research handoffs with internal tools for lab data, compute and service intake.</p>
+                  <p class="case-stack">Streamlit &middot; Ansible &middot; Slurm &middot; Azure AD &middot; Grafana</p>
+                </div>
+                <div>
+                  <p class="case-claim">Cut a lab workflow from weeks to minutes by turning messy inputs into a structured review path.</p>
+                  <p class="case-stack">Structured input &middot; validation boundaries &middot; QC plots</p>
+                </div>
+              </div>
             </article>
 
             <article class="case" data-case>
               <div class="case-heading">
-                <span class="company-logo"><img src="assets/seeq-diagnostics.svg" alt="SeeQ Diagnostics logo"></span>
-                <span class="label">SeeQ Diagnostics / bioinformatics</span>
+                <a class="company-logo" href="https://www.seeqdiagnostics.com/" rel="noopener noreferrer"><img src="assets/seeq-diagnostics.svg" alt="SeeQ Diagnostics logo"></a>
+                <span class="label">SeeQ Diagnostics &middot; bioinformatics</span>
                 <h3>Research pipeline to operable workflow</h3>
               </div>
-              <ul>
-                <li>
-                  <span class="case-claim">Modernized an expert-operated Snakemake pipeline into an installable Python/Prefect workflow product</span>
-                  <span class="case-detail">Python packaging, Prefect, Snakemake, one-command execution.</span>
-                </li>
-                <li>
-                  <span class="case-claim">Made the workflow safer to change with deterministic validation data, CI regression runs, configuration validation, and logging</span>
-                  <span class="case-detail">Validation fixtures, CI regression execution, configuration checks, structured logs.</span>
-                </li>
-              </ul>
+              <div class="case-points">
+                <div>
+                  <p class="case-claim">Turned an expert-only Snakemake pipeline into an installable workflow that runs with one command.</p>
+                  <p class="case-stack">Python packaging &middot; Prefect &middot; Snakemake</p>
+                </div>
+                <div>
+                  <p class="case-claim">Made it safe to change: deterministic fixtures, CI regression runs, configuration validation, structured logs.</p>
+                  <p class="case-stack">CI regression &middot; validation fixtures &middot; structured logging</p>
+                </div>
+                <div>
+                  <p class="case-claim">Made the workflow reproducible across laptop, container and cluster.</p>
+                  <p class="case-stack">uv &middot; Nix &middot; OCI images &middot; Slurm</p>
+                </div>
+              </div>
             </article>
 
             <article class="case" data-case>
               <div class="case-heading">
-                <span class="label">Compliance / platform engineering</span>
+                <span class="undisclosed">Client undisclosed</span>
+                <span class="label">RegTech startup &middot; platform engineering</span>
                 <h3>Typed platform foundations for regulated work</h3>
               </div>
-              <ul>
-                <li>
-                  <span class="case-claim">Built typed platform foundations for compliance-sensitive product work across APIs, UI, jobs, payments, and schema migrations</span>
-                  <span class="case-detail">FastAPI, React, SQLAlchemy/Alembic, background workers, scheduled jobs, payment integration.</span>
-                </li>
-                <li>
-                  <span class="case-claim">Kept privileged operations server-side and modeled access across users, organizations, and shared resources</span>
-                  <span class="case-detail">RBAC/ReBAC, organization boundaries, shared-resource authorization, regulated-system constraints.</span>
-                </li>
-              </ul>
-            </article>
-
-            <article class="case" data-case>
-              <div class="case-heading">
-                <span class="label">Scientific compute / reproducibility</span>
-                <h3>Tools that researchers can actually run</h3>
+              <div class="case-points">
+                <div>
+                  <p class="case-claim">Built typed platform foundations across APIs, UI, background jobs, payments and schema migrations.</p>
+                  <p class="case-stack">FastAPI &middot; React &middot; SQLAlchemy / Alembic &middot; workers</p>
+                </div>
+                <div>
+                  <p class="case-claim">Kept privileged operations server-side and modelled access across users, organisations and shared resources.</p>
+                  <p class="case-stack">RBAC / ReBAC &middot; organisation boundaries</p>
+                </div>
+                <div>
+                  <p class="case-claim">Took the platform to NIS2 and ISO 27001 audit readiness.</p>
+                  <p class="case-stack">Least privilege &middot; audit trails &middot; GDPR-sensitive contexts</p>
+                </div>
               </div>
-              <ul>
-                <li>
-                  <span class="case-claim">Reduced lab workflow time from weeks to minutes by turning messy inputs into structured review and analysis paths</span>
-                  <span class="case-detail">Streamlit, structured input, QC plots, validation boundaries, downstream analysis.</span>
-                </li>
-                <li>
-                  <span class="case-claim">Made scientific tools reproducible and runnable across local, containerized, and cluster environments</span>
-                  <span class="case-detail">uv, Nix, OCI images, Docker, Ansible, Slurm, CI, observability.</span>
-                </li>
-              </ul>
             </article>
           </div>
         </div>
@@ -972,124 +1022,38 @@
         <div class="shell contact-panel">
           <div>
             <p class="label">Availability</p>
-            <h2>Primarily looking for full-time software developer roles.</h2>
-            <p class="lede">Best fit: biotech, medtech, bioinformatics, scientific computing, internal automation, backend platforms, and regulated systems where simple tools can unlock scientific work. Focused consulting is possible when the problem is specific and technical.</p>
-            <noscript><p class="noscript-contact">Email: jakob1379+jgalabs [at] gmail [dot] com</p></noscript>
+            <h2>Open to full-time roles.</h2>
+            <p class="lede">Best fit: biotech, medtech, bioinformatics, scientific computing and regulated backends where a simple tool unlocks the science. Focused consulting when the problem is specific and technical.</p>
           </div>
           <div class="contact-actions" aria-label="Contact links">
+            <a class="button primary" href="mailto:jakob1379+jgalabs@gmail.com">Email me</a>
             <div class="social-links">
-              <a class="social-link" href="mailto:jakob1379+jgalabs@gmail.com" aria-label="Email Jakob" title="Email Jakob">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5h18v13H3zM3.8 6.3 12 13l8.2-6.7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
               <a class="social-link" href="https://github.com/jakob1379" aria-label="GitHub" title="GitHub" rel="me noopener noreferrer">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.82a9.6 9.6 0 0 1 2.5.34c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.35 4.68-4.58 4.93.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
               </a>
               <a class="social-link" href="https://www.linkedin.com/in/jakobguldberg/" aria-label="LinkedIn" title="LinkedIn" rel="me noopener noreferrer">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5.34 3.5A1.84 1.84 0 1 1 5.33 7.2a1.84 1.84 0 0 1 .01-3.69ZM3.75 8.6h3.18v10.15H3.75V8.6Zm5.14 0h3.05v1.39h.04c.43-.8 1.47-1.65 3.02-1.65 3.23 0 3.83 2.13 3.83 4.9v5.51h-3.18v-4.88c0-1.17-.02-2.66-1.62-2.66-1.63 0-1.88 1.27-1.88 2.58v4.96H8.97V8.6Z"/></svg>
               </a>
+              <a class="social-link" href="https://pypi.org/user/jakob1379/" aria-label="PyPI" title="PyPI" rel="me noopener noreferrer">
+                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2.6 20.5 7v10L12 21.4 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5V21.4"/></svg>
+              </a>
             </div>
+            <p class="contact-email">jakob1379+jgalabs [at] gmail [dot] com</p>
           </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="shell">Jakob Stender Guldberg / Science enabler, backend, and simple tools / <span data-current-year></span></div>
+      <div class="shell footer-inner">
+        <span>{{ config.copyright }}</span>
+        <span class="footer-links">
+          <a href="https://github.com/jakob1379" rel="me noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/jakobguldberg/" rel="me noopener noreferrer">LinkedIn</a>
+          <a href="https://pypi.org/user/jakob1379/" rel="me noopener noreferrer">PyPI</a>
+          <a href="blog/">Field notes</a>
+        </span>
+      </div>
     </footer>
-
-    <script>
-      (() => {
-        document.querySelectorAll("[data-current-year]").forEach((target) => {
-          target.textContent = new Date().getFullYear();
-        });
-
-        const nav = document.querySelector(".site-nav");
-        const navToggle = document.querySelector("[data-nav-toggle]");
-        if (nav && navToggle) {
-          nav.setAttribute("data-enhanced", "true");
-          const navLinks = Array.from(nav.querySelectorAll('.nav-links a[href^="#"]'));
-          let navFrame = 0;
-          const setNavDepth = () => {
-            navFrame = 0;
-            nav.setAttribute("data-scrolled", String(window.scrollY > 24));
-          };
-          const queueNavDepth = () => {
-            if (navFrame) {
-              return;
-            }
-            navFrame = window.requestAnimationFrame(setNavDepth);
-          };
-          setNavDepth();
-          window.addEventListener("scroll", queueNavDepth, { passive: true });
-
-          navToggle.addEventListener("click", () => {
-            const isOpen = nav.getAttribute("data-menu-open") === "true";
-            const nextOpen = String(!isOpen);
-            nav.setAttribute("data-menu-open", nextOpen);
-            navToggle.setAttribute("aria-expanded", nextOpen);
-          });
-
-          navLinks.forEach((link) => {
-            link.addEventListener("click", () => {
-              nav.setAttribute("data-menu-open", "false");
-              navToggle.setAttribute("aria-expanded", "false");
-            });
-          });
-
-          const sectionMap = new Map();
-          navLinks.forEach((link) => {
-            const section = document.querySelector(link.hash);
-            if (section) {
-              sectionMap.set(section.id, link);
-            }
-          });
-
-          const setActiveSection = (id) => {
-            navLinks.forEach((link) => {
-              if (link === sectionMap.get(id)) {
-                link.setAttribute("aria-current", "location");
-              } else {
-                link.removeAttribute("aria-current");
-              }
-            });
-          };
-
-          if (sectionMap.size > 0 && "IntersectionObserver" in window) {
-            const visibleSections = new Map();
-            const sectionObserver = new IntersectionObserver((entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  visibleSections.set(entry.target.id, entry.boundingClientRect.top);
-                } else {
-                  visibleSections.delete(entry.target.id);
-                }
-              });
-
-              const active = Array.from(visibleSections.entries())
-                .sort((first, second) => {
-                  // Use an upper-third target line so the nav follows what the reader is entering.
-                  const targetLine = window.innerHeight * 0.28;
-                  return Math.abs(first[1] - targetLine) - Math.abs(second[1] - targetLine);
-                })[0];
-              if (active) {
-                setActiveSection(active[0]);
-              }
-            }, {
-              // The active band sits around the upper third of the viewport.
-              rootMargin: "-24% 0px -58% 0px",
-              threshold: 0.01
-            });
-
-            sectionMap.forEach((_, id) => {
-              const section = document.getElementById(id);
-              if (section) {
-                sectionObserver.observe(section);
-              }
-            });
-          }
-        }
-
-      })();
-    </script>
   </body>
 </html>
