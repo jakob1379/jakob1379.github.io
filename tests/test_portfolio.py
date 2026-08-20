@@ -76,15 +76,20 @@ def test_portfolio_cases_are_attributed(page, browser_name):
     expect(page.get_by_text("Client undisclosed")).to_be_visible()
 
 
-def test_portfolio_ships_no_javascript(page, browser_name):
+def test_portfolio_ships_only_the_nav_transition_script(page, browser_name):
     if browser_name == "webkit":
         pytest.skip("webkit browser not available in nix environment")
 
     open_portfolio(page)
 
-    assert page.locator("script").count() == 0
+    scripts = page.locator("script")
+    assert scripts.count() == 1
+    # No inline script, so the CSP needs no hash to keep in sync.
+    assert scripts.first.get_attribute("src") == "javascripts/nav-transition.js"
+    assert (scripts.first.inner_text() or "").strip() == ""
+
     csp = page.locator("meta[http-equiv='Content-Security-Policy']").get_attribute("content")
-    assert "script-src 'none'" in csp
+    assert "script-src 'self'" in csp
 
 
 def test_portfolio_navigation_needs_no_menu_button_on_mobile(page, browser_name):

@@ -201,3 +201,39 @@ def test_nav_slides_between_portfolio_and_blog(page, site_url) -> None:
     # A different link is current on each page, so the shared name has somewhere to travel.
     assert portfolio["active"] == "Portfolio"
     assert blog["active"] == "Field notes"
+
+
+SLOW_UNDERLINE = """
+(() => {
+  const inject = () => {
+    const style = document.createElement('style');
+    style.textContent =
+      '.nav-links a[aria-current]::after { transition-duration: 180ms, 10000ms !important }';
+    (document.head || document.documentElement).appendChild(style);
+  };
+  if (document.documentElement) inject();
+  else document.addEventListener('readystatechange', inject, { once: true });
+})();
+"""
+
+
+def test_nav_underline_slides_on_every_engine(page, site_url) -> None:
+    """Engines with cross-document view transitions animate the underline from
+    CSS; the script must cover the rest and stay out of the way otherwise."""
+    page.context.add_init_script(SLOW_UNDERLINE)
+    page.goto(f"{site_url}/")
+    native = page.evaluate("() => typeof CSSViewTransitionRule !== 'undefined'")
+
+    page.get_by_label("Primary navigation").get_by_role("link", name="Field notes").click()
+    page.wait_for_load_state("networkidle")
+
+    translate = page.evaluate(
+        """() => getComputedStyle(
+             document.querySelector('.nav-links a[aria-current]'), '::after'
+           ).translate"""
+    )
+    if native:
+        assert translate in ("0px", "none"), "the script should defer to @view-transition"
+    else:
+        assert translate.endswith("px")
+        assert float(translate.removesuffix("px")) != 0, "underline never left its origin"

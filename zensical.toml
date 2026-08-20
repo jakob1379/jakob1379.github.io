@@ -4,7 +4,7 @@ site_url = "https://jgalabs.dk/"
 site_description = "Field notes on scientific software, data workflows, and practical engineering by Jakob Stender Guldberg"
 copyright = "Copyright © 2026 Jakob Stender Guldberg"
 extra_css = ["stylesheets/extra.css"]
-extra_javascript = ["javascripts/extra.js"]
+extra_javascript = ["javascripts/extra.js", "javascripts/nav-transition.js"]
 
 [project.extra]
 homepage = "/"

@@ -220,6 +220,12 @@ a {
 .nav-links a[aria-current="page"]::after,
 .nav-links a[aria-current="location"]::after {
   transform: scaleX(1);
+  translate: var(--nav-slide, 0) 0;
+}
+
+/* Seeding the start offset must not animate; only the trip home does. */
+.nav-links a.nav-underline-instant::after {
+  transition: none;
 }
 
 .nav-links a.button {
@@ -349,7 +355,9 @@ a {
   }
 
   .nav-links a::after {
-    transition: transform 180ms cubic-bezier(0.2, 0, 0, 1);
+    transition:
+      transform 180ms cubic-bezier(0.2, 0, 0, 1),
+      translate 340ms cubic-bezier(0.2, 0, 0, 1);
   }
 }
 

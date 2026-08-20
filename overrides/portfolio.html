@@ -11,8 +11,9 @@
     <meta property="og:image" content="https://jgalabs.dk/assets/portrait.jpg">
     <meta name="theme-color" content="#0f7d82">
     <!-- Clickjacking protection must be configured as an HTTP header; embedding directives are ignored in meta CSP. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://jgalabs.dk data:; style-src 'self' 'unsafe-inline'; script-src 'none'; connect-src 'self'; form-action 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' https://jgalabs.dk data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; form-action 'none';">
     <link rel="icon" type="image/png" href="assets/goose.png">
+    <script src="javascripts/nav-transition.js" defer></script>
     <link rel="preload" as="font" type="font/woff2" href="assets/fonts/newsreader-600.woff2" crossorigin>
     <link rel="preload" as="font" type="font/woff2" href="assets/fonts/ibm-plex-mono-400.woff2" crossorigin>
     <style>
@@ -244,6 +245,12 @@
 
       .nav-links a[aria-current="location"]::after {
         transform: scaleX(1);
+        translate: var(--nav-slide, 0) 0;
+      }
+
+      /* Seeding the start offset must not animate; only the trip home does. */
+      .nav-links a.nav-underline-instant::after {
+        transition: none;
       }
 
       .nav-links a.button::after {
@@ -467,7 +474,9 @@
         }
 
         .nav-links a::after {
-          transition: transform 180ms cubic-bezier(0.2, 0, 0, 1);
+          transition:
+            transform 180ms cubic-bezier(0.2, 0, 0, 1),
+            translate 340ms cubic-bezier(0.2, 0, 0, 1);
         }
 
         .button:hover,
