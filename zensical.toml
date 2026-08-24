@@ -94,23 +94,24 @@ font = false
 [project.theme.icon]
 repo = "fontawesome/brands/github"
 
-# Palette toggle for light mode
+# Palette follows the operating system, matching the portfolio template's
+# prefers-color-scheme rules.
+[[project.theme.palette]]
+media = "(prefers-color-scheme)"
+primary = "teal"
+accent = "indigo"
+
 [[project.theme.palette]]
 media = "(prefers-color-scheme: light)"
 scheme = "default"
 primary = "teal"
 accent = "indigo"
-toggle.icon = "material/brightness-7"
-toggle.name = "Switch to dark mode"
 
-# Palette toggle for dark mode
 [[project.theme.palette]]
 media = "(prefers-color-scheme: dark)"
 scheme = "slate"
 primary = "teal"
 accent = "indigo"
-toggle.icon = "material/brightness-4"
-toggle.name = "Switch to light mode"
 
 # Note: Zensical has built-in equivalents for social, minify_html, and blog plugins
 # The blog functionality is built-in and should work with the existing structure

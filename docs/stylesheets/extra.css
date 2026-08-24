@@ -326,6 +326,10 @@ a {
   gap: 6.4px;
 }
 
+.nav-actions [data-md-component="palette"] {
+  display: contents;
+}
+
 .nav-search {
   display: none;
   width: 40px;

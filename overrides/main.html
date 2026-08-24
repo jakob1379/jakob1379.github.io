@@ -31,6 +31,9 @@
       </nav>
 
       <div class="nav-actions">
+        {% if config.theme.palette and not config.theme.palette is mapping %}
+          {% include "partials/palette.html" %}
+        {% endif %}
         {% if "search" in config.plugins %}
           {% set search = config.plugins["search"] | attr("config") %}
           {% if search.enabled %}
@@ -44,6 +47,9 @@
       </div>
     </div>
   </header>
+  {% if config.theme.palette and not config.theme.palette is mapping %}
+    {% include "partials/javascripts/palette.html" %}
+  {% endif %}
 {% endblock %}
 
 {% block footer %}

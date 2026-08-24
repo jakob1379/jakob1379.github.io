@@ -237,3 +237,24 @@ def test_nav_underline_slides_on_every_engine(page, site_url) -> None:
     else:
         assert translate.endswith("px")
         assert float(translate.removesuffix("px")) != 0, "underline never left its origin"
+
+
+@pytest.mark.parametrize("color_scheme", ["light", "dark"])
+def test_palette_matches_between_portfolio_and_blog(browser, site_url, color_scheme) -> None:
+    """The blog renders through Zensical's palette and the portfolio through its
+    own stylesheet, so both have to resolve the same colours from the OS."""
+    context = browser.new_context(color_scheme=color_scheme)
+    try:
+        page = context.new_page()
+        backgrounds = []
+        for path in ("/", "/blog/"):
+            page.goto(f"{site_url}{path}")
+            page.wait_for_load_state("networkidle")
+            backgrounds.append(
+                page.evaluate("() => getComputedStyle(document.body).backgroundColor")
+            )
+    finally:
+        context.close()
+
+    assert backgrounds[0] == backgrounds[1]
+    assert (backgrounds[0] == "rgb(17, 25, 29)") == (color_scheme == "dark")
