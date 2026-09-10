@@ -277,22 +277,22 @@ a {
   view-transition-name: brand-name;
 }
 
-/* Both templates carry the same three links in the same order. Naming each
-   one means they slide to their new position instead of the whole bar
+/* The homepage drops its own Portfolio link, so links are named from the
+   end to keep the shared ones matched. Naming each one means they slide to their new position instead of the whole bar
    crossfading, which would ghost against the blog's extra search field. */
-.nav-links a:nth-child(1) {
+.nav-links a:nth-last-child(3) {
   view-transition-name: nav-item-1;
 }
 
-.nav-links a:nth-child(2) {
+.nav-links a:nth-last-child(2) {
   view-transition-name: nav-item-2;
 }
 
-.nav-links a:nth-child(3) {
+.nav-links a:nth-last-child(1) {
   view-transition-name: nav-item-3;
 }
 
-/* Exactly one link carries aria-current, so the active underline is a
+/* At most one link carries aria-current, so the active underline is a
    single named element and slides between nav items across a navigation. */
 .nav-links a[aria-current]::after {
   view-transition-name: nav-active;
