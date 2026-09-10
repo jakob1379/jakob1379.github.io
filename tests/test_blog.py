@@ -6,6 +6,8 @@ from playwright.sync_api import expect
 
 SITE_PATH = Path("site").absolute()
 NAV_LABELS = ["Portfolio", "Field notes", "Get in touch"]
+# The brand link already leads home, so the homepage nav carries no Portfolio entry.
+HOME_NAV_LABELS = NAV_LABELS[1:]
 
 
 def open_site_page(page, path: str) -> None:
@@ -54,7 +56,7 @@ def test_portfolio_is_deployed_at_site_root(page) -> None:
     )
     assert (
         page.get_by_label("Primary navigation").get_by_role("link").all_inner_texts()
-        == NAV_LABELS
+        == HOME_NAV_LABELS
     )
     expect(page.locator(".md-search")).to_have_count(0)
 
@@ -170,8 +172,8 @@ def view_transition_contract(page) -> dict[str, object]:
           const active = document.querySelector('.nav-links a[aria-current]');
           return {
             optedIn,
-            active: active.textContent.trim(),
-            underline: getComputedStyle(active, '::after').viewTransitionName,
+            active: active ? active.textContent.trim() : null,
+            underline: active ? getComputedStyle(active, '::after').viewTransitionName : null,
             items: [...document.querySelectorAll('.nav-links a')].map(
               (link) => getComputedStyle(link).viewTransitionName
             ),
@@ -182,8 +184,8 @@ def view_transition_contract(page) -> dict[str, object]:
 
 
 def test_nav_slides_between_portfolio_and_blog(page, site_url) -> None:
-    """Both templates must opt in and name the same elements, or the active
-    underline crossfades instead of sliding to the new page's nav item."""
+    """Both templates must opt in and name the shared links the same, or the
+    nav items crossfade instead of sliding to their place on the new page."""
     # Served over HTTP: reading the blog's external stylesheet rules is blocked under file://.
     page.goto(f"{site_url}/")
     if not page.evaluate("() => typeof CSSViewTransitionRule !== 'undefined'"):
@@ -195,48 +197,14 @@ def test_nav_slides_between_portfolio_and_blog(page, site_url) -> None:
 
     for signature in (portfolio, blog):
         assert signature["optedIn"]
-        assert signature["underline"] == "nav-active"
-        assert signature["items"] == ["nav-item-1", "nav-item-2", "nav-item-3"]
 
-    # A different link is current on each page, so the shared name has somewhere to travel.
-    assert portfolio["active"] == "Portfolio"
+    # Names count from the end, so Field notes and Get in touch match across pages.
+    assert portfolio["items"] == ["nav-item-2", "nav-item-3"]
+    assert blog["items"] == ["nav-item-1", "nav-item-2", "nav-item-3"]
+
+    assert portfolio["active"] is None
     assert blog["active"] == "Field notes"
-
-
-SLOW_UNDERLINE = """
-(() => {
-  const inject = () => {
-    const style = document.createElement('style');
-    style.textContent =
-      '.nav-links a[aria-current]::after { transition-duration: 180ms, 10000ms !important }';
-    (document.head || document.documentElement).appendChild(style);
-  };
-  if (document.documentElement) inject();
-  else document.addEventListener('readystatechange', inject, { once: true });
-})();
-"""
-
-
-def test_nav_underline_slides_on_every_engine(page, site_url) -> None:
-    """Engines with cross-document view transitions animate the underline from
-    CSS; the script must cover the rest and stay out of the way otherwise."""
-    page.context.add_init_script(SLOW_UNDERLINE)
-    page.goto(f"{site_url}/")
-    native = page.evaluate("() => typeof CSSViewTransitionRule !== 'undefined'")
-
-    page.get_by_label("Primary navigation").get_by_role("link", name="Field notes").click()
-    page.wait_for_load_state("networkidle")
-
-    translate = page.evaluate(
-        """() => getComputedStyle(
-             document.querySelector('.nav-links a[aria-current]'), '::after'
-           ).translate"""
-    )
-    if native:
-        assert translate in ("0px", "none"), "the script should defer to @view-transition"
-    else:
-        assert translate.endswith("px")
-        assert float(translate.removesuffix("px")) != 0, "underline never left its origin"
+    assert blog["underline"] == "nav-active"
 
 
 @pytest.mark.parametrize("color_scheme", ["light", "dark"])

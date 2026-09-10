@@ -42,6 +42,9 @@ def test_portfolio_hero_leads_with_name_and_offer(page, browser_name):
         "href",
         "https://pypi.org/user/jakob1379/",
     )
+    # Off-site links open in a new tab so the visitor is not lost.
+    for name in ("GitHub", "LinkedIn", "PyPI"):
+        expect(hero_actions.get_by_role("link", name=name)).to_have_attribute("target", "_blank")
 
 
 def test_portfolio_proof_rail_only_claims_real_numbers(page, browser_name):
@@ -101,5 +104,6 @@ def test_portfolio_navigation_needs_no_menu_button_on_mobile(page, browser_name)
 
     expect(page.get_by_role("button", name="Menu")).to_have_count(0)
     navigation = page.get_by_label("Primary navigation")
-    for label in ("Portfolio", "Field notes", "Get in touch"):
+    for label in ("Field notes", "Get in touch"):
         expect(navigation.get_by_role("link", name=label)).to_be_visible()
+    expect(navigation.get_by_role("link", name="Portfolio")).to_have_count(0)

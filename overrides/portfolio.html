@@ -275,22 +275,22 @@
         view-transition-name: brand-name;
       }
 
-      /* Both templates carry the same three links in the same order. Naming each
-         one means they slide to their new position instead of the whole bar
+      /* The homepage drops its own Portfolio link, so links are named from the
+         end to keep the shared ones matched. Naming each one means they slide to their new position instead of the whole bar
          crossfading, which would ghost against the blog's extra search field. */
-      .nav-links a:nth-child(1) {
+      .nav-links a:nth-last-child(3) {
         view-transition-name: nav-item-1;
       }
 
-      .nav-links a:nth-child(2) {
+      .nav-links a:nth-last-child(2) {
         view-transition-name: nav-item-2;
       }
 
-      .nav-links a:nth-child(3) {
+      .nav-links a:nth-last-child(1) {
         view-transition-name: nav-item-3;
       }
 
-      /* Exactly one link carries aria-current, so the active underline is a
+      /* At most one link carries aria-current, so the active underline is a
          single named element and slides between nav items across a navigation. */
       .nav-links a[aria-current]::after {
         view-transition-name: nav-active;
@@ -951,7 +951,6 @@
           <span>Jakob Stender Guldberg</span>
         </a>
         <nav class="nav-links" id="page-nav" aria-label="Primary navigation">
-          <a href="#top" aria-current="location">Portfolio</a>
           <a href="blog/">Field notes</a>
           <a class="button primary" href="#contact">Get in touch</a>
         </nav>
@@ -971,13 +970,13 @@
                 <a class="button" href="assets/Jakob_Stender_Guldberg_CV.pdf" download>Download CV &middot; PDF</a>
                 <span class="actions-divider" aria-hidden="true"></span>
                 <div class="social-links" aria-label="Social links">
-                  <a class="social-link" href="https://github.com/jakob1379" aria-label="GitHub" title="GitHub" rel="me noopener noreferrer">
+                  <a class="social-link" href="https://github.com/jakob1379" target="_blank" aria-label="GitHub" title="GitHub" rel="me noopener noreferrer">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.82a9.6 9.6 0 0 1 2.5.34c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.35 4.68-4.58 4.93.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
                   </a>
-                  <a class="social-link" href="https://www.linkedin.com/in/jakobguldberg/" aria-label="LinkedIn" title="LinkedIn" rel="me noopener noreferrer">
+                  <a class="social-link" href="https://www.linkedin.com/in/jakobguldberg/" target="_blank" aria-label="LinkedIn" title="LinkedIn" rel="me noopener noreferrer">
                     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5.34 3.5A1.84 1.84 0 1 1 5.33 7.2a1.84 1.84 0 0 1 .01-3.69ZM3.75 8.6h3.18v10.15H3.75V8.6Zm5.14 0h3.05v1.39h.04c.43-.8 1.47-1.65 3.02-1.65 3.23 0 3.83 2.13 3.83 4.9v5.51h-3.18v-4.88c0-1.17-.02-2.66-1.62-2.66-1.63 0-1.88 1.27-1.88 2.58v4.96H8.97V8.6Z"/></svg>
                   </a>
-                  <a class="social-link" href="https://pypi.org/user/jakob1379/" aria-label="PyPI" title="PyPI" rel="me noopener noreferrer">
+                  <a class="social-link" href="https://pypi.org/user/jakob1379/" target="_blank" aria-label="PyPI" title="PyPI" rel="me noopener noreferrer">
                     <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2.6 20.5 7v10L12 21.4 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5V21.4"/></svg>
                   </a>
                 </div>
@@ -1098,13 +1097,13 @@
           <div class="contact-actions" aria-label="Contact links">
             <a class="button primary" href="mailto:jakob1379+jgalabs@gmail.com">Email me</a>
             <div class="social-links">
-              <a class="social-link" href="https://github.com/jakob1379" aria-label="GitHub" title="GitHub" rel="me noopener noreferrer">
+              <a class="social-link" href="https://github.com/jakob1379" target="_blank" aria-label="GitHub" title="GitHub" rel="me noopener noreferrer">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.6 9.6 0 0 1 12 6.82a9.6 9.6 0 0 1 2.5.34c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.35 4.68-4.58 4.93.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
               </a>
-              <a class="social-link" href="https://www.linkedin.com/in/jakobguldberg/" aria-label="LinkedIn" title="LinkedIn" rel="me noopener noreferrer">
+              <a class="social-link" href="https://www.linkedin.com/in/jakobguldberg/" target="_blank" aria-label="LinkedIn" title="LinkedIn" rel="me noopener noreferrer">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5.34 3.5A1.84 1.84 0 1 1 5.33 7.2a1.84 1.84 0 0 1 .01-3.69ZM3.75 8.6h3.18v10.15H3.75V8.6Zm5.14 0h3.05v1.39h.04c.43-.8 1.47-1.65 3.02-1.65 3.23 0 3.83 2.13 3.83 4.9v5.51h-3.18v-4.88c0-1.17-.02-2.66-1.62-2.66-1.63 0-1.88 1.27-1.88 2.58v4.96H8.97V8.6Z"/></svg>
               </a>
-              <a class="social-link" href="https://pypi.org/user/jakob1379/" aria-label="PyPI" title="PyPI" rel="me noopener noreferrer">
+              <a class="social-link" href="https://pypi.org/user/jakob1379/" target="_blank" aria-label="PyPI" title="PyPI" rel="me noopener noreferrer">
                 <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 2.6 20.5 7v10L12 21.4 3.5 17V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5V21.4"/></svg>
               </a>
             </div>
@@ -1118,9 +1117,9 @@
       <div class="shell footer-inner">
         <span>{{ config.copyright }}</span>
         <span class="footer-links">
-          <a href="https://github.com/jakob1379" rel="me noopener noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/jakobguldberg/" rel="me noopener noreferrer">LinkedIn</a>
-          <a href="https://pypi.org/user/jakob1379/" rel="me noopener noreferrer">PyPI</a>
+          <a href="https://github.com/jakob1379" target="_blank" rel="me noopener noreferrer">GitHub</a>
+          <a href="https://www.linkedin.com/in/jakobguldberg/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+          <a href="https://pypi.org/user/jakob1379/" target="_blank" rel="me noopener noreferrer">PyPI</a>
           <a href="blog/">Field notes</a>
         </span>
       </div>
