@@ -1,19 +1,19 @@
-# Repo-specific vocabulary accepted by cspell. One word per line, sorted.
 #
-# Everything here was triaged from a full run over git-tracked files: tooling
-# and product names, Nix and Python vocabulary, and personal names.
-# Real typos were fixed in the source instead of being added here.
 #
-# Regenerated after the job-search workspace moved to its own repo, which
-# retired roughly 270 of the previous 349 entries - LaTeX/moderncv macros,
-# Danish job-board vocabulary, job portals, employer names and KU course codes
-# all left with it. Regenerate the same way rather than pruning by hand.
 #
-# The Danish cspell dictionary went with it. Dropping it cost three entries
-# here (lede, and two neighbours), against a 2.1 MB fetchzip and a symlink in
-# the devShell - see cspell.config.yaml.
 #
 # Add genuine vocabulary; do not add a word to silence a real mistake.
+# all left with it. Regenerate the same way rather than pruning by hand.
+# and product names, Nix and Python vocabulary, and personal names.
+# Danish job-board vocabulary, job portals, employer names and KU course codes
+# Everything here was triaged from a full run over git-tracked files: tooling
+# here (lede, and two neighbours), against a 2.1 MB fetchzip and a symlink in
+# Real typos were fixed in the source instead of being added here.
+# Regenerated after the job-search workspace moved to its own repo, which
+# Repo-specific vocabulary accepted by cspell. One word per line, sorted.
+# retired roughly 270 of the previous 349 entries - LaTeX/moderncv macros,
+# The Danish cspell dictionary went with it. Dropping it cost three entries
+# the devShell - see cspell.config.yaml.
 addinivalue
 addoption
 addopts
@@ -60,6 +60,7 @@ MQTT
 networkidle
 nixpkgs
 Nixpkgs
+nums
 numtide
 Obital
 pdftotext
@@ -81,6 +82,7 @@ rendercv
 seeq
 Slurm
 smartsymbols
+SMIL
 Snakemake
 stdenv
 Stender
